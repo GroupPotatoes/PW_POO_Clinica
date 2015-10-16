@@ -151,7 +151,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
         try {
-            new TelaCadastro(connection).setVisible(true);
+            new TelaCadastro().setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
