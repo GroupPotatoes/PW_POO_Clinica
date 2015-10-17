@@ -118,9 +118,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNome">
-      <Events>
-        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNomeFocusGained"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblResultados">
       <Properties>
@@ -154,9 +151,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Nenhum login gerado"/>
       </Properties>
-      <Events>
-        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtLoginFocusGained"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSenha">
       <Properties>
@@ -170,9 +164,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Nenhuma senha gerada"/>
       </Properties>
-      <Events>
-        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtSenhaFocusGained"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

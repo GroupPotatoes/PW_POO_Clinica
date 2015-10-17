@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Random;
-import javax.swing.JOptionPane;
 import Module.Controle;
 
 /**
@@ -66,12 +65,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         lblNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblNome.setText("Seu nome");
 
-        txtNome.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtNomeFocusGained(evt);
-            }
-        });
-
         lblResultados.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblResultados.setForeground(new java.awt.Color(102, 102, 102));
         lblResultados.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -88,21 +81,11 @@ public class TelaCadastro extends javax.swing.JFrame {
         lblLogin.setText("Login gerado");
 
         txtLogin.setText("Nenhum login gerado");
-        txtLogin.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtLoginFocusGained(evt);
-            }
-        });
 
         lblSenha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblSenha.setText("Senha gerada");
 
         txtSenha.setText("Nenhuma senha gerada");
-        txtSenha.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtSenhaFocusGained(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -165,45 +148,39 @@ public class TelaCadastro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Evento do Botão.
+     * @param evt 
+     */
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         if(txtNome.getText().equals("")||txtNome.getText()==null){
             lblCadastro.setText("Digite seu nome :(");
             lblCadastro.setForeground(Color.red);
         }
         else{
-//            try {    
-//                PreparedStatement ps = connection.prepareStatement("insert into [bdci17].[bdci17].[employee_registrer] values "
-//                               + "('"+this.txtNome.getText()+"', '"+this.txtSenha2.getText()+"', '"+this.txtLogin.getText()+"')");
-//                ps.execute();
-//            lblCadastro.setText("Cadastro efetuado com sucesso!");
-//            lblCadastro.setForeground(Color.red);
-//            } catch (SQLException ex) {
-//                // Se ocorrem erros de conexão
-//                System.err.println("Problema ao conectar com o Banco de Dados: ");
-//                System.err.print("SQLException: " + ex.getMessage());
-//                System.err.println("SQLState: " + ex.getSQLState());
-//                System.err.println("VendorError: " + ex.getErrorCode());
-//            }catch(Exception e){
-//                System.err.println("Erro: "+e.getMessage());
-//            }
-
+            try {
+                this.geraLoginSenha();
+                this.txtLogin.setText(this.login);
+                this.txtSenha.setText(this.senha);            
+                PreparedStatement ps = connection.prepareStatement("insert into [bdci17].[bdci17].[employee_registrer] values "
+                               + "('"+this.txtNome.getText()+"', '"+this.txtSenha.getText()+"', '"+this.txtLogin.getText()+"')");
+                ps.execute();
+                lblCadastro.setText("Cadastro efetuado com sucesso!");
+                lblCadastro.setForeground(Color.black);
+            } catch (SQLException ex) {
+                // Se ocorrem erros de conexão
+                System.err.println("Problema ao conectar com o Banco de Dados: ");
+                System.err.print("SQLException: " + ex.getMessage());
+                System.err.println("SQLState: " + ex.getSQLState());
+                System.err.println("VendorError: " + ex.getErrorCode());
+            }catch(Exception e){
+                System.err.println("Erro desconhecido: "+e.getMessage());
+            }
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void txtNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusGained
-        
-    }//GEN-LAST:event_txtNomeFocusGained
-
-    private void txtLoginFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLoginFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLoginFocusGained
-
-    private void txtSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSenhaFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSenhaFocusGained
-
     /**
-     * Método que fecha a conexão ao fechar o formulário.
+     * fecha a conexão ao fechar o formulário.
      * @param evt evento ao fechar o formulário.
      */
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -211,7 +188,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
      /**
-     * Método que abre a conexão com o Banco de Dados e atualiza meu connection.     * 
+     * abre a conexão com o Banco de Dados e atualiza meu connection.     * 
      */
     private void abreConexao(){
         this.conexao.abreConexao();
@@ -219,47 +196,69 @@ public class TelaCadastro extends javax.swing.JFrame {
     }
     
      /**
-     * Método que fecha a conexão com o Banco de Dados, através da chamada do FechaConexao.
+     * fecha a conexão com o Banco de Dados, através da chamada do FechaConexao.
      */
     private void fechaConexao(){
         this.conexao.fechaConexao();
     }
         
-    private void geradaLoginSenha() throws SQLException, Exception{        
-        char l[] = null, s[] = null;
+    /**
+     * Gera o login e a senha
+     * @throws SQLException
+     *              Exceção ao acessar o Banco de Dados.
+     * @throws Exception 
+     */
+    private void geraLoginSenha() throws SQLException, Exception{        
+        //criando os vetores de login e senha de acordo com o tamanho dos caracteres
+        char    l[] = new char[Controle.NUM_CARACTERES_LOGIN.getValor()],
+                s[] = new char[Controle.NUM_CARACTERES_SENHA.getValor()];     
         
-        Random random = new Random();  
+        Random random = new Random();    
         
-        for(int i=0;i<Controle.NUM_CARACTERES_LOGIN.getValor();i++){ //me baseando no valor do Enum para a parada do laço
-            //atribuo a cada posição desse vetor um número aleatório - que vai até o 9
-            l[i]=(char)random.nextInt(9);
-        }
-        for(int i=0;i<Controle.NUM_CARACTERES_SENHA.getValor();i++){ //me baseando no valor do Enum para a parada do laço
-            //atribuo a cada posição desse vetor um número aleatório - que vai até o 9
-            s[i]=(char)random.nextInt(9);
-        }
-                
-        //copyValueOf() transforma um vetor de chars em uma String :)
-        String login=String.copyValueOf(l);
-        String senha=String.copyValueOf(s);
+        do{
+            //:::::::::::::::::::::::::::::: LOGIN ::::::::::::::::::::::::::::::
+            
+            //adicionando os valores iniciais e finais [com base na tabela ASCII] aos inteiros
+            int valorMinimo=Controle.ASCII_VALOR_MIN.getValor(),
+                valorMaximo=Controle.ASCII_VALOR_MAX.getValor();
+            
+            //me baseando no valor do Enum para a parada do laço
+            for(int i=0;i<Controle.NUM_CARACTERES_LOGIN.getValor();i++){ 
+                //atribuindo a cada posição do vetor um char, que será gerado randomicamente
+                //entre os valores mínimos e máximos
+                l[i] = (char)(valorMinimo+random.nextInt(valorMaximo-valorMinimo));
+            }
+            
+            //:::::::::::::::::::::::::::::: SENHA ::::::::::::::::::::::::::::::
+
+            //me baseando no valor do Enum para a parada do laço
+            for(int i=0;i<Controle.NUM_CARACTERES_SENHA.getValor();i++){                 
+                //atribuindo a cada posição desse vetor um número aleatório (que vai até o 9), na base 10
+                s[i] = Character.forDigit(random.nextInt(9), 10);                
+            }
+            
+            //:::::::::::::::::::::::::::::: ATRIBUINDO VALORES ::::::::::::::::::::::::::::::
+            
+            //copyValueOf() transforma um vetor de chars em uma String :)
+            this.login=String.copyValueOf(l);
+            this.senha=String.copyValueOf(s);
+            
+            //Log para controle
+            System.out.println("Login gerado: "+this.login+" Senha gerada: "+this.senha);
         
-        if(validaLoginSenha(login, senha)){
-            this.login=login;
-            this.senha=senha;
-        }else{
-            throw new Exception("Erro ao realizar cadastro");
-           // TODO Melhorar essa exceção OU mudar lógica            
         }
+        //execução da lógica enquanto o login e a senha não forem exclusivos
+        while(!exclusivoLoginSenha(login, senha));
     }
     
     /**
-     * Método que valida login e a senha gerados.
+     * Valida login e a senha gerados, verificando se são únicos no Banco.
      * @param login login a ser validado.
      * @param senha senha a ser validada. 
      * @return se o login é exclusivo (true) ou se já existe outro no banco (false)
      * @throws SQLException excessão gerada ao ocorrer um erro no acesso ao Banco de Dados.
      */
-    private boolean validaLoginSenha(String login, String senha) throws SQLException{
+    private boolean exclusivoLoginSenha(String login, String senha) throws SQLException{
         String comandoSQL;        
         Statement statement  = connection.createStatement();
         comandoSQL="SELECT login, password FROM [bdci17].[bdci17].[employee_registrer]";

@@ -157,16 +157,7 @@ public class TelaLogin extends javax.swing.JFrame {
         }
         dispose();
     }//GEN-LAST:event_btnCadastroActionPerformed
-
-    public static void main(String args[]) throws SQLException {           
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaLogin().setVisible(true);
-            }
-        });
-    }
-    
+      
     /**
      * Método que abre a conexão com o Banco de Dados e atualiza meu connection.
      */
