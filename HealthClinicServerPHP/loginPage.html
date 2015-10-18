@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="healthClinic.css">
+		<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+		<title>Health Clinic</title>
+	</head>
+	<body>
+		
+		<div class="loginPatient">
+			<div>
+				<label for="patientLogin">Login:</label>
+				<input id="patientLogin" type="text" name="patientLogin"/>
+			</div>
+			<div>
+				<label for="patientPassword">Senha:</label>
+				<input id="patientPassword" type="password" name="patientPassword"/>
+			</div>
+			
+			<div>
+				<button id="insertButton" type="button" onclick="verifyLogin()"> Entrar </button>
+			</div>
+			
+			<p>
+			<a href="insertPatientPage.html">Cadastre-se aqui!</a>
+			</p>			
+		</div>
+			
+		<script>
+			function validateForm() {
+								
+				return $("#patientLogin").val() != null &&
+					   $("#patientLogin").val() != "" &&
+					   $("#patientPassword").val() != null &&
+					   $("#patientPassword").val() != "";
+			}
+			
+			function verifyLogin(){
+				
+				if(validateForm()){
+					$.ajax({
+						method: "POST",
+						url: "verifyLogin.php",
+						data: {patientLogin: $("#patientLogin").val(), patientPassword: $("#patientPassword").val()},
+						
+					}).done(function(hasLogin){
+						if(hasLogin){
+							window.location.replace("homePage.php");
+						}
+						else{					
+							alert("Não foi possível realizar login");
+							window.location.replace("loginPage.html");
+						}
+					});	
+				}
+				else{
+					alert("Campo login ou senha inválidos");
+				}
+			}
+			
+		</script>	
+			
+	</body>
+</html>

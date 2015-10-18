@@ -70,6 +70,7 @@ public class WebClinic {
     public static boolean registerValidate(String login, String senha, String name, String cpf, String cep, String number, String complement, String phone_type, String phone_number, String area_code){
         
     }
+    
     public static void main(String[] args) {
 
     }
