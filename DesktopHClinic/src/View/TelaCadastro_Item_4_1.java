@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import Module.Conexao;
+import Module.Conexao.Conexao;
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import javax.swing.ImageIcon;

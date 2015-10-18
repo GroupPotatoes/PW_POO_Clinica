@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="healthClinic.css">
+		<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+		<title>Health Clinic - Cadastro de paciente </title>
+	</head>
+	<body>
+		
+		<div class="insertPatient">
+		
+				<h3> Preencha o cadastro: </h3>
+				
+				<div>
+					<label for="insertName">Nome:</label>
+					<input id="insertName" type="text" name="insertName" />
+				</div>
+				<div>
+					<label for="insertCPF">CPF:</label>
+					<input id="insertCPF" type="text" maxLength="11" name="insertCPF"/>
+				</div>
+				<div>
+					<label for="insertComplement">Complemento:</label>
+					<input id="insertComplement" type="text" name="insertComplement"/>
+				</div>
+				<div>
+					<label for="insertNumber">Numero:</label>
+					<input id="insertNumber" type="text" name="insertNumber"/>
+				</div>
+				<div>
+					<label for="insertCEP">CEP:</label>
+					<input id="insertCEP" type="text" maxLength="8" name="insertCEP"/>
+				</div>
+				<div>
+					<label for="insertLogin">Login:</label>
+					<input id="insertLogin" type="text" name="insertLogin"/>
+				</div>
+				<div>
+					<label for="insertPassword">Senha:</label>
+					<input id="insertPassword" type="password" name="insertPassword"/>
+				</div>
+				
+				<div>
+					<button id="insertButton" type="button" onclick="insertPatient()"> Cadastrar </button>
+				</div>	
+		</div>
+			
+		<script>
+		
+			function validadeField(field){
+				return field != null && field != "";
+			}
+		
+			function validateForm() {
+						
+				return validadeField($("#insertName").val()) && 
+						validadeField($("#insertCPF").val()) && 
+							validadeField($("#insertComplement").val()) &&
+								validadeField($("#insertNumber").val()) &&  
+									validadeField($("#insertCEP").val()) && 
+										validadeField($("#insertLogin").val()) && 
+											validadeField($("#insertPassword").val());	
+			}
+			
+			function insertPatient(){
+				
+				if(validateForm()){
+					$.ajax({
+						method: "POST",
+						url: "insertPatient.php",
+						data: {insertName: $("#insertName").val(), insertCPF: $("#insertCPF").val(), insertComplement: $("#insertComplement").val(), insertNumber: $("#insertNumber").val(), insertCEP: $("#insertCEP").val(), insertLogin: $("#insertLogin").val(), insertPassword: $("#insertPassword").val()}					
+					}).done(function(wasInsert){
+						if(wasInsert){
+							alert("Cadastro realizado com sucesso!");
+						}
+						else{					
+							alert("Não foi possível realizar o cadastro");
+						}
+						
+						window.location.replace("loginPage.html");
+					});	
+				}
+				else{
+					alert("Campos inválidos");
+				}
+				
+			}
+			
+		</script>	
+		
+	</body>
+</html>
