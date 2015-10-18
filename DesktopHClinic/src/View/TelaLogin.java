@@ -1,5 +1,6 @@
 package View;
 
+import Module.DAO.*;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,7 +16,7 @@ import java.util.logging.Logger;
  * @author Maiara Rodrigues
  */
 public class TelaLogin extends javax.swing.JFrame {
-
+    private EmployeeRegistrer currentUser;
     private Connection connection;
     private Conexao conexao;
     
@@ -137,6 +138,11 @@ public class TelaLogin extends javax.swing.JFrame {
             else{
                 //Se houverem resultados na busca            
                 new TelaPrincipal().setVisible(true);
+                
+                // TODO: necessario para outras telas! 
+                //criar uma instancia do User atual com id, login, senha existentes no banco
+               // currentUser = new EmployeeRegistrer(id???, txtLogin, txtSenha);
+                
                 dispose();                     
             }
         } catch (SQLException ex) {
