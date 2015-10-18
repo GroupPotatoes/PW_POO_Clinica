@@ -34,6 +34,11 @@ public class AdministracaoFuncionarios extends javax.swing.JFrame {
         mnuMenuPrincipal.add(smnAlterar);
 
         smnExcluir.setText("Excluir");
+        smnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                smnExcluirMouseClicked(evt);
+            }
+        });
         mnuMenuPrincipal.add(smnExcluir);
 
         smnPesquisar.setText("Pesquisar");
@@ -67,6 +72,12 @@ public class AdministracaoFuncionarios extends javax.swing.JFrame {
     private void smnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_smnSairMouseClicked
         this.setVisible(false);
     }//GEN-LAST:event_smnSairMouseClicked
+
+    private void smnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_smnExcluirMouseClicked
+        // Abre tela de exclusao que faz o cadastro ficar inativo
+        TelaExclui excluiCadastro = new TelaExclui();
+        excluiCadastro.setVisible(true);
+    }//GEN-LAST:event_smnExcluirMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
