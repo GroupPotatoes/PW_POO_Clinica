@@ -3,6 +3,7 @@
     margin: auto;
     margin-top: 100px;
     background: #D6F5FF;
+    padding: 25px;
 }
 html, body {
     margin: 0;
@@ -13,6 +14,12 @@ p {
     color: #006666;
     font-family:tahoma;
     font-size:70%;
+}
+
+h2 {
+    color: #000000;
+    font-family:tahoma;
+    font-size:110%;
 }
 
 h3 {
@@ -76,7 +83,7 @@ li a{
 }
 /*the > is a child cominater<--misspelled is simmler to a desendent selector. What is is doing is making the rule very specific. It says to target any li child the topMenu and only in the topMenue. And then any links that are a direct child of the li */
 li a:hover, .topMenu > li:hover > a{
-	background:#916A31;
+	background:#318891;
 	height:2em;
 	padding-top:.3em;
 	position:relative;/* postioning it this way instead of using a margin helps stop any conflicks that might acure with a eliment above or below it*/

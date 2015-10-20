@@ -21,5 +21,7 @@ public class ConnectionSetup {
     public static String database="bdci17";
     public static String login="bdci17";
     public static String password="ert985";
-    public static int id = 0;
+    public static int id=0;
+  
+    
 }
