@@ -3,51 +3,41 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Module.DAO;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
+import Module.Conexao.MeuPreparedStatement;
+import java.sql.Array;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 /**
  *
  * @author William
  */
 public class EmployeeRegistrerDAO {
     
-    private Connection connection;
+    private MeuPreparedStatement connection;
     
-    public EmployeeRegistrerDAO(){
+    public EmployeeRegistrerDAO() throws ClassNotFoundException{
         try {
                 /*
                 Criando conexão.
-                */
+                
                 this.connection = DriverManager.getConnection("jdbc:sqlserver://"+ConnectionSetup.serverName+":"+ConnectionSetup.port+
                         ";databasename="+ConnectionSetup.database+";", ConnectionSetup.login, ConnectionSetup.password);
-
                 if(!connection.isValid(0))
-                    System.err.println("Erro na conexão!");
-
+                    System.err.println("Erro na conexão!");*/
+            
+             
+            this.connection = new MeuPreparedStatement ("com.microsoft.sqlserver.jdbc.SQLServerDriver", "jdbc:sqlserver://"+ConnectionSetup.serverName+":"+ConnectionSetup.port+
+                    ";databasename="+ConnectionSetup.database+";", ConnectionSetup.login, ConnectionSetup.password);
+            if(!connection.getConnection().isValid(0))
+                System.err.println("Erro na conexão!"); 
             } 
             catch (SQLException ex) {
                 Logger.getLogger(EmployeeRegistrerDAO.class.getName()).log(Level.SEVERE, null, ex);
             } 
             
     }
-
-    private ResultSet ExecuteCommand(String command) throws SQLException{
-        
-           Statement statement = this.connection.createStatement();
-           return statement.executeQuery(command);  
-           
-    }
-    
     private int InsertEmployeeRegistrer(EmployeeRegistrer employeeRegistrer) throws SQLException{
         
         /*
@@ -64,12 +54,10 @@ public class EmployeeRegistrerDAO {
         
         String commandToInsertEmployee = String.format("INSERT INTO employee_registrer (name, password, login) VALUES ('%s', '%s', '%s');", 
         employeeRegistrer.getName(),employeeRegistrer.getPassword(),employeeRegistrer.getLogin());
-        
-        System.out.println(commandToInsertEmployee);
-        
-        return ExecuteCommand(commandToInsertEmployee).getRow();
+            
+        this.connection.prepareStatement(commandToInsertEmployee);
+        return this.connection.executeQuery(commandToInsertEmployee).getInt("id");
     }
-
     public boolean InsertEmployee(EmployeeRegistrer employeeRegistrer, Employee employee) throws SQLException{
         
         //int idEmployeeRegistrer, int idRole
@@ -78,11 +66,9 @@ public class EmployeeRegistrerDAO {
                 
         String commandToInsertEmployee = String.format("INSERT INTO employee (id_employee_registrer, role_id) VALUES (%d, %d);", 
         employeeID, employee.getIdRole());
-        
-        System.out.println(commandToInsertEmployee);
-        
-        return employeeID > 0 && ExecuteCommand(commandToInsertEmployee).getRow() > 0;
-        
+              
+        this.connection.prepareStatement(commandToInsertEmployee);        
+        return employeeID > 0 && this.connection.execute(commandToInsertEmployee);
     }
     
     public boolean InsertHealthProfessionals(EmployeeRegistrer employeeRegistrer, HealthProfessionals healthProfessionals, Specialization specialization) throws SQLException{
@@ -91,57 +77,42 @@ public class EmployeeRegistrerDAO {
         
         String commandToInsertHealthProfessional = String.format("INSERT INTO health_professionals (id_employee_registrer, cpf, id_class) VALUES (%d, '%s', '%s');", 
         employeeID, healthProfessionals.getCPF(),healthProfessionals.getIDClass());
-         
-        System.out.println(commandToInsertHealthProfessional);
         
-        int healthProfessionalID = ExecuteCommand(commandToInsertHealthProfessional).getRow();
+        this.connection.prepareStatement(commandToInsertHealthProfessional);
+        int healthProfessionalID =  this.connection.executeQuery(commandToInsertHealthProfessional).getInt("id");
         
-        String commandToInsertSpecialization = String.format("INSERT INTO specialization (id, name, id_professions) VALUES (%d, '%s', %d);",
-        specialization.getId(), specialization.getNome(), healthProfessionalID);
+        //String commandToInsertSpecialization = String.format("INSERT INTO specialization (id, name, id_professions) VALUES (%d, '%s', %d);",
+        //specialization.getId(), specialization.getNome(), healthProfessionalID);
         
-        System.out.println(commandToInsertSpecialization);
-        
-        return employeeID > 0 &&  healthProfessionalID > 0 && ExecuteCommand(commandToInsertSpecialization).getRow() > 0;
+        return employeeID > 0 &&  healthProfessionalID > 0; //&& ExecuteCommand(commandToInsertSpecialization).getRow() > 0;
           
     }
-    
-    public boolean ExistLoginToEmployee(String login, String password) throws SQLException{
-        
-        ///Criar coluna inactive
-        String commandToExecute = String.format("SELECT * FROM employee_registrer WHERE NOT inactive AND login='%s' AND password='%s';", login, password); 
-        
-        //Testar
-        System.out.println(commandToExecute);
-        
-        return ExecuteCommand(commandToExecute).getRow() > 0;
-   
-    }
-    
-    public boolean ExistLoginToHealthProfessional(String login, String password) throws SQLException{
+     
+    public boolean ExistLogin(String login, String password) throws SQLException{
          
         ///Criar coluna inactive
-        String commandToExecute = String.format("SELECT id FROM employee_registrer JOIN health_professionals ON id = health_professionals.id_employee_registrer WHERE NOT inactive AND (login='%s' OR id_class='%s') AND password='%s';", login, login, password);     
+        /*
+            SELECT id 
+            FROM employee_registrer 
+            JOIN health_professionals ON employee_registrer.id = health_professionals.id_employee_registrer
+            JOIN employee ON employee.id_employee_registrer = employee_registrer.id 
+            WHERE inactive = 0 AND (login='login' OR id_class='login') AND password='password';
+        */
+        String commandToExecute = String.format("SELECT id FROM employee_registrer JOIN health_professionals ON employee_registrer.id = health_professionals.id_employee_registrer JOIN employee ON employee.id_employee_registrer = employee_registrer.id WHERE inactive = 0 AND (login='%s' OR id_class='%s') AND password='%s';", login, login, password);     
+        this.connection.prepareStatement(commandToExecute);
+        ConnectionSetup.id =  this.connection.executeQuery(commandToExecute).getInt("id");
         
-       //Testar
-        System.out.println(commandToExecute);
-        
-        return ExecuteCommand(commandToExecute).getRow() > 0;
+        return ConnectionSetup.id > 0; 
     }
     
     public boolean RemoveEmployeeRegistrer(){
         return false;
     }
-
     public boolean DisableEmployeeRegistrer(int idEmployeeRegistrer) throws SQLException{
         
         String commandToExecute = String.format("UPDATE employee_registrer SET inactive = 1 WHERE id = %d;", idEmployeeRegistrer);
-        
-        //Teste
-        System.out.println(commandToExecute);
-        
-        //Verificar se deu certo
-        return ExecuteCommand(commandToExecute).getRow() > 0;
-    
+        this.connection.prepareStatement(commandToExecute);
+        return this.connection.execute(commandToExecute);
     }
     
     private boolean UpdateEmployeeRegistrer(EmployeeRegistrer employeeRegistrer) throws SQLException{
@@ -149,10 +120,8 @@ public class EmployeeRegistrerDAO {
         String commandToUpdateEmployee = String.format("UPDATE employee_registrer SET name='%s', password='%s', login='%s' WHERE id=%d;",
         employeeRegistrer.getName(), employeeRegistrer.getPassword(), employeeRegistrer.getLogin(), employeeRegistrer.getId());
         
-        System.out.println(commandToUpdateEmployee);
-        
-        return ExecuteCommand(commandToUpdateEmployee).getRow() > 0;
-              
+        this.connection.prepareStatement(commandToUpdateEmployee);
+        return this.connection.execute(commandToUpdateEmployee);    
     }
     
     public boolean UpdateHealthProfessionals(EmployeeRegistrer employeeRegistrer, HealthProfessionals healthProfessionals, Specialization specialization) throws SQLException{
@@ -162,49 +131,48 @@ public class EmployeeRegistrerDAO {
         wasUpdated = wasUpdated && UpdateEmployeeRegistrer(employeeRegistrer);
         
         String commandToUpdateHealthProfessionals = String.format("UPDATE health_professionals SET cpf='%s', id_class='%s' WHERE id=%d;",
-        healthProfessionals.getCPF(), healthProfessionals.getClass());
+        healthProfessionals.getCPF(), healthProfessionals.getClass(), ConnectionSetup.id);
         
-        System.out.println(commandToUpdateHealthProfessionals);
+        this.connection.prepareStatement(commandToUpdateHealthProfessionals);
+        wasUpdated = wasUpdated &&  this.connection.execute(commandToUpdateHealthProfessionals);   
         
-        wasUpdated = wasUpdated && ExecuteCommand(commandToUpdateHealthProfessionals).getRow() > 0;
+        return wasUpdated;
         
-        String commandToUpdateSpecialization = String.format("UPDATE specialization SET id=%d, name='%s' WHERE id=%d;",
-        specialization.getId(), specialization.getNome(), specialization.getIdProfessions());
-        
-        System.out.println(commandToUpdateSpecialization);
-        
-        wasUpdated = wasUpdated && ExecuteCommand(commandToUpdateSpecialization).getRow() > 0;
-        
-        return wasUpdated;  
-        
+        //String commandToUpdateSpecialization = String.format("UPDATE specialization SET id=%d, name='%s' WHERE id=%d;",
+        //specialization.getId(), specialization.getNome(), specialization.getIdProfessions());
+                
+        //wasUpdated = wasUpdated && ExecuteCommand(commandToUpdateSpecialization).getRow() > 0;   
     }
     
     public boolean UpdateEmployee(EmployeeRegistrer employeeRegistrer, Employee employee) throws SQLException{
         
-        boolean wasUpdated = UpdateEmployeeRegistrer(employeeRegistrer);
+        boolean wasUpdated = true;
+        
+        wasUpdated = wasUpdated && UpdateEmployeeRegistrer(employeeRegistrer);
         
         String commandToUpdateEmployee = String.format("UPDATE employee SET role_id=%d WHERE id_employee_registrer=%d;",
         employee.getIdRole(), employee.getIdEmployeeRegistrer());
         
-        System.out.println(commandToUpdateEmployee);
+        this.connection.prepareStatement(commandToUpdateEmployee);
+        wasUpdated = wasUpdated &&  this.connection.execute(commandToUpdateEmployee);   
         
-        return wasUpdated && ExecuteCommand(commandToUpdateEmployee).getRow() > 0;
-       
+        return wasUpdated;
     }
     
-    public List<EmployeeRegistrer> SearchPatient(String searchWord) throws SQLException{
+    /**
+     * Searches database for employees named or partly named specific term, searchWord
+     * @param searchWord
+     * @return
+     * @throws SQLException
+     */
+    public Array SearchEmployee(String searchWord) throws SQLException{
         
         //LIKE '%%s%'; = pesquisa a palavra estando no começo, meio ou final 
-        String commandToExecute = String.format("SELECT * FROM employee_registrer WHERE name LIKE '%%s%';", searchWord);
-        ResultSet resultSet = ExecuteCommand(commandToExecute);
+        String commandToExecute = "SELECT * FROM employee_registrer WHERE name LIKE '%"+searchWord+"%';";
+        this.connection.prepareStatement(commandToExecute);
+        Array array = this.connection.executeQuery(commandToExecute).getArray("name");
         
-        System.out.println(commandToExecute);
-        
-        ///Verificar como retornar todos
-       //return resultSet.getArray("name").;
-        return null;
+        return array;
     }
-
-
     
 }

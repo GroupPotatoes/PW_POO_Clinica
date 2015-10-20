@@ -13,7 +13,6 @@ public class AdministracaoFuncionarios extends javax.swing.JFrame {
     final JPanel inicio;
     final TelaExclusao excluiCadastro;
     final TelaPesquisa pesquisa;
-    final TelaPesquisaResultado pesquisaRes;
     
     /**
      * Construtor da Classe.
@@ -23,7 +22,6 @@ public class AdministracaoFuncionarios extends javax.swing.JFrame {
         this.inicio = new JPanel();
         this.excluiCadastro = new TelaExclusao();
         this.pesquisa = new TelaPesquisa();
-        this.pesquisaRes = new TelaPesquisaResultado();
         this.parentPanel.setLayout(new BorderLayout(380, 200));
         initComponents();
         
@@ -94,10 +92,8 @@ public class AdministracaoFuncionarios extends javax.swing.JFrame {
 
     private void smnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_smnExcluirMouseClicked
         // Abre tela de exclusao que faz o cadastro ficar inativo
-        
         this.inicio.setVisible(false);
         this.pesquisa.setVisible(false);
-        this.pesquisaRes.setVisible(false);
         this.parentPanel.add(this.excluiCadastro, BorderLayout.CENTER);
         this.excluiCadastro.setPreferredSize(new Dimension(380, 200));
         this.excluiCadastro.setVisible(true);
@@ -107,11 +103,9 @@ public class AdministracaoFuncionarios extends javax.swing.JFrame {
     }//GEN-LAST:event_smnExcluirMouseClicked
 
     private void smnPesquisarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_smnPesquisarMouseClicked
-        // TODO add your handling code here:
-        
+        //Opens employee search screen
         this.inicio.setVisible(false);
         this.excluiCadastro.setVisible(false);
-        this.pesquisaRes.setVisible(false);
         this.parentPanel.add(this.pesquisa, BorderLayout.CENTER);
         this.pesquisa.setPreferredSize(new Dimension(380, 200));
         this.pesquisa.setVisible(true);
@@ -120,17 +114,6 @@ public class AdministracaoFuncionarios extends javax.swing.JFrame {
         pack();
     }//GEN-LAST:event_smnPesquisarMouseClicked
 
-    public void resultadoPesquisa() {
-        this.inicio.setVisible(false);
-        this.excluiCadastro.setVisible(false);
-        this.pesquisa.setVisible(false);
-        this.parentPanel.add(this.pesquisaRes, BorderLayout.CENTER);
-        this.pesquisaRes.setPreferredSize(new Dimension(380, 200));
-        this.pesquisaRes.setVisible(true);
-        this.parentPanel.revalidate();
-        this.parentPanel.repaint();
-        pack();
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar mnuMenuPrincipal;

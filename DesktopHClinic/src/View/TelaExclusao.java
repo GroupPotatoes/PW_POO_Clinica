@@ -5,7 +5,11 @@
  */
 package View;
 
+import Module.DAO.ConnectionSetup;
 import Module.DAO.EmployeeRegistrerDAO;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -94,11 +98,26 @@ public class TelaExclusao extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        EmployeeRegistrerDAO employee = new EmployeeRegistrerDAO();
-        
-        
-        // TODO: CONSEGUIR O ID DO EMPLOYEE - parametro da função abaixo
-        //employee.DisableEmployeeRegistrer(currentUser.getId());
+        EmployeeRegistrerDAO employee;
+        try {
+            employee = new EmployeeRegistrerDAO();
+            try {
+                if(employee.DisableEmployeeRegistrer(ConnectionSetup.id)) {
+                    jLabel2.setText("<html><center>Seu cadastro foi inativado.</center><br>"
+                            + "<center> Procure um administrador do sistema para reativá-lo.</center></html>");
+                }
+            } catch (SQLException ex) {
+                jLabel2.setText("<html><center> Sinto muito, houve algum problema ao inativar seu cadastro.</center>"
+                            + "<br><center>Tente novamente ou contate um administrador do sistema.</center</html>");
+                Logger.getLogger(TelaExclusao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (ClassNotFoundException ex) {
+            jLabel2.setText("<html><center> Sinto muito, houve algum problema ao inativar seu cadastro.</center>"
+                            + "<br><center>Tente novamente ou contate um administrador do sistema.</center</html>");
+            Logger.getLogger(TelaExclusao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jButton1.setVisible(false);
+        jButton2.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

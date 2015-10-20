@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import Module.Conexao.Conexao;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,6 +30,16 @@ public class TelaLogin extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);  
         //selecionando todo o texto do login
         this.txtLogin.selectAll();
+        
+        //Faz o campo txtSenha (onde user insere senha) usar o evento de logar ao pressionar ENTER
+        //(no caso, sem precisar clicar no botão logar)
+        txtSenha.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TelaLogin.this.login();
+            }
+        });
     }
 
     @SuppressWarnings("unchecked")
@@ -122,9 +134,11 @@ public class TelaLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
-        try {
+    /**
+     * Method that logs in, to be called when Login button is clicked and when enter key is pressed on Password field
+     */
+    public void login() {
+         try {
             this.abreConexao();
             Statement st = this.connection.createStatement();
             ResultSet rs = st.executeQuery("select * from [bdci17].[bdci17].[employee_registrer] where [login]='"+this.txtLogin.getText()+"' "
@@ -153,8 +167,12 @@ public class TelaLogin extends javax.swing.JFrame {
             System.err.println("VendorError: " + ex.getErrorCode());
         }
         this.fechaConexao();
+    }
+    private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
+       this.login();
     }//GEN-LAST:event_btnLogarActionPerformed
 
+    
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
         try {
             new TelaCadastro().setVisible(true);

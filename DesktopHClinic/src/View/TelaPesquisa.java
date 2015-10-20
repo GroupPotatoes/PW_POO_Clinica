@@ -4,14 +4,12 @@
  * and open the template in the editor.
  */
 package View;
-
-import Module.DAO.*;
 /**
  *
  * @author Owner
  */
 public class TelaPesquisa extends javax.swing.JPanel {
-
+    public static String itemPesquisado;
     /**
      * Creates new form TelaPesquisa
      */
@@ -92,9 +90,9 @@ public class TelaPesquisa extends javax.swing.JPanel {
         jButton1.setVisible(false);
         jLabel1.setVisible(false);
         jTextField1.setVisible(false);
-        
-        AdministracaoFuncionarios resultado = new AdministracaoFuncionarios();
-        resultado.resultadoPesquisa();
+        TelaPesquisa.itemPesquisado = jTextField1.getText();
+        TelaResultadoPesquisa resultado = new TelaResultadoPesquisa();
+        resultado.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
