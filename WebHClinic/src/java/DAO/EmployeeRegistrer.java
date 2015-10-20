@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package DAO;
+package Module.DAO;
 
 /**
  *
@@ -103,5 +103,12 @@ public class EmployeeRegistrer {
     
     // </editor-fold>
     
+    // <editor-fold defaultstate="collapsed" desc="Methods">
     
+    public String toString()
+    {
+        return String.format("NOME: %s LOGIN: %s", this.getName(), this.getLogin());
+    }
+    
+    // </editor-fold>
 }

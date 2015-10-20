@@ -6,8 +6,6 @@
 package clinic;
 
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.ResultSet;
 
 /**
  *
@@ -68,7 +66,7 @@ public class WebClinic {
      * a boolean that confirms if registration was completed or not
      */
     public static boolean registerValidate(String login, String senha, String name, String cpf, String cep, String number, String complement, String phone_type, String phone_number, String area_code){
-        
+        return true;
     }
     
     public static void main(String[] args) {

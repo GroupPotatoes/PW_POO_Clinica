@@ -4,15 +4,15 @@
  * and open the template in the editor.
  */
 
-package Connection.DAO;
+package DAO;
 
-import Module.ConnectionSetup;
 import clinic.MeuPreparedStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,38 +23,24 @@ import java.util.logging.Logger;
  */
 public class PatientDAO {
     
-    private MeuPreparedStatement connection;
+    private Connection connection;
     
     public PatientDAO(){
         try {
-            /*Criando conexão.
+            /*Criando conexão.*/
+                
+                this.connection = DriverManager.getConnection("jdbc:sqlserver://"+ConnectionSetup.serverName+":"+ConnectionSetup.port+
+                        ";databasename="+ConnectionSetup.database+";", ConnectionSetup.login, ConnectionSetup.password);
+
+                if(!connection.isValid(0))
+                    System.err.println(("Conexão inválida"));
             
-            con = new MeuPreparedStatement ("com.microsoft.sqlserver.jdbc.SQLServerDriver", "jdbc:sqlserver://FS5:1433;databaseName=bdci17", "bdci17", "ert985");
-            //WebClinic.con = DriverManager.getConnection("jdbc:sqlserver://FS5:1433;databaseName=bdci17", "bdci17", "ert985");
-            
-            String sql = "select * from [bdci17].[bdci17].[patient] where [login]='" + login + "' and [password]='" + senha + "'";
-            con.prepareStatement(sql);
-            MeuResultSet rs = (MeuResultSet) con.executeQuery();
-            */
-            
-            this.connection = new MeuPreparedStatement ("com.microsoft.sqlserver.jdbc.SQLServerDriver", "jdbc:sqlserver://"+ConnectionSetup.serverName+":"+ConnectionSetup.port+
-                    ";databasename="+ConnectionSetup.database+";", ConnectionSetup.login, ConnectionSetup.password);
-            if(!connection.execute())
-                System.err.println("Erro na conexão!"); 
-            
-        } 
-        catch (ClassNotFoundException ex) {
-            Logger.getLogger(PatientDAO.class.getName()).log(Level.SEVERE, null, ex);
         } 
         catch (SQLException ex) {
             Logger.getLogger(PatientDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
             
             
-    }
-
-    private ResultSet ExecuteCommand(String command) throws SQLException{
-          return this.connection.executeQuery(command);
     }
     
     public boolean InsertPatient(Patient patient, PhoneNumber phoneNumber) throws SQLException{
@@ -67,16 +53,13 @@ public class PatientDAO {
             int idPhoneType, int idPatient, int areaCode, String number
         */
         
-        /// Verificar como o tipo Date será adicionado.
+        /// TODO: Verificar como o tipo Date será adicionado.
         String commandToInsertPatient = String.format("INSERT INTO patient(name, cpf, rg, birth_date, cep, number, complement, login, password) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",
         patient.getName(), patient.getCpf(), patient.getRg(), patient.getBirthDate(), patient.getCep(),patient.getNumber(), patient.getComplement(), patient.getLogin(), patient.getPassword());
         
         String commandToInsertPhone = String.format("INSERT INTO phone_number(id_phone_type, id_patient, area_code, number) VALUES (%d, %d, %d, '%s');",
          phoneNumber.getIdPhoneType(), phoneNumber.getIdPatient(), phoneNumber.getAreaCode(), phoneNumber.getNumber());
         
-        //Para teste
-        System.out.println(commandToInsertPatient);
-        System.out.println(commandToInsertPhone);
         
        // return ExecuteCommand(commandToInsertPatient).getRow() > 0 && ExecuteCommand(commandToInsertPhone).getRow() > 0;
         return false;
@@ -136,20 +119,34 @@ public class PatientDAO {
     
     }
     
-    public List<Patient> SearchPatient(String searchType, String searchWord) throws SQLException{
+    public List<Patient> SearchPatient(String searchType, String searchWord) throws SQLException, Exception{
+        
+        List<Patient> patients = new ArrayList();
         
         //LIKE '%%s%'; = pesquisa a palavra estando no começo, meio ou final 
+        String commandToExecute = "SELECT * FROM [bdci17].[bdci17].[patient] WHERE [" + searchType + "] LIKE '%"+searchWord+"%';";
         
-        //String commandToExecute = String.format("SELECT * FROM patient WHERE %s LIKE '% %s %';", searchType, searchWord);
-        String commandToExecute = "SELECT * FROM patient WHERE " + searchType + " LIKE '%"+searchWord+"%';";
+        Statement st = this.connection.createStatement();
+        ResultSet resultSet = st.executeQuery(commandToExecute);
+        while(resultSet.next())
+        {
+           //String name, String cep, String rg, Date birthDate, String cpf, String number, String complement, String login, String password
+           Patient patient = new Patient(
+           resultSet.getString("name"),
+           resultSet.getString("cep"),
+           resultSet.getString("rg"),
+           resultSet.getDate("birth_date"),
+           resultSet.getString("cpf"),
+           resultSet.getString("number"),
+           resultSet.getString("complement"),
+           resultSet.getString("login"),
+           resultSet.getString("password")
+           );
+           
+           patients.add(patient);
+        }
         
-        //ResultSet resultSet = ExecuteCommand(commandToExecute);
-        ///Verificar como retornar todos
-       //return resultSet.getArray("name").;
-        
-        System.out.println(commandToExecute);
-        
-        return null;
+        return patients;
     }
 
 
