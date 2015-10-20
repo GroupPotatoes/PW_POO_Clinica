@@ -1,15 +1,13 @@
 package View;
 
-import Module.Conexao.Conexao;
+import Module.Conexao.Controle;
 import java.awt.Color;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Random;
-import Module.Controle;
 import Module.DAO.EmployeeRegistrer;
+import Module.DAO.Employee;
+import Module.DAO.EmployeeRegistrerDAO;
+import View.TelaLogin;
 
 
 /**
@@ -18,26 +16,28 @@ import Module.DAO.EmployeeRegistrer;
  */
 public class TelaCadastro extends javax.swing.JFrame {
     
-    private Conexao conexao;
-    private Connection connection;
+//    private Conexao conexao;
+//    private Connection connection;
     private String login, senha, nome;
     private EmployeeRegistrer employeeRegistrer;
+    private Employee employee;
+    private EmployeeRegistrerDAO employeeDAO;
     
     /**
      * Construtor da classe.
      */
     public TelaCadastro() {
         initComponents();
-        //Criando objeto responsável por conexões
-        this.conexao=new Conexao("FS5", 1433, "bdci17", "bdci17", "ert985");
-        //setando form para o centro  da tela
+        
         this.setLocationRelativeTo(null);  
+        
         //selecionando todo o texto do nome
         this.txtNome.requestFocus();
+        
         //Desabilitando JTextFields de login e senha
         this.txtLogin.disable();
-        this.txtSenha.disable();
-        this.abreConexao();
+        this.txtSenha.disable();  
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -54,7 +54,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         lblSenha = new javax.swing.JLabel();
         txtSenha = new javax.swing.JTextField();
         lblNome1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        cbbTipo = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -95,7 +95,12 @@ public class TelaCadastro extends javax.swing.JFrame {
         lblNome1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblNome1.setText("Tipo");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Funcionário Administrativo", "Médico" }));
+        cbbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador de RH", "Recepcionista", "Secretária" }));
+        cbbTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbTipoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,6 +111,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCadastrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblResultados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,7 +122,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtNome)
-                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(cbbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblLogin)
@@ -127,8 +133,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                                         .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addComponent(lblResultados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -143,10 +148,10 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNome1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(cbbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(lblResultados)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblLogin))
@@ -154,9 +159,9 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSenha))
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addGap(29, 29, 29))
         );
 
         pack();
@@ -167,30 +172,55 @@ public class TelaCadastro extends javax.swing.JFrame {
      * @param evt 
      */
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        
         if(txtNome.getText().equals("")||txtNome.getText()==null){
             lblCadastro.setText("Digite seu nome :(");
             lblCadastro.setForeground(Color.red);
         }
         else{
             try {
+                
+                //criando meu manipulador do BD                
+                this.employeeDAO = new EmployeeRegistrerDAO();
+                
+                //vou gerar logins enquanto forem exclusivos
                 this.geraLoginSenha();
                 this.txtLogin.setText(this.login);
                 this.txtSenha.setText(this.senha);         
                 this.nome=txtNome.getText();
                 
+                ///TODO: pegar valores do bd
+                //Verificando o RoleId - codigo que valida o tipo do funcionario
+                int roleId;
+                
+                if(cbbTipo.getSelectedIndex()==Controle.ROLE_ID_ADMINISTRADOR.getValor())
+                    roleId=Controle.ROLE_ID_ADMINISTRADOR.getValor();
+                else    
+                    if(cbbTipo.getSelectedIndex()==Controle.ROLE_ID_RECEPCIONISTA.getValor())
+                        roleId=Controle.ROLE_ID_RECEPCIONISTA.getValor();
+                    else
+                        roleId=Controle.ROLE_ID_SECRETARIA.getValor();
+                
                 //Criando um Funcionário
-                this.employeeRegistrer=new EmployeeRegistrer(nome, senha, login);
+                this.employeeRegistrer = new EmployeeRegistrer(nome, senha, login);                
+                this.employee = new Employee(roleId);
                 
-                // TODO: Modificar esta conexão com o BD e o insert
+                //Inserindo no BD
+                if(this.employeeDAO.InsertEmployee(employeeRegistrer, employee))
+                {
+                    //Confirmando o cadastro
+                    lblCadastro.setText("Cadastro efetuado com sucesso!");
+                    lblCadastro.setForeground(Color.black);
+                }
+                else
+                {
+                    lblCadastro.setText("Nao foi possivel criar cadastro.");
+                    lblCadastro.setForeground(Color.red);
+                }
                 
-                PreparedStatement ps = connection.prepareStatement("insert into [bdci17].[bdci17].[employee_registrer] values "
-                               + "('"+this.txtNome.getText()+"', '"+this.txtSenha.getText()+"', '"+this.txtLogin.getText()+"')");
-                ps.execute();
-                lblCadastro.setText("Cadastro efetuado com sucesso!");
-                lblCadastro.setForeground(Color.black);
+                
+                
             } catch (SQLException ex) {
-                // Se ocorrem erros de conexão
-                System.err.println("Problema ao conectar com o Banco de Dados: ");
                 System.err.print("SQLException: " + ex.getMessage());
                 System.err.println("SQLState: " + ex.getSQLState());
                 System.err.println("VendorError: " + ex.getErrorCode());
@@ -205,34 +235,25 @@ public class TelaCadastro extends javax.swing.JFrame {
      * @param evt evento ao fechar o formulário.
      */
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        this.fechaConexao();
+        // TODO usar método fecha conexão
+        new TelaLogin(login).setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
-     /**
-     * abre a conexão com o Banco de Dados e atualiza meu connection.     * 
-     */
-    private void abreConexao(){
-        this.conexao.abreConexao();
-        this.connection=conexao.getConnection();
-    }
-    
-     /**
-     * fecha a conexão com o Banco de Dados, através da chamada do FechaConexao.
-     */
-    private void fechaConexao(){
-        this.conexao.fechaConexao();
-    }
-        
+    private void cbbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbTipoActionPerformed
+ 
     /**
      * Gera o login e a senha
      * @throws SQLException
      *              Exceção ao acessar o Banco de Dados.
      * @throws Exception 
      */
-    private void geraLoginSenha() throws SQLException, Exception{        
+    private void geraLoginSenha() throws SQLException, Exception{ 
+        
         //criando os vetores de login e senha de acordo com o tamanho dos caracteres
-        char    l[] = new char[Controle.NUM_CARACTERES_LOGIN.getValor()],
-                s[] = new char[Controle.NUM_CARACTERES_SENHA.getValor()];     
+        char    login[] = new char[Controle.NUM_CARACTERES_LOGIN.getValor()],
+                senha[] = new char[Controle.NUM_CARACTERES_SENHA.getValor()];     
         
         Random random = new Random();    
         
@@ -243,11 +264,15 @@ public class TelaCadastro extends javax.swing.JFrame {
             int valorMinimo=Controle.ASCII_VALOR_MIN.getValor(),
                 valorMaximo=Controle.ASCII_VALOR_MAX.getValor();
             
+            //atrelando os dois caracteres iniciais com o nome da pessoa
+            login[0]=txtNome.getText().charAt(0);
+            login[1]=txtNome.getText().charAt(1);
+            
             //me baseando no valor do Enum para a parada do laço
-            for(int i=0;i<Controle.NUM_CARACTERES_LOGIN.getValor();i++){ 
+            for(int i=2;i<Controle.NUM_CARACTERES_LOGIN.getValor();i++){ 
                 //atribuindo a cada posição do vetor um char, que será gerado randomicamente
                 //entre os valores mínimos e máximos
-                l[i] = (char)(valorMinimo+random.nextInt(valorMaximo-valorMinimo));
+                login[i] = (char)(valorMinimo+random.nextInt(valorMaximo-valorMinimo));
             }
             
             //:::::::::::::::::::::::::::::: SENHA ::::::::::::::::::::::::::::::
@@ -255,21 +280,21 @@ public class TelaCadastro extends javax.swing.JFrame {
             //me baseando no valor do Enum para a parada do laço
             for(int i=0;i<Controle.NUM_CARACTERES_SENHA.getValor();i++){                 
                 //atribuindo a cada posição desse vetor um número aleatório (que vai até o 9), na base 10
-                s[i] = Character.forDigit(random.nextInt(9), 10);                
+                senha[i] = Character.forDigit(random.nextInt(9), 10);                
             }
             
             //:::::::::::::::::::::::::::::: ATRIBUINDO VALORES ::::::::::::::::::::::::::::::
             
             //copyValueOf() transforma um vetor de chars em uma String :)
-            this.login=String.copyValueOf(l);
-            this.senha=String.copyValueOf(s);
+            this.login=String.copyValueOf(login);
+            this.senha=String.copyValueOf(senha);
             
             //Log para controle
-            System.out.println("Login gerado: "+this.login+" Senha gerada: "+this.senha);
+            //System.out.println("Login gerado: "+this.login+" Senha gerada: "+this.senha);
         
         }
         //execução da lógica enquanto o login e a senha não forem exclusivos
-        while(!exclusivoLoginSenha(login, senha));
+        while(!this.employeeDAO.IsUniqueLogin(this.login, this.senha));
     }
     
     /**
@@ -278,25 +303,17 @@ public class TelaCadastro extends javax.swing.JFrame {
      * @param senha senha a ser validada. 
      * @return se o login é exclusivo (true) ou se já existe outro no banco (false)
      * @throws SQLException excessão gerada ao ocorrer um erro no acesso ao Banco de Dados.
-     */
+    
     private boolean exclusivoLoginSenha(String login, String senha) throws SQLException{
-        String comandoSQL;        
-        Statement statement  = connection.createStatement();
-        comandoSQL="SELECT login, password FROM [bdci17].[bdci17].[employee_registrer]";
-        ResultSet resultSet = statement.executeQuery(comandoSQL);
-        while(resultSet.next()){
-            //se o login e a senha gerados forem iguais a algum já existente no banco
-            if(resultSet.getString("login").equals(login)||
-               resultSet.getString("password").equals(senha)){
-                return false;
-            }                
-        }
+        if(employeeDAO.existLogin(login, senha))
+            return false;
         return true;
     }
-        
+     */
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox cbbTipo;
     private javax.swing.JLabel lblCadastro;
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblNome;

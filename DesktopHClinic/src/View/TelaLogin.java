@@ -1,45 +1,47 @@
 package View;
 
-import Module.DAO.*;
 import java.awt.Color;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
-import Module.Conexao.Conexao;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import Module.DAO.EmployeeRegistrerDAO;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Classe que constrói o formulário de Login.
  * @author Maiara Rodrigues
  */
 public class TelaLogin extends javax.swing.JFrame {
-    private EmployeeRegistrer currentUser;
-    private Connection connection;
-    private Conexao conexao;
+    
+    private EmployeeRegistrerDAO employeeRegistrerDAO;
+    private String login, senha;
     
     public TelaLogin() {
         initComponents();
-        //Criando objeto responsável por conexões
-        this.conexao=new Conexao("FS5", 1433, "bdci17", "bdci17", "ert985");
+        
         //setando para o centro  da tela
         this.setLocationRelativeTo(null);  
         //selecionando todo o texto do login
         this.txtLogin.selectAll();
         
         //Faz o campo txtSenha (onde user insere senha) usar o evento de logar ao pressionar ENTER
-        //(no caso, sem precisar clicar no botão logar)
-        txtSenha.addActionListener(new ActionListener() {
-
+        this.txtSenha.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 TelaLogin.this.login();
             }
         });
+    } 
+    
+    /**
+     * Sobrecarga do construtor da classe - com parâmetros do login
+     */
+    public TelaLogin(String login) {
+        initComponents();
+        this.setLocationRelativeTo(null);         
+        this.txtLogin.setText(login);
     }
 
     @SuppressWarnings("unchecked")
@@ -134,45 +136,11 @@ public class TelaLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /**
-     * Method that logs in, to be called when Login button is clicked and when enter key is pressed on Password field
-     */
-    public void login() {
-         try {
-            this.abreConexao();
-            Statement st = this.connection.createStatement();
-            ResultSet rs = st.executeQuery("select * from [bdci17].[bdci17].[employee_registrer] where [login]='"+this.txtLogin.getText()+"' "
-                                            + "and [password]='"+txtSenha.getText()+"'");
-            //Se não houverem resultados na busca
-            if(!rs.next()){
-                this.lblTexto.setText("Login ou Senha Incorreto :(");
-                this.lblTexto.setForeground(Color.red);
-                this.txtSenha.setText("");
-            }
-            else{
-                //Se houverem resultados na busca            
-                new TelaPrincipal().setVisible(true);
-                
-                // TODO: necessario para outras telas! 
-                //criar uma instancia do User atual com id, login, senha existentes no banco
-               // currentUser = new EmployeeRegistrer(id???, txtLogin, txtSenha);
-                
-                dispose();                     
-            }
-        } catch (SQLException ex) {
-            // Se ocorrem erros de conexão
-            System.err.println("Problema ao conectar com o Banco de Dados: ");
-            System.err.print("SQLException: " + ex.getMessage());
-            System.err.println("SQLState: " + ex.getSQLState());
-            System.err.println("VendorError: " + ex.getErrorCode());
-        }
-        this.fechaConexao();
-    }
+
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
-       this.login();
+        this.login();
     }//GEN-LAST:event_btnLogarActionPerformed
 
-    
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
         try {
             new TelaCadastro().setVisible(true);
@@ -181,20 +149,33 @@ public class TelaLogin extends javax.swing.JFrame {
         }
         dispose();
     }//GEN-LAST:event_btnCadastroActionPerformed
-      
+          
     /**
-     * Método que abre a conexão com o Banco de Dados e atualiza meu connection.
+     * Method that logs in, to be called when Login button is clicked and when enter key is pressed on Password field
      */
-    public void abreConexao(){
-        this.conexao.abreConexao();
-        this.connection=conexao.getConnection();
-    }
-    
-    /**
-     * Método que fecha a conexão com o Banco de Dados, através da chamada do FechaConexao.
-     */
-    public void fechaConexao(){
-        this.conexao.fechaConexao();
+    public void login() {
+        try {
+                employeeRegistrerDAO = new EmployeeRegistrerDAO();
+                this.senha=txtSenha.getText();
+                this.login=txtLogin.getText();
+                
+                if(!employeeRegistrerDAO.ExistLogin(login, senha)){
+                    this.lblTexto.setText("Login ou Senha Incorreto :(");
+                    this.lblTexto.setForeground(Color.red);
+                    this.txtSenha.setText("");
+                }
+                else{
+                    new TelaPrincipal().setVisible(true);
+                    dispose();                     
+                }
+        } 
+        catch (SQLException ex) {
+            System.err.print("SQLException: " + ex.getMessage());
+            System.err.println("SQLState: " + ex.getSQLState());
+            System.err.println("VendorError: " + ex.getErrorCode());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

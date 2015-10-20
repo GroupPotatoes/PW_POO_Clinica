@@ -54,6 +54,11 @@ public class AdministracaoFuncionarios extends javax.swing.JFrame {
         mnuMenuPrincipal.add(smnIncluir);
 
         smnAlterar.setText("Alterar");
+        smnAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                smnAlterarMouseClicked(evt);
+            }
+        });
         mnuMenuPrincipal.add(smnAlterar);
 
         smnExcluir.setText("Excluir");
@@ -114,6 +119,23 @@ public class AdministracaoFuncionarios extends javax.swing.JFrame {
         pack();
     }//GEN-LAST:event_smnPesquisarMouseClicked
 
+    private void smnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_smnAlterarMouseClicked
+        // TODO add your handling code here:
+        TelaAlterar telaAlterar = new TelaAlterar();
+        telaAlterar.setVisible(true);
+    }//GEN-LAST:event_smnAlterarMouseClicked
+
+    public void resultadoPesquisa() {
+        this.inicio.setVisible(false);
+        this.excluiCadastro.setVisible(false);
+        this.pesquisa.setVisible(false);
+        this.parentPanel.add(this.pesquisaRes, BorderLayout.CENTER);
+        this.pesquisaRes.setPreferredSize(new Dimension(380, 200));
+        this.pesquisaRes.setVisible(true);
+        this.parentPanel.revalidate();
+        this.parentPanel.repaint();
+        pack();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar mnuMenuPrincipal;

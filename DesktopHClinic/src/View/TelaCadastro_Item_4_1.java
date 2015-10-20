@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import Module.Conexao.Conexao;
+import View.TelaLogin;
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import javax.swing.ImageIcon;
@@ -74,7 +75,6 @@ public class TelaCadastro_Item_4_1 extends javax.swing.JFrame {
         lblSenha1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblSenha1.setText("Digite novamente sua senha");
 
-        txtSenha1.setEchoChar('\u2022');
         txtSenha1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtSenha1FocusGained(evt);
@@ -83,8 +83,6 @@ public class TelaCadastro_Item_4_1 extends javax.swing.JFrame {
                 txtSenha1FocusLost(evt);
             }
         });
-
-        txtSenha2.setEchoChar('\u2022');
 
         btnCadastrar.setText("CADASTRAR");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
