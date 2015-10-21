@@ -75,7 +75,7 @@ public class EmployeeRegistrerDAO {
         employeeID, employee.getIdRole());
         
         Statement st = this.connection.createStatement();
-        return st.executeUpdate(commandToInsertEmployee) > 0;
+        return st.executeUpdate(commandToInsertEmployee) > 0; // TODO igual no PatientDAO
     }
     
     /**
