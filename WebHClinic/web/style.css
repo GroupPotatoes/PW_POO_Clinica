@@ -2,28 +2,31 @@
     width: 760px;
     margin: auto;
     margin-top: 100px;
-    background: #D6F5FF;
+    background: #cccccc;
     padding: 25px;
+    opacity: 60%;
 }
 html, body {
     margin: 0;
     padding: 2px;
+    background-image: url("images/bg.jpg");
 }
 
 p {
-    color: #006666;
+    color: #6e2556;
     font-family:tahoma;
     font-size:70%;
 }
 
 h2 {
-    color: #000000;
+    color: #00c7c7;
+    font-weight: bold;
     font-family:tahoma;
     font-size:110%;
 }
 
 h3 {
-    color: #006666;
+    color: #00c7c7;
     font-family:tahoma;
     font-size:80%;
 }
@@ -51,9 +54,9 @@ button{
 
 /*horizontal menu styles*/
 nav{
-	background:#16469e;
-	height:2em;/*what this does with the ul height is make the brown border on the bottom an option to making a bottom border*/
-	margin-top:100px;/*this is just here to push the nav away from the top of the screen to see the rounded corners.*/
+	background:#6e2556;
+	height:5em;
+	margin-top:100px;
 }
 ul, li{
 	margin: 0;
@@ -64,16 +67,16 @@ ul, li{
         font-size: 14px;
 }
 ul{
-	background:#4579D9;
+	background:#00c7c7;
 	height:2em;
 	width:100%;
 }
 li{
-	position:relative;/*this is because I am using absalute position on the submenu*/
+	position:relative;
 }
 li a{
 	display:block;
-	line-height:2em;/*using this with the ul height of 2em to make the height of the ul and the li*/
+	line-height:2em;
 	padding:0 1em;
 	color:#FFF;
 	text-decoration:none;
@@ -81,19 +84,19 @@ li a{
         font-size: 14px;
         font-weight: bold;
 }
-/*the > is a child cominater<--misspelled is simmler to a desendent selector. What is is doing is making the rule very specific. It says to target any li child the topMenu and only in the topMenue. And then any links that are a direct child of the li */
+
 li a:hover, .topMenu > li:hover > a{
-	background:#318891;
+	background:#6E2556;
 	height:2em;
 	padding-top:.3em;
-	position:relative;/* postioning it this way instead of using a margin helps stop any conflicks that might acure with a eliment above or below it*/
+	position:relative;
 	top:-.3em;
 	border-radius:.3em .3em 0 0;
 }
-/* the .topMenu li:hover a.current keeps the above hover from overriding the current style*/
+
 .current, a:hover.current, .topMenu li:hover a.current{
-	background:#4B74BF;
-	color:#EBEBEB;
+	background:#00c7c7;
+	color:#6e2556;
 	padding-top:.3em;
 	position:relative;
 	top:-.3em;
@@ -104,7 +107,7 @@ li a:hover, .topMenu > li:hover > a{
 /*dropdown menu styles*/
 ul.subMenu{
 	float:none;
-	background:#4B74BF;
+	background:#00c7c7;
 	width:auto;
 	height:auto;
 	position:absolute;
@@ -133,7 +136,7 @@ ul.subMenu li:last-child a{
 	border-bottom:none;
 }
 ul.subMenu li a:hover{
-	background:#4B74BF;
+	background:#cccccc;
 	height:2em;
 	padding-top:.2em;
 	top:0;

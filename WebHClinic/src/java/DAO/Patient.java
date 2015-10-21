@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Module.DAO;
+package DAO;
 
 import java.util.Date;
 
@@ -39,22 +39,20 @@ public class Patient {
       
     // <editor-fold defaultstate="collapsed" desc="Construction">    
         
-     public Patient(String name, String cep, String rg, Date birthDate, String cpf, String number, String complement, String login, String password) throws Exception{
+     public Patient(String name, String cep, String cpf, String number, String complement, String login, String password) throws Exception{
          /*
             Construtor para inserir patient no DB
          */
          this.setName(name);
          this.setCep(cep);
          this.setCpf(cpf);
-         this.setRg(rg);
-         this.setBirthDate(birthDate);
          this.setNumber(number);
          this.setComplement(complement);
          this.setLogin(login);
          this.setPassword(password);
      }   
      
-     public Patient(int id, String name, String cep, String rg, Date birthDate, String cpf, String number, String complement, String login, String password) throws Exception{        
+     public Patient(int id, String name, String cep, String cpf, String number, String complement, String login, String password) throws Exception{        
          /*
             Construtor completo
             Construtor para atualizar patient no DB
@@ -63,8 +61,6 @@ public class Patient {
          this.setName(name);
          this.setCep(cep);
          this.setCpf(cpf);
-         this.setRg(rg);
-         this.setBirthDate(birthDate);
          this.setNumber(number);
          this.setComplement(complement);
          this.setLogin(login);
@@ -133,20 +129,7 @@ public class Patient {
             this.password = password;
         }
 
-        public void setRg(String rg)  throws Exception {
-            if(rg == null)
-                throw new Exception("RG inválido.");
-            
-            this.rg = rg;
-        }
-
-        public void setBirthDate(Date birthDate)throws Exception {
-           // if(birthDate == null)
-             //   throw new Exception("BirthDate inválido.");
-            
-            this.birthDate = birthDate;
-        }
-          
+   
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Getter">
@@ -182,14 +165,6 @@ public class Patient {
         return password;
     }
         
-    public String getRg() {
-        return rg;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-    
     // </editor-fold>
 
 }
