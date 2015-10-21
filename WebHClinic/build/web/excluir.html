@@ -13,13 +13,17 @@ and open the template in the editor.
     </head>
     <body>
         <div id="page-container">
-            <h2>Seu cadastro será inativado.
-            <br><br>Ele estará disponível apenas para consulta.</h2>
-            <br><br><br><br>
-            <h3>Você tem certeza que quer inativar seu cadastro?</h3>
-            <br><br>
-            <input type="submit" value="Confirmar">     
-            <input type="button" onclick="window.location='home.html';return false;" value="Cancelar">
+            <form action="Inactivate" method="get">
+                <fieldset>
+                    <h2>Seu cadastro será inativado.
+                    <br><br>Ele estará disponível apenas para consulta.</h2>
+                    <br><br><br><br>
+                    <h3>Você tem certeza que quer inativar seu cadastro?</h3>
+                    <br><br>
+                    <input type="submit" value="Confirmar">     
+                    <input type="button" onclick="window.location='home.html';return false;" value="Cancelar">
+                </fieldset>
+            </form>
         </div>
     </body>
 </html>

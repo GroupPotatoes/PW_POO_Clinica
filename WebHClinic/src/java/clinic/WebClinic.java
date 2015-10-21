@@ -27,6 +27,8 @@ public class WebClinic {
      * boolean for correct combination (TRUE) or wrong combination (FALSE)
      */
     public static boolean loginValidate(String login, String senha) throws ClassNotFoundException {
+        // TODO: Change location of this method to the Servlet? 
+        // TODO: USE DAO instead of this! 
         try {
             con = new MeuPreparedStatement ("com.microsoft.sqlserver.jdbc.SQLServerDriver", "jdbc:sqlserver://FS5:1433;databaseName=bdci17", "bdci17", "ert985");
             //WebClinic.con = DriverManager.getConnection("jdbc:sqlserver://FS5:1433;databaseName=bdci17", "bdci17", "ert985");
@@ -66,6 +68,7 @@ public class WebClinic {
      * a boolean that confirms if registration was completed or not
      */
     public static boolean registerValidate(String login, String senha, String name, String cpf, String cep, String number, String complement, String phone_type, String phone_number, String area_code){
+        // TODO: Validate registration. Check up on the best way to do it through Servlets.
         return true;
     }
     
