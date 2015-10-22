@@ -39,7 +39,7 @@ public class Patient {
       
     // <editor-fold defaultstate="collapsed" desc="Construction">    
         
-     public Patient(String name, String cep, String rg, Date birthDate, String cpf, String number, String complement, String login, String password) throws Exception{
+     public Patient(String name, String cep, String cpf, String number, String complement, String login, String password) throws Exception{
          /*
             Construtor para inserir patient no DB
          */

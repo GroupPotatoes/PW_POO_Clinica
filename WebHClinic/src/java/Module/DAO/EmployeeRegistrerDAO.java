@@ -110,7 +110,7 @@ public class EmployeeRegistrerDAO {
      * @return true se login e senha existir e false caso contrário.
      * @throws SQLException 
      */
-    public boolean ExistLogin(String login, String password) throws SQLException{
+    public boolean existLogin(String login, String password) throws SQLException{
          
         //String commandToExecute = String.format("SELECT [employee_registrer].[id] FROM [bdci17].[bdci17].[employee_registrer] JOIN [health_professionals] ON [employee_registrer].[id] = [health_professionals].[id_employee_registrer] JOIN [employee] ON [employee].[id_employee_registrer] = [employee_registrer].[id] WHERE [employee_registrer].[inactive] = 0 AND ([employee_registrer].[login]='%s' OR [health_professionals].[id_class]='%s') AND [employee_registrer].[password]='%s';", login, login, password);     
         

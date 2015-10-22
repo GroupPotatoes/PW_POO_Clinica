@@ -5,8 +5,14 @@
  */
 package clinic;
 
+import Module.Controle;
+import Module.DAO.PatientDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +26,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ValidateRegistration", urlPatterns = {"/ValidateRegistration"})
 public class ValidateRegistration extends HttpServlet {
 
+    protected String login, senha, nome;
+    protected Module.DAO.PatientDAO patientDAO;
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -30,42 +39,118 @@ public class ValidateRegistration extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException, Exception {
         PrintWriter out = response.getWriter();
-        String login = request.getParameter("login");
-        String senha = request.getParameter("senha");
         String name = request.getParameter("name");
+        this.nome=name;
         String cpf = request.getParameter("cpf");
+        String rg=request.getParameter("rg");
+        String date=request.getParameter("date");
         String cep = request.getParameter("cep");
         String number = request.getParameter("number");
         String complement = request.getParameter("complement");
         String phone_type = request.getParameter("phone_type");
         String phone_number = request.getParameter("phone_number");
         String area_code = request.getParameter("area_code");
-        //if(registerValidate(login, senha, name, cpf, cep, number, complement, phone_type, phone_number, area_code) {
-        if(login !=  null){
-            out.println("<html>");
-            out.println("  <head>");
-            out.println("    <title>Cadastro efetuado!</title>");
-            out.println("  </head>");
-            out.println("  <body>");
-            out.println("    <br/>Seu cadastro foi efetuado com sucesso!<br/>Faça seu login: </br>");
-            out.println("    <iframe src=\"index.html\" width=\"200\" height=\"200\" style=\"border:none\"></iframe>");
-            out.println("  </body>");
-            out.println("</html>");
+        this.generateLoginPassword();
+        if(WebClinic.registerValidate(this.login, this.senha, this.nome, cpf, rg, cep, number, 
+                complement, phone_type, 
+                phone_number, area_code, date)) {
+            out.println("<html>"
+                            + "<head>"
+                                + "<link rel=\"stylesheet\" href=\"style.css\" type=\"text/css\"/>"
+                                + "<title>Cadastro efetuado com sucesso!</title>"
+                                + "<meta charset=\"UTF-8\">"
+                                + "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">"                    
+                            + "</head>"
+                            + "<BODY>"
+                                + "<form id=\"page-container\">"
+                                    + "<p>Parabéns! Seu cadastro foi efetuado com sucesso! <br>"
+                                    + "Veja abaixo e anote seu login e sua senha:</p>"
+                                    + "<table>"
+                                        + "<tr>"
+                                            + "<td><b>Login: </b></td>"
+                                            + "<td>"+this.login+"</td>"
+                                        + "</tr>"
+                                        + "<tr>"
+                                            + "<td><b>Senha: </b></td>"
+                                            + "<td>"+this.senha+"</td>"
+                                        + "</tr>"
+                                    + "</table>"
+                                    + "<p>Faça seu login <a href=\"index.html\">aqui</a></p>"
+                                + "</form>"
+                            + "</BODY>"
+                        + "</html>");
         }
         else {
-            out.println("<html>");
-            out.println("  <head>");
-            out.println("    <title>Cadastro não efetuado</title>");
-            out.println("  </head>");
-            out.println("  <body>");
-            out.println("    <br/>Houve alguma falha no seu cadastro. Tente novamente.<br/>");
-            out.println("  </body>");
-            out.println("</html>");
+            out.println("<html>"
+                            + "<head>"
+                                + "<link rel=\"stylesheet\" href=\"style.css\" type=\"text/css\"/>"
+                                + "<title>Cadastro não efetuado :(</title>"
+                                + "<meta charset=\"UTF-8\">"
+                                + "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">"                    
+                            + "</head>"
+                            + "<BODY>"
+                                + "<form id=\"page-container\">"
+                                    + "<p>Erros no seu cadastro!<br> <br>"
+                                    + "Favor <a href=\"registrer.html\">voltar à tela de cadastro</a> e reinicie"
+                                    + " o processo.</p>"
+                                + "</form>"
+                            + "</BODY>"
+                        + "</html>");
         }
     }
 
+    protected void generateLoginPassword() throws SQLException{
+        //criando os vetores de login e senha de acordo com o tamanho dos caracteres
+        char    l[] = new char[Controle.NUM_CARACTERES_LOGIN.getValor()],
+                s[] = new char[Controle.NUM_CARACTERES_SENHA.getValor()];     
+        
+        Random random = new Random();    
+        
+        do{
+            //:::::::::::::::::::::::::::::: LOGIN ::::::::::::::::::::::::::::::
+            
+            //adicionando os valores iniciais e finais [com base na tabela ASCII] aos inteiros
+            int valorMinimo=Controle.ASCII_VALOR_MIN.getValor(),
+                valorMaximo=Controle.ASCII_VALOR_MAX.getValor();
+            
+            //atrelando os dois caracteres iniciais com o nome da pessoa
+            l[0]=nome.charAt(0);
+            l[1]=nome.charAt(1);
+            
+            //me baseando no valor do Enum para a parada do laço
+            for(int i=2;i<Controle.NUM_CARACTERES_LOGIN.getValor();i++){ 
+                //atribuindo a cada posição do vetor um char, que será gerado randomicamente
+                //entre os valores mínimos e máximos
+                l[i] = (char)(valorMinimo+random.nextInt(valorMaximo-valorMinimo));
+            }
+            
+            //:::::::::::::::::::::::::::::: SENHA ::::::::::::::::::::::::::::::
+
+            //me baseando no valor do Enum para a parada do laço
+            for(int i=0;i<Controle.NUM_CARACTERES_SENHA.getValor();i++){                 
+                //atribuindo a cada posição desse vetor um número aleatório (que vai até o 9), na base 10
+                s[i] = Character.forDigit(random.nextInt(9), 10);                
+            }
+            
+            //:::::::::::::::::::::::::::::: ATRIBUINDO VALORES ::::::::::::::::::::::::::::::
+            
+            //copyValueOf() transforma um vetor de chars em uma String :)
+            this.login=String.copyValueOf(l);
+            this.senha=String.copyValueOf(s);
+        
+        }
+        //execução da lógica enquanto o login e a senha não forem exclusivos
+        while(!exclusive(login, senha));
+    }
+    
+    protected boolean exclusive(String login, String senha) throws SQLException{
+//        if(patientDAO.ExistLogin(login, senha))
+//            return false;
+        return true;
+    }
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -78,7 +163,11 @@ public class ValidateRegistration extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ValidateRegistration.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -92,7 +181,11 @@ public class ValidateRegistration extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ValidateRegistration.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

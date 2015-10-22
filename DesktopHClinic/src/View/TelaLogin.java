@@ -159,7 +159,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 this.senha=txtSenha.getText();
                 this.login=txtLogin.getText();
                 
-                if(!employeeRegistrerDAO.ExistLogin(login, senha)){
+                if(!employeeRegistrerDAO.existLogin(login, senha)){
                     this.lblTexto.setText("Login ou Senha Incorreto :(");
                     this.lblTexto.setForeground(Color.red);
                     this.txtSenha.setText("");
