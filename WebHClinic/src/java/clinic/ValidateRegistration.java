@@ -6,7 +6,6 @@
 package clinic;
 
 import Module.Controle;
-import Module.DAO.PatientDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;

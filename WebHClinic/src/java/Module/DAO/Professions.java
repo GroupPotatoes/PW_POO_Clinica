@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 
-package DAO;
 
+package Module.DAO;
 /**
  *
  * @author William

@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 
-package DAO;
+
+package Module.DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -5,7 +5,7 @@
  */
 package clinic;
 
-import DAO.*;
+import Module.DAO.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;

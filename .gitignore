@@ -1,5 +1,7 @@
 WebHClinic/build/web/WEB-INF/classes/.netbeans_automatic_build
 WebHClinic/build/web/WEB-INF/classes/.netbeans_update_resources
+WebHClinic/lib
+DesktopHClinic/lib
 
 *.class
 
