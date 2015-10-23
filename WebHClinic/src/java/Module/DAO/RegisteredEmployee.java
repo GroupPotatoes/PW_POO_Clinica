@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 
+
 package Module.DAO;
 
 /**
  *
  * @author William
  */
-public class EmployeeRegistrer {
+public class RegisteredEmployee {
     /*
         [id] [int] NOT NULL,
 	[name] [varchar](50) NOT NULL,
@@ -29,7 +30,7 @@ public class EmployeeRegistrer {
    
     // <editor-fold defaultstate="collapsed" desc="Construction">
     
-    public EmployeeRegistrer(int id, String name, String password, String login) throws Exception{
+    public RegisteredEmployee(int id, String name, String password, String login) throws Exception{
         
         //Construtor para alterar employee registrer
         
@@ -39,7 +40,7 @@ public class EmployeeRegistrer {
         this.setPassword(password);
     }
     
-    public EmployeeRegistrer(String name, String password, String login) throws Exception{
+    public RegisteredEmployee(String name, String password, String login) throws Exception{
         
         //Construtor para inserir employee registrer
         

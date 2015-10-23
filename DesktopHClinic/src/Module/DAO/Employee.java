@@ -12,21 +12,21 @@ package Module.DAO;
  */
 public class Employee {
     /*
-    [id_employee_registrer] [int] NOT NULL,
+    [id_registered_employee] [int] NOT NULL,
 	[role_id] [int] NOT NULL
     */
     
     // <editor-fold defaultstate="collapsed" desc="Attributes">
     
-    private int idEmployeeRegistrer;
+    private int idRegisteredEmployee;
     private int idRole;
         
     // </editor-fold>
     
     // <editor-fold defaultstate="collapsed" desc="Constructions">
     
-    public Employee(int idEmployeeRegistrer, int idRole) throws Exception{
-        this.setIdEmployeeRegistrer(idEmployeeRegistrer);
+    public Employee(int idRegisteredEmployee, int idRole) throws Exception{
+        this.setidRegisteredEmployee(idRegisteredEmployee);
         this.setIdRole(idRole);
     }
     
@@ -38,11 +38,11 @@ public class Employee {
     
     // <editor-fold defaultstate="collapsed" desc="Setter">
     
-    public void setIdEmployeeRegistrer(int idEmployeeRegistrer)throws Exception {
-            if(idEmployeeRegistrer <= 0)
+    public void setidRegisteredEmployee(int idRegisteredEmployee)throws Exception {
+            if(idRegisteredEmployee <= 0)
                 throw new Exception("ID inválido");
         
-        this.idEmployeeRegistrer = idEmployeeRegistrer;
+        this.idRegisteredEmployee = idRegisteredEmployee;
     }
 
     public void setIdRole(int idRole)throws Exception {
@@ -56,8 +56,8 @@ public class Employee {
  
     // <editor-fold defaultstate="collapsed" desc="Getter">
     
-    public int getIdEmployeeRegistrer() {
-        return idEmployeeRegistrer;
+    public int getidRegisteredEmployee() {
+        return idRegisteredEmployee;
     }
 
     public int getIdRole() {

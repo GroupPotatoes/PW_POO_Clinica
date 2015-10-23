@@ -1,6 +1,6 @@
 package View;
 
-import Module.DAO.EmployeeRegistrerDAO;
+import Module.DAO.RegisteredEmployeeDAO;
 
 /**
  * Classe que contém todas as funcionalidades da Tela Principal.

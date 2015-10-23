@@ -6,7 +6,7 @@
 package View;
 
 import Module.DAO.ConnectionSetup;
-import Module.DAO.EmployeeRegistrerDAO;
+import Module.DAO.RegisteredEmployeeDAO;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -98,8 +98,8 @@ public class TelaExclusao extends javax.swing.JPanel {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         try {
-                EmployeeRegistrerDAO employeeRegistrerDAO = new EmployeeRegistrerDAO();
-                if(employeeRegistrerDAO.DisableEmployeeRegistrer(ConnectionSetup.id)) {
+                RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO();
+                if(registeredEmployeeDAO.DisableregisteredEmployee(ConnectionSetup.id)) {
                     lblEnunciado.setText("<html><center>Seu cadastro foi inativado.</center><br>"
                         + "<center> Procure um administrador do sistema para reativá-lo.</center></html>");
                     

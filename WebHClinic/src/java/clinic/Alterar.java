@@ -91,23 +91,10 @@ public class Alterar extends HttpServlet {
             String cpf,  String cep, String number,  String comp, String phone_type,
             String phone_number, String area_code){
         try{
-        
-            //criando data
-            //criar data a partir de String 
-//            SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-//            df.setLenient(false);
-//            Date dt = df.parse(date);
             
             //criando o paciente
-            Module.DAO.Patient patient = new Patient(name, cep, cpf, number, comp, login, senha);
+            Module.DAO.Patient patient = new Patient(ConnectionSetup.id, name, cep, cpf, number, comp, login, senha);
             Module.DAO.PatientDAO patientDAO = new PatientDAO();
-                        
-            //Criando o telefone
-            Module.DAO.PhoneType phonetype = new PhoneType(phone_type);
-            phonetype.setName(phone_type);
-            
-            Module.DAO.PhoneNumber phoneNumber = new PhoneNumber(phonetype.getId(), patient.getId(), 
-                    Integer.parseInt(area_code), phone_number);
             
             //inserindo
             patientDAO.UpdatePatient(patient);

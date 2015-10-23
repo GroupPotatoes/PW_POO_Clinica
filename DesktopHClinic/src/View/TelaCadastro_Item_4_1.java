@@ -178,7 +178,7 @@ public class TelaCadastro_Item_4_1 extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         if(senha&&login){         
             try {    
-                PreparedStatement ps = connection.prepareStatement("insert into [bdci17].[bdci17].[employee_registrer] values "
+                PreparedStatement ps = connection.prepareStatement("insert into [bdci17].[bdci17].[registered_employee] values "
                                + "('"+this.txtNome.getText()+"', '"+this.txtSenha2.getText()+"', '"+this.txtLogin.getText()+"')");
                 ps.execute();
                 JOptionPane.showMessageDialog(null, "<html>Ok...<br>"
@@ -289,7 +289,7 @@ public class TelaCadastro_Item_4_1 extends javax.swing.JFrame {
     public boolean loginInedito(String login) throws SQLException{        
         boolean loginUnico;
         Statement st = this.connection.createStatement();
-        ResultSet rs = st.executeQuery("select * from [bdci17].[bdci17].[employee_registrer] where [login]='"+login+"'");
+        ResultSet rs = st.executeQuery("select * from [bdci17].[bdci17].[registered_employee] where [login]='"+login+"'");
         //se não retornar ninguém
         if(!rs.next()){
             loginUnico=true;

@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Module.DAO.EmployeeRegistrerDAO;
+import Module.DAO.RegisteredEmployeeDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
  */
 public class TelaLogin extends javax.swing.JFrame {
     
-    private EmployeeRegistrerDAO employeeRegistrerDAO;
+    private RegisteredEmployeeDAO registeredEmployeeDAO;
     private String login, senha;
     
     public TelaLogin() {
@@ -155,11 +155,11 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public void login() {
         try {
-                employeeRegistrerDAO = new EmployeeRegistrerDAO();
+                registeredEmployeeDAO = new RegisteredEmployeeDAO();
                 this.senha=txtSenha.getText();
                 this.login=txtLogin.getText();
                 
-                if(!employeeRegistrerDAO.existLogin(login, senha)){
+                if(!registeredEmployeeDAO.ExistLogin(login, senha)){
                     this.lblTexto.setText("Login ou Senha Incorreto :(");
                     this.lblTexto.setForeground(Color.red);
                     this.txtSenha.setText("");

@@ -5,8 +5,8 @@
  */
 package View;
 
-import Module.DAO.EmployeeRegistrerDAO;
-import Module.DAO.EmployeeRegistrer;
+import Module.DAO.RegisteredEmployeeDAO;
+import Module.DAO.RegisteredEmployee;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,11 +29,11 @@ public class TelaResultadoPesquisa extends javax.swing.JFrame {
         
         try {
             
-            EmployeeRegistrerDAO employeeRegistrerDAO = new EmployeeRegistrerDAO();
-            List<EmployeeRegistrer> employeeRegistrerList = employeeRegistrerDAO.SearchEmployeeRegistrer(TelaPesquisa.itemPesquisado);
+            RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO();
+            List<RegisteredEmployee> registeredEmployeeList = registeredEmployeeDAO.SearchregisteredEmployee(TelaPesquisa.itemPesquisado);
             
-            if(employeeRegistrerList.size() > 0){
-                this.lstResultado.setListData(employeeRegistrerList.toArray());
+            if(registeredEmployeeList.size() > 0){
+                this.lstResultado.setListData(registeredEmployeeList.toArray());
              }
             else 
             {
@@ -49,10 +49,10 @@ public class TelaResultadoPesquisa extends javax.swing.JFrame {
             Logger.getLogger(TelaResultadoPesquisa.class.getName()).log(Level.SEVERE, null, ex);
         }
         catch(SQLException ex) {
-            Logger.getLogger(EmployeeRegistrerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegisteredEmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         catch(Exception ex) {
-            Logger.getLogger(EmployeeRegistrerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegisteredEmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

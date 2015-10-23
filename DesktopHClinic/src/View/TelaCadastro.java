@@ -3,10 +3,10 @@ package View;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.util.Random;
-import Module.DAO.EmployeeRegistrer;
+import Module.DAO.RegisteredEmployee;
 import Module.DAO.Employee;
 import Module.Controle;
-import Module.DAO.EmployeeRegistrerDAO;
+import Module.DAO.RegisteredEmployeeDAO;
 
 
 /**
@@ -18,9 +18,9 @@ public class TelaCadastro extends javax.swing.JFrame {
 //    private Conexao conexao;
 //    private Connection connection;
     private String login, senha, nome;
-    private EmployeeRegistrer employeeRegistrer;
+    private RegisteredEmployee registeredEmployee;
     private Employee employee;
-    private EmployeeRegistrerDAO employeeDAO;
+    private RegisteredEmployeeDAO employeeDAO;
     
     /**
      * Construtor da classe.
@@ -178,7 +178,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         else{
             try {
                 //criando meu manipulador do BD                
-                this.employeeDAO = new EmployeeRegistrerDAO();
+                this.employeeDAO = new RegisteredEmployeeDAO();
                 
                 //vou gerar logins enquanto forem exclusivos
                 do{
@@ -199,11 +199,11 @@ public class TelaCadastro extends javax.swing.JFrame {
                         roleId=Controle.ROLE_ID_SECRETARIA.getValor();
                 
                 //Criando um Funcionário
-                this.employeeRegistrer=new EmployeeRegistrer(nome, senha, login);                
+                this.registeredEmployee=new RegisteredEmployee(nome, senha, login);                
                 this.employee=new Employee(roleId);
                 
                 //Inserindo no BD
-                this.employeeDAO.InsertEmployee(employeeRegistrer, employee);
+                this.employeeDAO.InsertEmployee(registeredEmployee, employee);
                 
                 //Confirmando o cadastro
                 lblCadastro.setText("Cadastro efetuado com sucesso!");
@@ -295,7 +295,7 @@ public class TelaCadastro extends javax.swing.JFrame {
      * @throws SQLException excessão gerada ao ocorrer um erro no acesso ao Banco de Dados.
      */
     private boolean exclusivoLoginSenha(String login, String senha) throws SQLException{
-        if(employeeDAO.existLogin(login, senha))
+        if(employeeDAO.ExistLogin(login, senha))
             return false;
         return true;
     }

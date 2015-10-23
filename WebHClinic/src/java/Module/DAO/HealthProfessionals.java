@@ -13,7 +13,7 @@ package Module.DAO;
 public class HealthProfessionals {
     /*
         [health_professionals](
-	[id_employee_registrer] [int] NOT NULL,
+	[id_registered_employee] [int] NOT NULL,
 	[cpf] [numeric](18, 0) NOT NULL,
 	[id_class] [nvarchar](50) NOT NULL,
     */
@@ -21,7 +21,7 @@ public class HealthProfessionals {
      
     // <editor-fold defaultstate="collapsed" desc="Attributes">
     
-    private int idEmployeeRegistrer;
+    private int idRegisteredEmployee;
     private String cpf;
     private String idClass;
     
@@ -29,8 +29,8 @@ public class HealthProfessionals {
    
     // <editor-fold defaultstate="collapsed" desc="Construction">
     
-    public HealthProfessionals(int idEmployeeRegistrer, String cpf, String idClass) throws Exception{
-        this.setIDEmployeeRegistrer(idEmployeeRegistrer);
+    public HealthProfessionals(int idRegisteredEmployee, String cpf, String idClass) throws Exception{
+        this.setidRegisteredEmployee(idRegisteredEmployee);
         this.setCPF(cpf);
         this.setIDClass(idClass);
     }
@@ -44,8 +44,8 @@ public class HealthProfessionals {
     
     // <editor-fold defaultstate="collapsed" desc="Getter">
     
-    public int getIDEmployeeRegistrer() {
-        return idEmployeeRegistrer;
+    public int getidRegisteredEmployee() {
+        return idRegisteredEmployee;
     }
 
     public String getCPF() {
@@ -60,11 +60,11 @@ public class HealthProfessionals {
     
     // <editor-fold defaultstate="collapsed" desc="Setter">
     
-    public void setIDEmployeeRegistrer(int idEmployeeRegistrer) throws Exception {
-        if(idEmployeeRegistrer <= 0)
+    public void setidRegisteredEmployee(int idRegisteredEmployee) throws Exception {
+        if(idRegisteredEmployee <= 0)
             throw new Exception("ID inválido");
         
-        this.idEmployeeRegistrer = idEmployeeRegistrer;
+        this.idRegisteredEmployee = idRegisteredEmployee;
     }
 
     public void setCPF(String cpf) throws Exception {     
