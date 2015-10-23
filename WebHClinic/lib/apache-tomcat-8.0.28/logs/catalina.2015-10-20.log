@@ -67,3 +67,345 @@
 20-Oct-2015 02:15:55.464 WARNING [http-apr-8080-exec-40] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [WebHClinic] registered the JDBC driver [com.microsoft.sqlserver.jdbc.SQLServerDriver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
 20-Oct-2015 02:15:55.667 INFO [http-apr-8080-exec-40] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
 20-Oct-2015 02:15:55.667 INFO [http-apr-8080-exec-40] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+20-Oct-2015 22:22:57.581 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.28
+20-Oct-2015 22:22:57.597 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 7 2015 18:25:21 UTC
+20-Oct-2015 22:22:57.597 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.28.0
+20-Oct-2015 22:22:57.597 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 8.1
+20-Oct-2015 22:22:57.597 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.3
+20-Oct-2015 22:22:57.597 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+20-Oct-2015 22:22:57.597 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk1.8.0_40\jre
+20-Oct-2015 22:22:57.597 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_40-b25
+20-Oct-2015 22:22:57.597 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+20-Oct-2015 22:22:57.597 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:22:57.597 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:22:57.597 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\logging.properties
+20-Oct-2015 22:22:57.597 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+20-Oct-2015 22:22:57.597 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\endorsed
+20-Oct-2015 22:22:57.597 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:22:57.597 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:22:57.597 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\temp
+20-Oct-2015 22:22:57.597 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library 1.1.33 using APR version 1.5.1.
+20-Oct-2015 22:22:57.597 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+20-Oct-2015 22:22:58.597 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized (OpenSSL 1.0.1m 19 Mar 2015)
+20-Oct-2015 22:22:59.515 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:22:59.566 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:22:59.566 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 3809 ms
+20-Oct-2015 22:22:59.730 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+20-Oct-2015 22:22:59.730 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.28
+20-Oct-2015 22:22:59.800 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml
+20-Oct-2015 22:22:59.965 WARNING [localhost-startStop-1] org.apache.catalina.startup.SetContextPropertiesRule.begin [SetContextPropertiesRule]{Context} Setting property 'antiJARLocking' to 'true' did not find a matching property.
+20-Oct-2015 22:23:01.618 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+20-Oct-2015 22:23:02.037 INFO [localhost-startStop-1] org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [317] milliseconds.
+20-Oct-2015 22:23:02.100 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml has finished in 2,300 ms
+20-Oct-2015 22:23:02.116 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\docs
+20-Oct-2015 22:23:02.200 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\docs has finished in 84 ms
+20-Oct-2015 22:23:02.200 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\examples
+20-Oct-2015 22:23:03.471 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\examples has finished in 1,271 ms
+20-Oct-2015 22:23:03.471 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\host-manager
+20-Oct-2015 22:23:03.586 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\host-manager has finished in 115 ms
+20-Oct-2015 22:23:03.586 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\manager
+20-Oct-2015 22:23:03.678 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\manager has finished in 92 ms
+20-Oct-2015 22:23:03.679 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\ROOT
+20-Oct-2015 22:23:03.746 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\ROOT has finished in 67 ms
+20-Oct-2015 22:23:03.761 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:23:03.774 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:23:03.776 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 4201 ms
+20-Oct-2015 22:23:05.689 INFO [http-apr-8080-exec-4] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+20-Oct-2015 22:23:06.256 INFO [http-apr-8080-exec-4] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+20-Oct-2015 22:38:10.174 INFO [http-apr-8080-exec-19] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+20-Oct-2015 22:38:10.174 WARNING [http-apr-8080-exec-19] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [WebHClinic] registered the JDBC driver [com.microsoft.sqlserver.jdbc.SQLServerDriver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+20-Oct-2015 22:38:10.580 INFO [43] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+20-Oct-2015 22:38:28.741 INFO [http-apr-8080-exec-16] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+20-Oct-2015 22:38:28.960 INFO [http-apr-8080-exec-16] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+20-Oct-2015 22:38:34.430 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+20-Oct-2015 22:38:34.430 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:38:34.493 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:38:34.555 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+20-Oct-2015 22:38:34.618 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:38:34.774 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:38:34.837 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:38:34.837 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.28
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 7 2015 18:25:21 UTC
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.28.0
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 8.1
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.3
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk1.8.0_40\jre
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_40-b25
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\logging.properties
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\endorsed
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\temp
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library 1.1.33 using APR version 1.5.1.
+20-Oct-2015 22:38:36.804 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+20-Oct-2015 22:38:37.570 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized (OpenSSL 1.0.1m 19 Mar 2015)
+20-Oct-2015 22:38:37.726 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:38:37.742 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:38:37.742 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1508 ms
+20-Oct-2015 22:38:37.788 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+20-Oct-2015 22:38:37.788 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.28
+20-Oct-2015 22:38:37.804 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml
+20-Oct-2015 22:38:37.898 WARNING [localhost-startStop-1] org.apache.catalina.startup.SetContextPropertiesRule.begin [SetContextPropertiesRule]{Context} Setting property 'antiJARLocking' to 'true' did not find a matching property.
+20-Oct-2015 22:38:38.601 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+20-Oct-2015 22:38:38.757 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml has finished in 953 ms
+20-Oct-2015 22:38:38.757 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\docs
+20-Oct-2015 22:38:38.804 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\docs has finished in 47 ms
+20-Oct-2015 22:38:38.804 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\examples
+20-Oct-2015 22:38:39.599 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\examples has finished in 795 ms
+20-Oct-2015 22:38:39.599 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\host-manager
+20-Oct-2015 22:38:39.708 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\host-manager has finished in 109 ms
+20-Oct-2015 22:38:39.708 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\manager
+20-Oct-2015 22:38:39.740 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\manager has finished in 32 ms
+20-Oct-2015 22:38:39.740 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\ROOT
+20-Oct-2015 22:38:39.802 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\ROOT has finished in 62 ms
+20-Oct-2015 22:38:39.802 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:38:39.818 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:38:39.818 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 2071 ms
+20-Oct-2015 22:38:41.581 INFO [http-apr-8080-exec-10] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+20-Oct-2015 22:38:41.863 INFO [http-apr-8080-exec-10] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+20-Oct-2015 22:41:05.090 INFO [http-apr-8080-exec-11] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+20-Oct-2015 22:41:05.090 WARNING [http-apr-8080-exec-11] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [WebHClinic] registered the JDBC driver [com.microsoft.sqlserver.jdbc.SQLServerDriver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+20-Oct-2015 22:41:05.387 INFO [http-apr-8080-exec-11] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+20-Oct-2015 22:42:42.441 INFO [http-apr-8080-exec-24] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+20-Oct-2015 22:42:42.957 INFO [http-apr-8080-exec-24] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+20-Oct-2015 22:42:52.427 INFO [http-apr-8080-exec-23] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+20-Oct-2015 22:42:52.568 INFO [http-apr-8080-exec-23] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+20-Oct-2015 22:43:13.688 INFO [http-apr-8080-exec-32] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+20-Oct-2015 22:43:13.975 INFO [http-apr-8080-exec-32] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+20-Oct-2015 22:43:27.750 INFO [http-apr-8080-exec-23] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+20-Oct-2015 22:43:27.922 INFO [http-apr-8080-exec-23] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+20-Oct-2015 22:43:36.831 INFO [http-apr-8080-exec-31] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+20-Oct-2015 22:43:36.972 INFO [http-apr-8080-exec-31] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+20-Oct-2015 22:50:08.836 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+20-Oct-2015 22:50:08.837 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:50:08.888 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:50:08.939 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+20-Oct-2015 22:50:08.992 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:50:09.046 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:50:09.096 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:50:09.096 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:51:41.060 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.28
+20-Oct-2015 22:51:41.060 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 7 2015 18:25:21 UTC
+20-Oct-2015 22:51:41.060 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.28.0
+20-Oct-2015 22:51:41.060 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 8.1
+20-Oct-2015 22:51:41.060 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.3
+20-Oct-2015 22:51:41.060 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+20-Oct-2015 22:51:41.060 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk1.8.0_40\jre
+20-Oct-2015 22:51:41.060 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_40-b25
+20-Oct-2015 22:51:41.060 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+20-Oct-2015 22:51:41.060 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:51:41.060 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:51:41.076 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\logging.properties
+20-Oct-2015 22:51:41.076 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+20-Oct-2015 22:51:41.076 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\endorsed
+20-Oct-2015 22:51:41.076 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:51:41.076 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:51:41.076 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\temp
+20-Oct-2015 22:51:41.076 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library 1.1.33 using APR version 1.5.1.
+20-Oct-2015 22:51:41.076 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+20-Oct-2015 22:51:41.857 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized (OpenSSL 1.0.1m 19 Mar 2015)
+20-Oct-2015 22:51:42.044 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:51:42.060 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:51:42.076 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1547 ms
+20-Oct-2015 22:51:42.138 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+20-Oct-2015 22:51:42.138 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.28
+20-Oct-2015 22:51:42.169 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml
+20-Oct-2015 22:51:42.279 WARNING [localhost-startStop-1] org.apache.catalina.startup.SetContextPropertiesRule.begin [SetContextPropertiesRule]{Context} Setting property 'antiJARLocking' to 'true' did not find a matching property.
+20-Oct-2015 22:51:43.044 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+20-Oct-2015 22:51:43.216 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml has finished in 1,047 ms
+20-Oct-2015 22:51:43.216 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\docs
+20-Oct-2015 22:51:43.248 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\docs has finished in 32 ms
+20-Oct-2015 22:51:43.248 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\examples
+20-Oct-2015 22:51:44.623 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\examples has finished in 1,375 ms
+20-Oct-2015 22:51:44.623 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\host-manager
+20-Oct-2015 22:51:44.716 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\host-manager has finished in 93 ms
+20-Oct-2015 22:51:44.716 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\manager
+20-Oct-2015 22:51:44.779 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\manager has finished in 63 ms
+20-Oct-2015 22:51:44.779 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\ROOT
+20-Oct-2015 22:51:44.810 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\ROOT has finished in 31 ms
+20-Oct-2015 22:51:44.841 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:51:44.841 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:51:44.841 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 2772 ms
+20-Oct-2015 22:54:33.167 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+20-Oct-2015 22:54:33.167 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:54:33.230 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:54:33.292 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+20-Oct-2015 22:54:33.386 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:54:33.448 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:54:33.511 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:54:33.511 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.28
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 7 2015 18:25:21 UTC
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.28.0
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 8.1
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.3
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk1.8.0_40\jre
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_40-b25
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\logging.properties
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\endorsed
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\temp
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library 1.1.33 using APR version 1.5.1.
+20-Oct-2015 22:57:24.579 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+20-Oct-2015 22:57:25.329 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized (OpenSSL 1.0.1m 19 Mar 2015)
+20-Oct-2015 22:57:25.485 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:57:25.501 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:57:25.501 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1575 ms
+20-Oct-2015 22:57:25.563 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+20-Oct-2015 22:57:25.563 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.28
+20-Oct-2015 22:57:25.579 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml
+20-Oct-2015 22:57:25.641 WARNING [localhost-startStop-1] org.apache.catalina.startup.SetContextPropertiesRule.begin [SetContextPropertiesRule]{Context} Setting property 'antiJARLocking' to 'true' did not find a matching property.
+20-Oct-2015 22:57:26.261 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+20-Oct-2015 22:57:26.433 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml has finished in 854 ms
+20-Oct-2015 22:57:26.433 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\docs
+20-Oct-2015 22:57:26.511 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\docs has finished in 78 ms
+20-Oct-2015 22:57:26.511 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\examples
+20-Oct-2015 22:57:27.323 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\examples has finished in 812 ms
+20-Oct-2015 22:57:27.323 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\host-manager
+20-Oct-2015 22:57:27.386 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\host-manager has finished in 63 ms
+20-Oct-2015 22:57:27.386 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\manager
+20-Oct-2015 22:57:27.464 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\manager has finished in 78 ms
+20-Oct-2015 22:57:27.464 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\ROOT
+20-Oct-2015 22:57:27.526 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\ROOT has finished in 62 ms
+20-Oct-2015 22:57:27.526 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:57:27.542 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:57:27.542 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 2046 ms
+20-Oct-2015 22:57:29.940 INFO [http-apr-8080-exec-4] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+20-Oct-2015 22:57:30.237 INFO [http-apr-8080-exec-4] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+20-Oct-2015 22:57:51.453 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+20-Oct-2015 22:57:51.453 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:57:51.516 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:57:51.578 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+20-Oct-2015 22:57:51.656 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:57:51.719 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:57:51.781 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:57:51.781 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:58:00.436 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.28
+20-Oct-2015 22:58:00.436 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 7 2015 18:25:21 UTC
+20-Oct-2015 22:58:00.436 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.28.0
+20-Oct-2015 22:58:00.436 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 8.1
+20-Oct-2015 22:58:00.436 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.3
+20-Oct-2015 22:58:00.436 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+20-Oct-2015 22:58:00.436 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk1.8.0_40\jre
+20-Oct-2015 22:58:00.436 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_40-b25
+20-Oct-2015 22:58:00.436 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+20-Oct-2015 22:58:00.436 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:58:00.436 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:58:00.436 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\logging.properties
+20-Oct-2015 22:58:00.436 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+20-Oct-2015 22:58:00.436 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -agentlib:jdwp=transport=dt_shmem,address=tomcat_shared_memory_id,server=y,suspend=n
+20-Oct-2015 22:58:00.436 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\endorsed
+20-Oct-2015 22:58:00.436 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:58:00.452 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 22:58:00.452 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\temp
+20-Oct-2015 22:58:00.452 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library 1.1.33 using APR version 1.5.1.
+20-Oct-2015 22:58:00.452 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+20-Oct-2015 22:58:01.378 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized (OpenSSL 1.0.1m 19 Mar 2015)
+20-Oct-2015 22:58:01.565 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:58:01.565 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:58:01.581 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1721 ms
+20-Oct-2015 22:58:01.628 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+20-Oct-2015 22:58:01.628 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.28
+20-Oct-2015 22:58:01.644 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml
+20-Oct-2015 22:58:01.722 WARNING [localhost-startStop-1] org.apache.catalina.startup.SetContextPropertiesRule.begin [SetContextPropertiesRule]{Context} Setting property 'antiJARLocking' to 'true' did not find a matching property.
+20-Oct-2015 22:58:02.425 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+20-Oct-2015 22:58:02.581 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml has finished in 937 ms
+20-Oct-2015 22:58:02.581 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\docs
+20-Oct-2015 22:58:02.628 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\docs has finished in 47 ms
+20-Oct-2015 22:58:02.628 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\examples
+20-Oct-2015 22:58:03.373 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\examples has finished in 745 ms
+20-Oct-2015 22:58:03.373 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\host-manager
+20-Oct-2015 22:58:03.436 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\host-manager has finished in 63 ms
+20-Oct-2015 22:58:03.436 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\manager
+20-Oct-2015 22:58:03.529 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\manager has finished in 93 ms
+20-Oct-2015 22:58:03.529 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\ROOT
+20-Oct-2015 22:58:03.592 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\ROOT has finished in 63 ms
+20-Oct-2015 22:58:03.592 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 22:58:03.608 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 22:58:03.608 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 2039 ms
+20-Oct-2015 22:58:05.155 INFO [http-apr-8080-exec-6] org.apache.coyote.http11.AbstractHttp11Processor.process Error parsing HTTP request header
+ Note: further occurrences of HTTP header parsing errors will be logged at DEBUG level.
+20-Oct-2015 22:58:09.558 INFO [http-apr-8080-exec-1] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/WebHClinic]
+20-Oct-2015 22:58:09.621 INFO [http-apr-8080-exec-3] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml
+20-Oct-2015 22:58:09.637 WARNING [http-apr-8080-exec-3] org.apache.catalina.startup.SetContextPropertiesRule.begin [SetContextPropertiesRule]{Context} Setting property 'antiJARLocking' to 'true' did not find a matching property.
+20-Oct-2015 22:58:10.012 INFO [http-apr-8080-exec-3] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml has finished in 391 ms
+20-Oct-2015 22:58:10.027 INFO [http-apr-8080-exec-4] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/WebHClinic]] after start() had already been called. The second call will be ignored.
+20-Oct-2015 23:03:25.858 INFO [http-apr-8080-exec-16] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/WebHClinic]
+20-Oct-2015 23:03:25.874 INFO [http-apr-8080-exec-15] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml
+20-Oct-2015 23:03:25.889 WARNING [http-apr-8080-exec-15] org.apache.catalina.startup.SetContextPropertiesRule.begin [SetContextPropertiesRule]{Context} Setting property 'antiJARLocking' to 'true' did not find a matching property.
+20-Oct-2015 23:03:26.186 INFO [http-apr-8080-exec-15] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml has finished in 312 ms
+20-Oct-2015 23:03:26.186 INFO [http-apr-8080-exec-13] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/WebHClinic]] after start() had already been called. The second call will be ignored.
+20-Oct-2015 23:06:11.477 INFO [http-apr-8080-exec-15] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+20-Oct-2015 23:06:11.758 INFO [http-apr-8080-exec-15] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+20-Oct-2015 23:07:29.910 INFO [http-apr-8080-exec-27] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+20-Oct-2015 23:07:30.207 INFO [http-apr-8080-exec-27] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+20-Oct-2015 23:13:53.788 INFO [http-apr-8080-exec-13] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+20-Oct-2015 23:13:54.045 INFO [http-apr-8080-exec-13] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+20-Oct-2015 23:14:00.162 INFO [http-apr-8080-exec-27] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+20-Oct-2015 23:14:00.424 INFO [http-apr-8080-exec-27] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+20-Oct-2015 23:14:04.782 INFO [http-apr-8080-exec-39] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+20-Oct-2015 23:14:04.922 INFO [http-apr-8080-exec-39] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+20-Oct-2015 23:16:33.310 INFO [http-apr-8080-exec-36] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/WebHClinic]
+20-Oct-2015 23:16:37.952 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+20-Oct-2015 23:16:37.952 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 23:16:37.952 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 23:16:38.014 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+20-Oct-2015 23:16:38.030 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 23:16:38.124 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 23:16:38.186 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 23:16:38.186 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.28
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 7 2015 18:25:21 UTC
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.28.0
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 8.1
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.3
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk1.8.0_40\jre
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_40-b25
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\logging.properties
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\endorsed
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\temp
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library 1.1.33 using APR version 1.5.1.
+20-Oct-2015 23:38:32.867 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+20-Oct-2015 23:38:33.649 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized (OpenSSL 1.0.1m 19 Mar 2015)
+20-Oct-2015 23:38:33.820 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 23:38:33.836 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 23:38:33.836 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1460 ms
+20-Oct-2015 23:38:33.883 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+20-Oct-2015 23:38:33.883 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.28
+20-Oct-2015 23:38:33.899 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\docs
+20-Oct-2015 23:38:34.336 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\docs has finished in 437 ms
+20-Oct-2015 23:38:34.336 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\examples
+20-Oct-2015 23:38:35.039 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\examples has finished in 703 ms
+20-Oct-2015 23:38:35.039 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\host-manager
+20-Oct-2015 23:38:35.164 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\host-manager has finished in 125 ms
+20-Oct-2015 23:38:35.164 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\manager
+20-Oct-2015 23:38:35.227 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\manager has finished in 63 ms
+20-Oct-2015 23:38:35.227 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\ROOT
+20-Oct-2015 23:38:35.302 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\ROOT has finished in 75 ms
+20-Oct-2015 23:38:35.305 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-apr-8080"]
+20-Oct-2015 23:38:35.305 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-apr-8009"]
+20-Oct-2015 23:38:35.320 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1481 ms
+20-Oct-2015 23:38:36.742 INFO [http-apr-8080-exec-3] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml
+20-Oct-2015 23:38:36.773 WARNING [http-apr-8080-exec-3] org.apache.catalina.startup.SetContextPropertiesRule.begin [SetContextPropertiesRule]{Context} Setting property 'antiJARLocking' to 'true' did not find a matching property.
+20-Oct-2015 23:38:37.164 INFO [http-apr-8080-exec-3] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+20-Oct-2015 23:38:37.180 INFO [http-apr-8080-exec-3] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml has finished in 438 ms
+20-Oct-2015 23:38:37.195 INFO [http-apr-8080-exec-2] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/WebHClinic]] after start() had already been called. The second call will be ignored.

@@ -1,0 +1,265 @@
+21-Oct-2015 00:00:39.056 SEVERE [http-apr-8080-exec-3] clinic.Validate.doGet null
+ com.microsoft.sqlserver.jdbc.SQLServerException: Software caused connection abort: recv failed
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.terminate(SQLServerConnection.java:1352)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.terminate(SQLServerConnection.java:1339)
+	at com.microsoft.sqlserver.jdbc.TDSChannel.read(IOBuffer.java:1654)
+	at com.microsoft.sqlserver.jdbc.TDSReader.readPacket(IOBuffer.java:3694)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.startResponse(IOBuffer.java:5022)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.doExecuteStatement(SQLServerStatement.java:773)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement$StmtExecCmd.doExecute(SQLServerStatement.java:676)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:4575)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:1400)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:179)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:154)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeQuery(SQLServerStatement.java:611)
+	at DAO.PatientDAO.ExistLogin(PatientDAO.java:69)
+	at clinic.Validate.processRequest(Validate.java:45)
+	at clinic.Validate.doGet(Validate.java:73)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:622)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:291)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:217)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:142)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:616)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:518)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1091)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:673)
+	at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.doRun(AprEndpoint.java:2503)
+	at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.run(AprEndpoint.java:2492)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+21-Oct-2015 00:00:39.056 SEVERE [http-apr-8080-exec-7] clinic.Validate.doGet null
+ com.microsoft.sqlserver.jdbc.SQLServerException: Software caused connection abort: recv failed
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.terminate(SQLServerConnection.java:1352)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.terminate(SQLServerConnection.java:1339)
+	at com.microsoft.sqlserver.jdbc.TDSChannel.read(IOBuffer.java:1654)
+	at com.microsoft.sqlserver.jdbc.TDSReader.readPacket(IOBuffer.java:3694)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.startResponse(IOBuffer.java:5022)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.doExecuteStatement(SQLServerStatement.java:773)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement$StmtExecCmd.doExecute(SQLServerStatement.java:676)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:4575)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:1400)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:179)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:154)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeQuery(SQLServerStatement.java:611)
+	at DAO.PatientDAO.ExistLogin(PatientDAO.java:69)
+	at clinic.Validate.processRequest(Validate.java:45)
+	at clinic.Validate.doGet(Validate.java:73)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:622)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:291)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:217)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:142)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:616)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:518)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1091)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:673)
+	at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.doRun(AprEndpoint.java:2503)
+	at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.run(AprEndpoint.java:2492)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+21-Oct-2015 00:08:46.476 INFO [http-apr-8080-exec-1] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+21-Oct-2015 00:08:46.492 WARNING [http-apr-8080-exec-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [WebHClinic] registered the JDBC driver [com.microsoft.sqlserver.jdbc.SQLServerDriver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Oct-2015 00:08:46.835 INFO [http-apr-8080-exec-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Oct-2015 00:08:46.851 INFO [http-apr-8080-exec-1] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+21-Oct-2015 00:09:34.875 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+21-Oct-2015 00:09:34.876 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-apr-8080"]
+21-Oct-2015 00:09:34.879 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-apr-8009"]
+21-Oct-2015 00:09:34.930 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+21-Oct-2015 00:09:34.953 WARNING [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [WebHClinic] registered the JDBC driver [com.microsoft.sqlserver.jdbc.SQLServerDriver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Oct-2015 00:09:34.966 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-apr-8080"]
+21-Oct-2015 00:09:35.017 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-apr-8009"]
+21-Oct-2015 00:09:35.069 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-apr-8080"]
+21-Oct-2015 00:09:35.069 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-apr-8009"]
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.28
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 7 2015 18:25:21 UTC
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.28.0
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 8.1
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.3
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk1.8.0_40\jre
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_40-b25
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\logging.properties
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -agentlib:jdwp=transport=dt_shmem,address=tomcat_shared_memory_id,server=y,suspend=n
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\endorsed
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\temp
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library 1.1.33 using APR version 1.5.1.
+21-Oct-2015 00:09:42.466 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+21-Oct-2015 00:09:43.310 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized (OpenSSL 1.0.1m 19 Mar 2015)
+21-Oct-2015 00:09:43.497 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-apr-8080"]
+21-Oct-2015 00:09:43.497 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-apr-8009"]
+21-Oct-2015 00:09:43.513 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1614 ms
+21-Oct-2015 00:09:43.560 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+21-Oct-2015 00:09:43.560 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.28
+21-Oct-2015 00:09:43.591 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml
+21-Oct-2015 00:09:43.654 WARNING [localhost-startStop-1] org.apache.catalina.startup.SetContextPropertiesRule.begin [SetContextPropertiesRule]{Context} Setting property 'antiJARLocking' to 'true' did not find a matching property.
+21-Oct-2015 00:09:44.341 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Oct-2015 00:09:44.513 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml has finished in 922 ms
+21-Oct-2015 00:09:44.513 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\docs
+21-Oct-2015 00:09:44.560 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\docs has finished in 47 ms
+21-Oct-2015 00:09:44.560 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\examples
+21-Oct-2015 00:09:45.247 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\examples has finished in 687 ms
+21-Oct-2015 00:09:45.247 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\host-manager
+21-Oct-2015 00:09:45.310 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\host-manager has finished in 63 ms
+21-Oct-2015 00:09:45.310 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\manager
+21-Oct-2015 00:09:45.372 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\manager has finished in 62 ms
+21-Oct-2015 00:09:45.372 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\ROOT
+21-Oct-2015 00:09:45.435 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\ROOT has finished in 63 ms
+21-Oct-2015 00:09:45.435 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-apr-8080"]
+21-Oct-2015 00:09:45.451 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-apr-8009"]
+21-Oct-2015 00:09:45.451 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1945 ms
+21-Oct-2015 00:09:46.794 INFO [http-apr-8080-exec-6] org.apache.coyote.http11.AbstractHttp11Processor.process Error parsing HTTP request header
+ Note: further occurrences of HTTP header parsing errors will be logged at DEBUG level.
+21-Oct-2015 00:09:50.548 INFO [http-apr-8080-exec-9] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/WebHClinic]
+21-Oct-2015 00:09:50.611 INFO [http-apr-8080-exec-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml
+21-Oct-2015 00:09:50.634 WARNING [http-apr-8080-exec-1] org.apache.catalina.startup.SetContextPropertiesRule.begin [SetContextPropertiesRule]{Context} Setting property 'antiJARLocking' to 'true' did not find a matching property.
+21-Oct-2015 00:09:50.963 INFO [http-apr-8080-exec-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml has finished in 352 ms
+21-Oct-2015 00:09:50.979 INFO [http-apr-8080-exec-7] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/WebHClinic]] after start() had already been called. The second call will be ignored.
+21-Oct-2015 00:17:41.272 INFO [http-apr-8080-exec-18] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+21-Oct-2015 00:17:41.288 WARNING [http-apr-8080-exec-18] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [WebHClinic] registered the JDBC driver [com.microsoft.sqlserver.jdbc.SQLServerDriver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Oct-2015 00:17:41.582 INFO [http-apr-8080-exec-18] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+21-Oct-2015 00:28:14.717 INFO [http-apr-8080-exec-22] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+21-Oct-2015 00:28:14.717 WARNING [http-apr-8080-exec-22] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [WebHClinic] registered the JDBC driver [com.microsoft.sqlserver.jdbc.SQLServerDriver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Oct-2015 00:28:15.014 INFO [50] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+21-Oct-2015 01:00:27.868 INFO [http-apr-8080-exec-33] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+21-Oct-2015 01:00:27.884 WARNING [http-apr-8080-exec-33] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [WebHClinic] registered the JDBC driver [com.microsoft.sqlserver.jdbc.SQLServerDriver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Oct-2015 01:00:28.149 INFO [http-apr-8080-exec-33] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+21-Oct-2015 01:01:59.471 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+21-Oct-2015 01:01:59.471 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-apr-8080"]
+21-Oct-2015 01:01:59.534 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-apr-8009"]
+21-Oct-2015 01:01:59.596 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+21-Oct-2015 01:01:59.659 WARNING [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [WebHClinic] registered the JDBC driver [com.microsoft.sqlserver.jdbc.SQLServerDriver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Oct-2015 01:01:59.674 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-apr-8080"]
+21-Oct-2015 01:01:59.737 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-apr-8009"]
+21-Oct-2015 01:01:59.799 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-apr-8080"]
+21-Oct-2015 01:01:59.799 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-apr-8009"]
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.28
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 7 2015 18:25:21 UTC
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.28.0
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 8.1
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.3
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk1.8.0_40\jre
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_40-b25
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\logging.properties
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\endorsed
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\temp
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library 1.1.33 using APR version 1.5.1.
+21-Oct-2015 01:09:32.577 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+21-Oct-2015 01:09:33.515 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized (OpenSSL 1.0.1m 19 Mar 2015)
+21-Oct-2015 01:09:33.687 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-apr-8080"]
+21-Oct-2015 01:09:33.702 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-apr-8009"]
+21-Oct-2015 01:09:33.702 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1801 ms
+21-Oct-2015 01:09:33.765 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+21-Oct-2015 01:09:33.765 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.28
+21-Oct-2015 01:09:33.780 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml
+21-Oct-2015 01:09:33.859 WARNING [localhost-startStop-1] org.apache.catalina.startup.SetContextPropertiesRule.begin [SetContextPropertiesRule]{Context} Setting property 'antiJARLocking' to 'true' did not find a matching property.
+21-Oct-2015 01:09:34.545 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+21-Oct-2015 01:09:34.686 INFO [localhost-startStop-1] org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [110] milliseconds.
+21-Oct-2015 01:09:34.717 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\conf\Catalina\localhost\WebHClinic.xml has finished in 937 ms
+21-Oct-2015 01:09:34.717 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\docs
+21-Oct-2015 01:09:34.748 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\docs has finished in 31 ms
+21-Oct-2015 01:09:34.764 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\examples
+21-Oct-2015 01:09:35.486 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\examples has finished in 722 ms
+21-Oct-2015 01:09:35.486 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\host-manager
+21-Oct-2015 01:09:35.561 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\host-manager has finished in 75 ms
+21-Oct-2015 01:09:35.562 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\manager
+21-Oct-2015 01:09:35.618 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\manager has finished in 57 ms
+21-Oct-2015 01:09:35.618 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\ROOT
+21-Oct-2015 01:09:35.665 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\Owner\Documents\projects\PW_POO_Clinica\WebHClinic\lib\apache-tomcat-8.0.28\webapps\ROOT has finished in 47 ms
+21-Oct-2015 01:09:35.681 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-apr-8080"]
+21-Oct-2015 01:09:35.681 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-apr-8009"]
+21-Oct-2015 01:09:35.681 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1985 ms
+21-Oct-2015 01:09:36.305 INFO [http-apr-8080-exec-3] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+21-Oct-2015 01:09:36.566 INFO [http-apr-8080-exec-3] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+21-Oct-2015 01:12:00.835 INFO [http-apr-8080-exec-14] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+21-Oct-2015 01:12:00.851 WARNING [http-apr-8080-exec-14] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [WebHClinic] registered the JDBC driver [com.microsoft.sqlserver.jdbc.SQLServerDriver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Oct-2015 01:12:01.085 INFO [http-apr-8080-exec-14] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+21-Oct-2015 01:18:34.179 INFO [http-apr-8080-exec-22] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+21-Oct-2015 01:18:34.179 WARNING [http-apr-8080-exec-22] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [WebHClinic] registered the JDBC driver [com.microsoft.sqlserver.jdbc.SQLServerDriver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Oct-2015 01:18:34.429 INFO [http-apr-8080-exec-22] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+21-Oct-2015 01:24:02.766 INFO [http-apr-8080-exec-32] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+21-Oct-2015 01:24:02.782 WARNING [http-apr-8080-exec-32] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [WebHClinic] registered the JDBC driver [com.microsoft.sqlserver.jdbc.SQLServerDriver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Oct-2015 01:24:03.001 INFO [56] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+21-Oct-2015 01:38:47.514 INFO [http-apr-8080-exec-42] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+21-Oct-2015 01:38:47.530 WARNING [http-apr-8080-exec-42] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [WebHClinic] registered the JDBC driver [com.microsoft.sqlserver.jdbc.SQLServerDriver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Oct-2015 01:38:47.718 INFO [http-apr-8080-exec-42] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+21-Oct-2015 01:39:12.248 SEVERE [http-apr-8080-exec-50] DAO.PatientDAO.<init> null
+ com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host FS5, port 1433 has failed. Error: "null. Verify the connection properties, check that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port, and that no firewall is blocking TCP connections to the port.".
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:171)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:1033)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:817)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:700)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:842)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at clinic.MeuStatement.<init>(MeuStatement.java:30)
+	at clinic.MeuPreparedStatement.<init>(MeuPreparedStatement.java:36)
+	at DAO.PatientDAO.<init>(PatientDAO.java:30)
+	at clinic.Validate.processRequest(Validate.java:43)
+	at clinic.Validate.doGet(Validate.java:73)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:622)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:291)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:217)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:142)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:616)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:518)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1091)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:673)
+	at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.doRun(AprEndpoint.java:2503)
+	at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.run(AprEndpoint.java:2492)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+21-Oct-2015 02:14:08.396 INFO [http-apr-8080-exec-53] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+21-Oct-2015 02:14:08.411 WARNING [http-apr-8080-exec-53] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [WebHClinic] registered the JDBC driver [com.microsoft.sqlserver.jdbc.SQLServerDriver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+21-Oct-2015 02:14:08.693 INFO [http-apr-8080-exec-53] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+21-Oct-2015 02:19:01.873 INFO [http-apr-8080-exec-62] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+21-Oct-2015 02:19:02.092 INFO [http-apr-8080-exec-62] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed
+21-Oct-2015 02:40:59.631 INFO [http-apr-8080-exec-78] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] has started
+21-Oct-2015 02:40:59.944 INFO [http-apr-8080-exec-78] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/WebHClinic] is completed

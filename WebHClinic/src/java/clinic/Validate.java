@@ -5,9 +5,10 @@
  */
 package clinic;
 
-import static clinic.WebClinic.loginValidate;
+import DAO.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -33,24 +34,21 @@ public class Validate extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
+        PatientDAO patient = new PatientDAO();
         PrintWriter out = response.getWriter();
-        if (loginValidate(login, senha) == true) { //validar no BD
+        if (patient.ExistLogin(login, senha) == true) { //validar no BD
             RequestDispatcher view = request.getRequestDispatcher("home.html");
             view.forward(request, response);
         } else {
-            out.println("<html>");
-            out.println("  <head>");
-            out.println("    <title>Login não efetuado</title>");
-            out.println("  </head>");
-            out.println("  <body>");
-            out.println("    <br/>Falha no login. Tente novamente.<br/>");
-            out.println("  </body>");
-            out.println("</html>");
+            
+            RequestDispatcher view = request.getRequestDispatcher("failed.html");
+            view.forward(request, response);
         }
     }
 
@@ -68,7 +66,7 @@ public class Validate extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Validate.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -86,7 +84,7 @@ public class Validate extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Validate.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

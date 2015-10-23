@@ -6,6 +6,9 @@ and open the template in the editor.
 -->
 <html>
     <head>
+        <title>Cadastro inativo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- BOOTSTRAP CDN LINKS: Latest compiled and minified CSS -->
@@ -16,31 +19,16 @@ and open the template in the editor.
 
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <title>Excluir cadastro</title>
-        <meta charset="UTF-8">
     </head>
     <body>
-        <nav class="navbar navbar-fixed-top"><ul class="topMenu">
+         <nav class="navbar navbar-fixed-top"><ul class="topMenu">
                 <li> <a href="home.html" class="current">Home</a>
-                <li> <a href="#">Administrar conta</a>
-                    <ul class="subMenu">
-                        <li><a href="alterar.html">Alterar</a></li>
-                        <li><a href="excluir.html">Excluir</a></li>
-                    </ul>
-                </li>
             </ul></nav>
+            
         <div id="page-container">
-            <form action="Inactivate" method="get">
-                <fieldset>
-                    <h2>Seu cadastro será inativado.
-                    <br><br>Ele estará disponível apenas para consulta.</h2>
-                    <br><br><br><br>
-                    <h3>Você tem certeza que quer inativar seu cadastro?</h3>
-                    <br><br>
-                    <input type="submit" value="Confirmar">     
-                    <input type="button" onclick="window.location='home.html';return false;" value="Cancelar">
-                </fieldset>
-            </form>
+            <h1>Seu cadastro está inativo.</h1> 
+             <br>
+             <h3>Caso queira reativá-lo, entre em contato com um administrador do sistema.</h3>
         </div>
     </body>
 </html>
