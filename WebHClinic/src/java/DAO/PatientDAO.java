@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Connection.DAO;
+package DAO;
 
 import Module.ConnectionSetup;
 import clinic.MeuPreparedStatement;

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,14 +40,8 @@ public class Validate extends HttpServlet {
         String senha = request.getParameter("senha");
         PrintWriter out = response.getWriter();
         if (loginValidate(login, senha) == true) { //validar no BD
-            out.println("<html>");
-            out.println("  <head>");
-            out.println("    <title>Você está logado</title>");
-            out.println("  </head>");
-            out.println("  <body>");
-            out.println("    <br/>Login efetuado com sucesso!<br/>");
-            out.println("  </body>");
-            out.println("</html>");
+            RequestDispatcher view = request.getRequestDispatcher("home.html");
+            view.forward(request, response);
         } else {
             out.println("<html>");
             out.println("  <head>");

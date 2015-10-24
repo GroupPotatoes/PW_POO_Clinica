@@ -1,17 +1,37 @@
 package View;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import javax.swing.JPanel;
+
 /**
  * Classe que possui as opções de administração de funcionários.
  * @author maiara
  */
 public class AdministracaoFuncionarios extends javax.swing.JFrame {
-
+    final JPanel parentPanel;
+    final JPanel inicio;
+    final TelaExclusao excluiCadastro;
+    final TelaPesquisa pesquisa;
+    
     /**
      * Construtor da Classe.
      */
     public AdministracaoFuncionarios() {
+        this.parentPanel = new JPanel();
+        this.inicio = new JPanel();
+        this.excluiCadastro = new TelaExclusao();
+        this.pesquisa = new TelaPesquisa();
+        this.parentPanel.setLayout(new BorderLayout(380, 200));
         initComponents();
+        
+        this.parentPanel.add(this.inicio, BorderLayout.CENTER);
+        this.inicio.setPreferredSize(new Dimension(380, 200));
+        this.inicio.setVisible(true);
         this.setLocationRelativeTo(null);
+        add(this.parentPanel);
+        pack();
+        setVisible(true);
     }
     
     @SuppressWarnings("unchecked")
@@ -26,17 +46,35 @@ public class AdministracaoFuncionarios extends javax.swing.JFrame {
         smnSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
+        setSize(new java.awt.Dimension(380, 200));
+        getContentPane().setLayout(new java.awt.CardLayout());
 
         smnIncluir.setText("Incluir");
         mnuMenuPrincipal.add(smnIncluir);
 
         smnAlterar.setText("Alterar");
+        smnAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                smnAlterarMouseClicked(evt);
+            }
+        });
         mnuMenuPrincipal.add(smnAlterar);
 
         smnExcluir.setText("Excluir");
+        smnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                smnExcluirMouseClicked(evt);
+            }
+        });
         mnuMenuPrincipal.add(smnExcluir);
 
         smnPesquisar.setText("Pesquisar");
+        smnPesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                smnPesquisarMouseClicked(evt);
+            }
+        });
         mnuMenuPrincipal.add(smnPesquisar);
 
         smnSair.setText("Voltar");
@@ -50,17 +88,6 @@ public class AdministracaoFuncionarios extends javax.swing.JFrame {
 
         setJMenuBar(mnuMenuPrincipal);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -68,6 +95,47 @@ public class AdministracaoFuncionarios extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_smnSairMouseClicked
 
+    private void smnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_smnExcluirMouseClicked
+        // Abre tela de exclusao que faz o cadastro ficar inativo
+        this.inicio.setVisible(false);
+        this.pesquisa.setVisible(false);
+        this.parentPanel.add(this.excluiCadastro, BorderLayout.CENTER);
+        this.excluiCadastro.setPreferredSize(new Dimension(380, 200));
+        this.excluiCadastro.setVisible(true);
+        this.parentPanel.revalidate();
+        this.parentPanel.repaint();
+        pack();
+    }//GEN-LAST:event_smnExcluirMouseClicked
+
+    private void smnPesquisarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_smnPesquisarMouseClicked
+        //Opens employee search screen
+        this.inicio.setVisible(false);
+        this.excluiCadastro.setVisible(false);
+        this.parentPanel.add(this.pesquisa, BorderLayout.CENTER);
+        this.pesquisa.setPreferredSize(new Dimension(380, 200));
+        this.pesquisa.setVisible(true);
+        this.parentPanel.revalidate();
+        this.parentPanel.repaint();
+        pack();
+    }//GEN-LAST:event_smnPesquisarMouseClicked
+
+    private void smnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_smnAlterarMouseClicked
+        // TODO add your handling code here:
+        TelaAlterar telaAlterar = new TelaAlterar();
+        telaAlterar.setVisible(true);
+    }//GEN-LAST:event_smnAlterarMouseClicked
+
+    public void resultadoPesquisa() {
+        this.inicio.setVisible(false);
+        this.excluiCadastro.setVisible(false);
+        this.pesquisa.setVisible(false);
+        this.parentPanel.add(this.pesquisaRes, BorderLayout.CENTER);
+        this.pesquisaRes.setPreferredSize(new Dimension(380, 200));
+        this.pesquisaRes.setVisible(true);
+        this.parentPanel.revalidate();
+        this.parentPanel.repaint();
+        pack();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar mnuMenuPrincipal;
