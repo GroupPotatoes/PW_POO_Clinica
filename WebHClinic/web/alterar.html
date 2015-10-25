@@ -28,11 +28,11 @@
                     <br>
 
                    <p> CPF:</p>
-                    <input type="text"placeholder="Apenas números" name="cpf" id="cpf" maxlength="11" required value >
+                    <input type="text" placeholder="Apenas números" name="cpf" id="cpf" maxlength="11" required value >
                     <br>
 
                    <p> CEP: </p>
-                    <input type="text"placeholder="Apenas números" name="cep" maxlength="7" id="cep" required value >   
+                    <input type="text" placeholder="Apenas números" name="cep" maxlength="7" id="cep" required value >   
                     <br>
 
                     <p>Número:</p>
@@ -40,44 +40,45 @@
                     <br>
 
                    <p> Complemento</p>
-                    <input type="text"placeholder="Se nenhum, digite 0" name="complement" id="complement" required value >
+                    <input type="text" placeholder="Se nenhum, digite 0" name="complement" id="complement" required value >
                     <br>
                     <br>
 
                     <p>Telefone:</p>
                     <table>                    
                         <tr class="option_radio"> <!--Classe com estilização das opções de radioButtons-->
-                            <td><input type="radio" name="phone_type" id="phone_type" value="Casa" checked>Residencial</td>
-                            <td><input type="radio" name="phone_type" id="phone_type" value="Celular">Celular</td>
-                            <td><input type="radio" name="phone_type" id="phone_type" value="Trabalho">Trabalho</td>
+                            <td><input type="radio" name="phone_type" id="phone_type" value="1" checked>Residencial</td>
+                            <td><input type="radio" name="phone_type" id="phone_type" value="2">Celular</td>
+                            <td><input type="radio" name="phone_type" id="phone_type" value="3">Trabalho</td>
                         </tr>
                         <tr>
-                            <td><input type="text" size="2" maxlength="2"placeholder="xx" name="area_code" id="area_code"></td>
-                            <td><input type="text" Size="9" maxlength="10"placeholder="xxxxxxxx" name="phone_number" id="phone_number" pattern="[0-9]{4,6}[0-9]{3,4}$"></td>
+                            <td><input type="text" size="2" maxlength="2" placeholder="xx" name="area_code" id="area_code"></td>
+                            <td><input type="text" Size="9" maxlength="10" placeholder="xxxxxxxx" name="phone_number" id="phone_number" pattern="[0-9]{4,6}[0-9]{3,4}$"></td>
                         </tr>
                     </table>
                     <br>
 
                     <p>Novo login:</p>
-                    <input type="text" maxlength="6"placeholder="Digite seu novo login..." name="login" id="login" required value >
+                    <input type="text" maxlength="6" placeholder="Digite seu novo login..." name="login" id="login" required value >
                     <br>
 
                     <p>Nova senha:</p>
-                    <input type="password" maxlength="6" placeholder="Senha"placeholder="" name="senha1" id="senha1" required value >
+                    <input type="password" maxlength="6" placeholder="Senha" name="password" id="password" required value >
                     <br>
 
-                    <p>Repita a senha:</p>
-                    <input type="password" maxlength="6" placeholder="Confirme Senha"placeholder="" name="senha2" id="senha2" required value >
+                   <!-- <p>Repita a senha:</p>
+                    <input type="password" maxlength="6" placeholder="Confirme Senha" name="senha2" id="senha2" required value >
                     <br><br>
-<!--
+
                     <p> Login: </p>
                     <input type="text"placeholder="" name="login" id="login" text="lala" readonly> <br>
                     <p>Senha:<br></p>
                     <input type="password"placeholder="" name="senha" id="senha" text="lala" readonly>    
                     <br><br>-->
 
-                    <button class="but" type="submit" value="Cadastrar">Cadastrar</button>
-                </fields>
+                    <input type="submit" value="Cadastrar">
+                </fieldset>
+             </form>
         </div>
     </body>
 </html>

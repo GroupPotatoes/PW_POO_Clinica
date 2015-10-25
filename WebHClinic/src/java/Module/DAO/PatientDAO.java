@@ -50,17 +50,31 @@ public class PatientDAO {
          int idPhoneType, int idPatient, int areaCode, String number
          */
 
-        ///TODO: Verificar se todos os campos existem no form
-        String commandToInsertPatient = String.format("INSERT INTO [bdci17].[bdci17].[patient] (name, cpf, cep, number, complement, login, password) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');",
-                patient.getName(), patient.getCpf(), patient.getCep(), patient.getNumber(), patient.getComplement(), patient.getLogin(), patient.getPassword());
-
-        String commandToInsertPhone = String.format("INSERT INTO [bdci17].[bdci17].[phone_number](id_phone_type, id_patient, area_code, number) VALUES (%d, %d, %d, '%s');",
-                phoneNumber.getIdPhoneType(), phoneNumber.getIdPatient(), phoneNumber.getAreaCode(), phoneNumber.getNumber());
-
-        Statement st = this.connection.getConnection().createStatement();
-        this.connection.prepareStatement(commandToInsertPatient);
-        this.connection.prepareStatement(commandToInsertPhone);
         try{
+            String commandToInsertPatient = String.format("INSERT INTO [bdci17].[bdci17].[patient] "
+                    + "(name, cpf, cep, number, complement, login, password) VALUES "
+                    + "('%s', '%s', '%s', '%s', '%s', '%s', '%s');",
+                    patient.getName(), patient.getCpf(), patient.getCep(), patient.getNumber(), patient.getComplement(), patient.getLogin(), patient.getPassword());
+
+            this.connection.prepareStatement(commandToInsertPatient);            
+            this.connection.executeUpdate();
+            this.connection.commit();
+            
+            String id = String.format("SELECT id FROM [bdci17].[bdci17].[patient] where login='%s' and password='%s'",
+                    patient.getLogin(), patient.getPassword());
+            
+            this.connection.prepareStatement(id);   
+            ResultSet rs = this.connection.executeQuery();
+            int idd=0;
+            if(rs.next()){
+                idd=rs.getInt("id");
+            }
+            
+            String commandToInsertPhone = String.format("INSERT INTO [bdci17].[bdci17].[phone_number](id_phone_type, id_patient, area_code, phone_number) VALUES (%d, %d, %d, '%s');",
+                    phoneNumber.getIdPhoneType(), idd, phoneNumber.getAreaCode(), phoneNumber.getNumber());
+
+            
+            this.connection.prepareStatement(commandToInsertPhone);    
             this.connection.executeUpdate();
             this.connection.commit(); //envia de fato o update para o banco
             return true;
@@ -138,7 +152,7 @@ public class PatientDAO {
         while (resultSet.next()) {
             //TODO: Verificar o tipo Data.
             //String name, String cep, String rg, Date birthDate, String cpf, String number, String complement, String login, String password
-            Module.DAO.Patient patient = new Patient(
+            Patient patient = new Patient(
                     resultSet.getString("name"),
                     resultSet.getString("cep"),
                     resultSet.getString("cpf"),

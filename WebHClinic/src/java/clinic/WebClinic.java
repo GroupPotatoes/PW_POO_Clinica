@@ -5,16 +5,8 @@
  */
 package clinic;
 
-import Module.DAO.PatientDAO;
 import java.sql.SQLException;
-import Module.Controle;
-import Module.DAO.Employee;
-import Module.DAO.Patient;
-import Module.DAO.PhoneNumber;
-import Module.DAO.PhoneType;
-import Module.DAO.Role;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import Module.DAO.*;
 
 /**
  *
@@ -61,44 +53,40 @@ public class WebClinic {
      * @param cpf
      * @param cep Patient's postal code
      * @param number Patient's house number
-     * @param complement Patient's complement, optional
+     * @param comp Patient's complement, optional
      * @param phone_type Patient's phone type
      * @param phone_number Patient's phone number
      * @param area_code Patient's phone area code
      * @return a boolean that confirms if registration was completed or not
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
      */
     public static boolean registerValidate(String login, String senha, String name,
-            String cpf, String rg, String cep, String number,  String comp, String phone_type,
-            String phone_number, String area_code, String date) throws ClassNotFoundException, SQLException, Exception {
-        Module.DAO.PatientDAO consultor = new PatientDAO();
-        if(!consultor.ExistLogin(login, senha)){
-            //criar data a partir de String 
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-            df.setLenient(false);
-            Date dt = df.parse(date);
-            
+            String cpf, String cep, String number, String comp, String phone_type,
+            String phone_number, String area_code) throws ClassNotFoundException, SQLException, Exception {
+        PatientDAO consultor = new PatientDAO();
+        try{
+         
             //Criando um Paciente
-            Module.DAO.Patient paciente = new Patient(name, cep, cpf, number, comp, login, senha);
+            Patient paciente = new Patient(name, cep, cpf, number, comp, login, senha);
             
             //Criando o telefone
-            Module.DAO.PhoneType phonetype = new PhoneType(phone_type);
-            phonetype.setName(phone_type);
-            
-            //TODO: QUE PORRA SER ISSO DE ID DE ONDE PEGO DEUS NÃO FAZ SENTIDO
-            phonetype.setId(1);
-            paciente.setId(1);
-            
-            Module.DAO.PhoneNumber phoneNumber = new PhoneNumber(phonetype.getId(), paciente.getId(), 
+            PhoneType phonetype = new PhoneType(phone_type);
+            phonetype.setId(Integer.parseInt(phone_type));
+                                  
+            PhoneNumber phoneNumber = new PhoneNumber(phonetype.getId(), 1, 
                     Integer.parseInt(area_code), phone_number);
             
             //Inserindo no BD
             consultor.InsertPatient(paciente, phoneNumber);
             
             return true;
+        }catch(Exception e){
+            e.getMessage();
         }
         return false;
     }
-
+    
     public static void main(String[] args) {
 
     }

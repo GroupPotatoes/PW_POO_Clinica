@@ -32,8 +32,6 @@ public class Patient {
         private String complement;
         private String login;
         private String password;
-        private String rg;
-        private Date birthDate;
         
     // </editor-fold>
       

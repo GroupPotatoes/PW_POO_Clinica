@@ -47,7 +47,7 @@ public class Alterar extends HttpServlet {
             String phone_number = request.getParameter("phone_number");
             String area_code = request.getParameter("area_code");
             String login = request.getParameter("login");
-            String senha = request.getParameter("senha");
+            String senha = request.getParameter("password");
             if(alterando(login, senha, name, cpf, cep, number, 
                 complement, phone_type, 
                 phone_number, area_code)){
@@ -93,8 +93,8 @@ public class Alterar extends HttpServlet {
         try{
             
             //criando o paciente
-            Module.DAO.Patient patient = new Patient(ConnectionSetup.id, name, cep, cpf, number, comp, login, senha);
-            Module.DAO.PatientDAO patientDAO = new PatientDAO();
+            Patient patient = new Patient(ConnectionSetup.id, name, cep, cpf, number, comp, login, senha);
+            PatientDAO patientDAO = new PatientDAO();
             
             //inserindo
             patientDAO.UpdatePatient(patient);

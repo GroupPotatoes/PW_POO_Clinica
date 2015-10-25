@@ -6,6 +6,7 @@
 package clinic;
 
 import Module.Controle;
+import Module.DAO.PatientDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -26,7 +27,8 @@ import javax.servlet.http.HttpServletResponse;
 public class ValidateRegistration extends HttpServlet {
 
     protected String login, senha, nome;
-    protected Module.DAO.PatientDAO patientDAO;
+
+    protected PatientDAO patientDAO;
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,6 +38,7 @@ public class ValidateRegistration extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, Exception {
@@ -43,8 +46,6 @@ public class ValidateRegistration extends HttpServlet {
         String name = request.getParameter("name");
         this.nome=name;
         String cpf = request.getParameter("cpf");
-        String rg=request.getParameter("rg");
-        String date=request.getParameter("date");
         String cep = request.getParameter("cep");
         String number = request.getParameter("number");
         String complement = request.getParameter("complement");
@@ -52,9 +53,8 @@ public class ValidateRegistration extends HttpServlet {
         String phone_number = request.getParameter("phone_number");
         String area_code = request.getParameter("area_code");
         this.generateLoginPassword();
-        if(WebClinic.registerValidate(this.login, this.senha, this.nome, cpf, rg, cep, number, 
-                complement, phone_type, 
-                phone_number, area_code, date)) {
+        if(WebClinic.registerValidate(this.login, this.senha, this.nome, cpf, cep, number, 
+                complement, phone_type, phone_number, area_code)) {
             out.println("<html>"
                             + "<head>"
                                 + "<link rel=\"stylesheet\" href=\"style.css\" type=\"text/css\"/>"
@@ -92,7 +92,7 @@ public class ValidateRegistration extends HttpServlet {
                             + "<BODY>"
                                 + "<form id=\"page-container\">"
                                     + "<p>Erros no seu cadastro!<br> <br>"
-                                    + "Favor <a href=\"registrer.html\">voltar à tela de cadastro</a> e reinicie"
+                                    + "Favor <a href=\"register.html\">voltar à tela de cadastro</a> e reinicie"
                                     + " o processo.</p>"
                                 + "</form>"
                             + "</BODY>"
@@ -100,7 +100,7 @@ public class ValidateRegistration extends HttpServlet {
         }
     }
 
-    protected void generateLoginPassword() throws SQLException{
+    protected void generateLoginPassword() throws SQLException, ClassNotFoundException{
         //criando os vetores de login e senha de acordo com o tamanho dos caracteres
         char    l[] = new char[Controle.NUM_CARACTERES_LOGIN.getValor()],
                 s[] = new char[Controle.NUM_CARACTERES_SENHA.getValor()];     
@@ -139,15 +139,15 @@ public class ValidateRegistration extends HttpServlet {
             this.login=String.copyValueOf(l);
             this.senha=String.copyValueOf(s);
         
+            //execução da lógica enquanto o login e a senha não forem exclusivos
+            this.patientDAO = new PatientDAO();
         }
-        //execução da lógica enquanto o login e a senha não forem exclusivos
-        while(!exclusive(login, senha));
+        while(!exclusive(this.login, this.senha));
     }
     
     protected boolean exclusive(String login, String senha) throws SQLException{
-//        if(patientDAO.ExistLogin(login, senha))
-//            return false;
-        return true;
+        boolean exclusive = !(patientDAO.ExistLogin(login, senha));
+        return exclusive;
     }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
