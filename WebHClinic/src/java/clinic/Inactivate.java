@@ -43,6 +43,7 @@ public class Inactivate extends HttpServlet {
         PatientDAO patient = new PatientDAO();
         if(patient.DisablePatient(ConnectionSetup.id)) {
             RequestDispatcher rd = request.getRequestDispatcher("inativo.html");
+            request.setCharacterEncoding("UTF-8");
             rd.forward(request, response);
             patient.FecharConexao();
         }

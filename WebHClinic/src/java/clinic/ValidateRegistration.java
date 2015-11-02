@@ -43,6 +43,7 @@ public class ValidateRegistration extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, Exception {
         PrintWriter out = response.getWriter();
+        response.setContentType("text/html; charset=UTF-8");
         String name = request.getParameter("name");
         this.nome=name;
         String cpf = request.getParameter("cpf");
@@ -63,6 +64,9 @@ public class ValidateRegistration extends HttpServlet {
                                 + "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">"                    
                             + "</head>"
                             + "<BODY>"
+                            + "<nav class=\"navbar navbar-fixed-top\"><ul class=\"topMenu\">\n" 
+                               + "<li> <a href=\"index.html\" class=\"current\">Home</a>\n" 
+                               + "</li></ul></nav>"
                                 + "<form id=\"page-container\">"
                                     + "<p>Parabéns! Seu cadastro foi efetuado com sucesso! <br>"
                                     + "Veja abaixo e anote seu login e sua senha:</p>"
@@ -82,6 +86,7 @@ public class ValidateRegistration extends HttpServlet {
                         + "</html>");
         }
         else {
+            request.setCharacterEncoding("UTF-8");
             out.println("<html>"
                             + "<head>"
                                 + "<link rel=\"stylesheet\" href=\"style.css\" type=\"text/css\"/>"
