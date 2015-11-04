@@ -10,7 +10,7 @@ package Module.DAO;
  *
  * @author William
  */
-public class HealthProfessionalsHasSpecializationDAO {
+public class HealthProfessionalsHasSpecialization {
      
     /*[id_health_professionals] [int] NOT NULL,
 	[id_specialization] [int] NOT NULL*/

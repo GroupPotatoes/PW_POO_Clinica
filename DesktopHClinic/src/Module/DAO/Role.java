@@ -21,10 +21,17 @@ public class Role {
     private int id;
     private String name;
     
-    
-    
     // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="Contructions">
+    
+    public Role(int id, String name) throws Exception  {
+        this.setId(id);
+        this.setName(name);
+    }
+    
+    // </editor-fold>
+    
     // <editor-fold defaultstate="collapsed" desc="Getter">
     
         public int getId() {
@@ -52,5 +59,14 @@ public class Role {
             this.name = name;
         }
     
+    // </editor-fold>
+
+    // <editor-fold defaultstate="collapsed" desc="Methods">
+
+    public String toString()
+    {
+          return this.name;
+    }
+        
     // </editor-fold>
 }

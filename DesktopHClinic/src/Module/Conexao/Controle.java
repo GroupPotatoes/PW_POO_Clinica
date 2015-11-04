@@ -1,4 +1,4 @@
-package Module;
+package Module.Conexao;
 
 /**
  * Enum que controla alguns valores existentes nas regras de negócio da nossa aplicação.
@@ -26,20 +26,22 @@ public enum Controle {
      */
     NUM_CARACTERES_LOGIN (6),
     
+    
+    ///TODO: alterei os valores porque estavam vindo id invalidos ou repetidos.
     /**
      * Valor do RoleId de um Funcionário do tipo Administrador de RH
      */
-    ROLE_ID_ADMINISTRADOR (0),
+    ROLE_ID_ADMINISTRADOR (1),
     
     /**
      * Valor do RoleId de um Funcionário do tipo Recepcionista
      */
-    ROLE_ID_RECEPCIONISTA (1),
+    ROLE_ID_RECEPCIONISTA (2),
     
     /**
      * Valor do RoleId de um Funcionário do tipo Secretária
      */
-    ROLE_ID_SECRETARIA (0);    
+    ROLE_ID_SECRETARIA (3);    
     
     protected int valor;
     

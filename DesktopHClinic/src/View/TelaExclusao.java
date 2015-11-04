@@ -10,6 +10,7 @@ import Module.DAO.RegisteredEmployeeDAO;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -38,6 +39,8 @@ public class TelaExclusao extends javax.swing.JPanel {
         btnExcluir = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
+        setMaximumSize(new java.awt.Dimension(300, 300));
+        setPreferredSize(new java.awt.Dimension(300, 300));
         setRequestFocusEnabled(false);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -45,7 +48,7 @@ public class TelaExclusao extends javax.swing.JPanel {
 
         lblEnunciado.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         lblEnunciado.setForeground(new java.awt.Color(153, 51, 0));
-        lblEnunciado.setText("<html><center>Seu cadastro será inativado. </center><br> <center>Ele estará disponível apenas para consulta.</center></html>");
+        lblEnunciado.setText("<html><center>O cadastro será inativado. </center><br> <center>Ele estará disponível apenas para consulta.</center></html>");
 
         btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -66,25 +69,25 @@ public class TelaExclusao extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
+                        .addGap(10, 10, 10)
                         .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jLabel1)))
-                .addContainerGap(34, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblEnunciado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblEnunciado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(lblEnunciado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -92,18 +95,20 @@ public class TelaExclusao extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExcluir)
                     .addComponent(btnCancelar))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        lblEnunciado.getAccessibleContext().setAccessibleName("<html><center>O cadastro será inativado. </center><br> <center>Ele estará disponível apenas para consulta.</center></html>");
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         try {
                 RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO();
-                if(registeredEmployeeDAO.DisableregisteredEmployee(ConnectionSetup.id)) {
-                    lblEnunciado.setText("<html><center>Seu cadastro foi inativado.</center><br>"
-                        + "<center> Procure um administrador do sistema para reativá-lo.</center></html>");
+                if(registeredEmployeeDAO.DisableregisteredEmployee(ConnectionSetup.currentEmployeeSelect.getId())) {
+                    JOptionPane.showMessageDialog(null, "<html><center>Seu cadastro foi inativado.</center><br>"
+                        + "<center> Procure um administrador do sistema para reativá-lo.</center></html>");    
                     
-        
+                    this.setVisible(false);
                 }
                 else
                 {

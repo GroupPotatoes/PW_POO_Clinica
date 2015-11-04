@@ -114,7 +114,12 @@ public class RegisteredEmployeeDAO {
          
         //String commandToExecute = String.format("SELECT [registered_employee].[id] FROM [bdci17].[bdci17].[registered_employee] JOIN [health_professionals] ON [registered_employee].[id] = [health_professionals].[id_registered_employee] JOIN [employee] ON [employee].[id_registered_employee] = [registered_employee].[id] WHERE [registered_employee].[inactive] = 0 AND ([registered_employee].[login]='%s' OR [health_professionals].[id_class]='%s') AND [registered_employee].[password]='%s';", login, login, password);     
         
-        String commandToExecute = String.format("SELECT [registered_employee].[id] FROM [bdci17].[bdci17].[registered_employee] WHERE [inactive]=0 AND [login]='%s' AND [password]='%s';", login, password);
+        //String commandToExecute = String.format("SELECT [registered_employee].[id] FROM [bdci17].[bdci17].[registered_employee] WHERE [inactive]=0 AND [login]='%s' AND [password]='%s';", login, password);
+       
+        String commandToExecute = String.format("SELECT registered_employee.id FROM registered_employee\n" +
+                                                    "JOIN employee ON employee.id_registered_employee = registered_employee.id\n" +
+                                                        "WHERE inactive=0 AND login = '%s' AND password = '%s' AND employee.role_id = 1;", login, password);
+        
         ///TODO: retornar ID para o ConnectSetup.id
         Statement st = this.connection.createStatement();
         ResultSet resultSet = st.executeQuery(commandToExecute);
@@ -199,7 +204,7 @@ public class RegisteredEmployeeDAO {
     public boolean UpdateEmployee(RegisteredEmployee registeredEmployee, Employee employee) throws SQLException{
         
         String commandToUpdateEmployee = String.format("UPDATE [bdci17].[bdci17].[employee] SET [role_id]=%d WHERE [id_registered_employee]=%d;",
-        employee.getIdRole(), employee.getidRegisteredEmployee());
+        employee.getIdRole(), registeredEmployee.getId());
         
         Statement st = this.connection.createStatement();
         return st.executeUpdate(commandToUpdateEmployee) > 0 && UpdateregisteredEmployee(registeredEmployee);
@@ -215,7 +220,7 @@ public class RegisteredEmployeeDAO {
         
         List<RegisteredEmployee> registeredEmployeeList = new ArrayList<RegisteredEmployee>();
         //LIKE '%%s%'; = pesquisa a palavra estando no começo, meio ou final 
-        String commandToExecute = "SELECT * FROM [bdci17].[bdci17].[registered_employee] WHERE [name] LIKE '%"+searchWord+"%';";
+        String commandToExecute = "SELECT * FROM [bdci17].[bdci17].[registered_employee] WHERE [inactive] = 0 AND [name] LIKE '%"+searchWord+"%';";
         
         Statement st = this.connection.createStatement();
         ResultSet resultSet = st.executeQuery(commandToExecute);
@@ -229,6 +234,42 @@ public class RegisteredEmployeeDAO {
         return registeredEmployeeList;
     }
 
+    public List<RegisteredEmployee> SelectAllregisteredEmployee() throws SQLException, Exception   {
+        
+        List<RegisteredEmployee> registeredEmployeeList = new ArrayList<RegisteredEmployee>();
+       
+        String commandToExecute = String.format("SELECT * FROM [bdci17].[bdci17].[registered_employee] WHERE [registered_employee].[inactive] = 0 AND [registered_employee].[id] != %d;", ConnectionSetup.id);
+        
+        Statement st = this.connection.createStatement();
+        ResultSet resultSet = st.executeQuery(commandToExecute);
+        while(resultSet.next())
+        {
+            //int id, String name, String password, String login
+           RegisteredEmployee employee = new RegisteredEmployee(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getString("password"), resultSet.getString("login"));
+           registeredEmployeeList.add(employee);
+        }
+                  
+        return registeredEmployeeList;
+    }
+    
+    public List<Role> SelectAllRole() throws SQLException, Exception  {
+        
+        List<Role> roles = new ArrayList<Role>();
+       
+        String commandToExecute = String.format("SELECT * FROM [bdci17].[bdci17].[role];");
+        
+        Statement st = this.connection.createStatement();
+        ResultSet resultSet = st.executeQuery(commandToExecute);
+        while(resultSet.next())
+        {
+            //id, name
+           Role role = new Role(resultSet.getInt("id"), resultSet.getString("name"));
+           roles.add(role);
+        }
+                  
+        return roles;
+    }
+    
     public void FecharConexao()  {
         try{
             this.connection.close();
@@ -238,4 +279,5 @@ public class RegisteredEmployeeDAO {
             System.out.println("Problemas ao fechar a conexão: " + e);
         }  
     }
+
 }
