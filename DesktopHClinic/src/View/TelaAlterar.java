@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import Module.DAO.ConnectionSetup;
@@ -14,10 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author 14643498
- */
 public class TelaAlterar extends javax.swing.JFrame {
 
     public TelaAlterar() {
@@ -174,7 +165,7 @@ public class TelaAlterar extends javax.swing.JFrame {
                 //int idRegisteredEmployee, int idRole
                 int index = this.cbbTipo.getSelectedIndex();
                 Employee employee = new Employee(((Role)this.cbbTipo.getItemAt(index)).getId());
-                RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO();
+                RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
                 if(registeredEmployeeDAO.UpdateEmployee(registeredEmployee, employee))
                 {
                     JOptionPane.showMessageDialog(null, "Perfil foi alterado com sucesso!");
@@ -208,7 +199,7 @@ public class TelaAlterar extends javax.swing.JFrame {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
        
         try {
-            RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO();
+            RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
             
             for(Role role : registeredEmployeeDAO.SelectAllRole())
                  this.cbbTipo.addItem(role);

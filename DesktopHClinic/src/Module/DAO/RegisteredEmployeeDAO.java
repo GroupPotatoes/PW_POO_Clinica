@@ -1,44 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Module.DAO;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author William
- */
 public class RegisteredEmployeeDAO {
     
     private Connection connection;
-    
-    public RegisteredEmployeeDAO() throws ClassNotFoundException{
-        try {
-                /*Criando conexão.*/
-                
-                this.connection = DriverManager.getConnection("jdbc:sqlserver://"+ConnectionSetup.serverName+":"+ConnectionSetup.port+
-                        ";databasename="+ConnectionSetup.database+";", ConnectionSetup.login, ConnectionSetup.password);
-
-                if(!connection.isValid(0))
-                    System.err.println(("Conexão inválida"));
-            } 
-            catch (SQLException ex) {
-                Logger.getLogger(RegisteredEmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }   
+   
+    public RegisteredEmployeeDAO(Connection connection){
+        this.connection = connection;
     }
-
+    
     /**
      * Método que insere na tabela registered_employee
      * @param registeredEmployee
@@ -78,6 +54,8 @@ public class RegisteredEmployeeDAO {
         return st.executeUpdate(commandToInsertEmployee) > 0;
     }
     
+    
+        //TODO: mudar esta funcao para o dao de HP
     /**
      * Método que insere na tabela HealthProfessionals
      * @param registeredEmployee
@@ -85,22 +63,30 @@ public class RegisteredEmployeeDAO {
      * @return true se inseriu dados e false caso não tenha inserido.
      * @throws SQLException 
      */
-    public boolean InsertHealthProfessionals(RegisteredEmployee registeredEmployee, HealthProfessionals healthProfessionals) throws SQLException{
-         /*
+    public boolean InsertHealthProfessionals(RegisteredEmployee registeredEmployee, HealthProfessionals healthProfessionals, int idSpecialization ) throws SQLException, Exception{
+        
+        int healthProfessionalsID = 0;
+        boolean inserted = true;
+        
         int employeeID = InsertregisteredEmployee(registeredEmployee);
+        inserted = inserted && employeeID > 0;
         
         String commandToInsertHealthProfessional = String.format("INSERT INTO health_professionals (id_registered_employee, cpf, id_class) VALUES (%d, '%s', '%s');", 
         employeeID, healthProfessionals.getCPF(),healthProfessionals.getIDClass());
         
         this.connection.prepareStatement(commandToInsertHealthProfessional);
-        int healthProfessionalID =  this.connection.executeQuery(commandToInsertHealthProfessional).getInt("id");
+        Statement st = this.connection.createStatement();
+        inserted = inserted && st.executeUpdate(commandToInsertHealthProfessional) > 0;
         
-        //String commandToInsertSpecialization = String.format("INSERT INTO specialization (id, name, id_professions) VALUES (%d, '%s', %d);",
-        //specialization.getId(), specialization.getNome(), healthProfessionalID);
+        ResultSet resultSet = st.executeQuery("SELECT id FROM [bdci17].[bdci17].[registered_employee] WHERE [login]='"+registeredEmployee.getLogin()+"';");
+        if(resultSet.next())
+            healthProfessionalsID = resultSet.getInt("id");
         
-        return employeeID > 0; &&  healthProfessionalID > 0; && ExecuteCommand(commandToInsertSpecialization).getRow() > 0;
-          */
-        return false;
+        HealthProfessionalsDAO hpDAO = new HealthProfessionalsDAO(ConnectionSetup.connection);
+        inserted = inserted && hpDAO.InsertHealthProfessionalsHaveSpecialization(new HealthProfessionalsHaveSpecialization(healthProfessionalsID, idSpecialization));
+        
+        return inserted;
+        //return employeeID > 0; &&  healthProfessionalID > 0; && ExecuteCommand(commandToInsertSpecialization).getRow() > 0;
     }
      
     /**
@@ -172,26 +158,20 @@ public class RegisteredEmployeeDAO {
         
     }
     
-    public boolean UpdateHealthProfessionals(RegisteredEmployee registeredEmployee, HealthProfessionals healthProfessionals, Specialization specialization) throws SQLException{
+    //TODO: mudar esta funcao para o dao de HP
+    public boolean UpdateHealthProfessionals(RegisteredEmployee registeredEmployee, HealthProfessionals healthProfessional) throws SQLException{
         
-       /* boolean wasUpdated = true;
+        boolean wasUpdated = true;
         
         wasUpdated = wasUpdated && UpdateregisteredEmployee(registeredEmployee);
         
-        String commandToUpdateHealthProfessionals = String.format("UPDATE health_professionals SET cpf='%s', id_class='%s' WHERE id=%d;",
-        healthProfessionals.getCPF(), healthProfessionals.getClass(), ConnectionSetup.id);
-        
-        this.connection.prepareStatement(commandToUpdateHealthProfessionals);
-        //wasUpdated = wasUpdated &&  this.connection.execute(commandToUpdateHealthProfessionals);   
+        String commandToUpdateHealthProfessionals = String.format("UPDATE health_professionals SET cpf='%s', id_class='%s' WHERE id_registered_employee=%d;",
+        healthProfessional.getCPF(), healthProfessional.getIDClass(), ConnectionSetup.currentEmployeeSelect.getId());
+        Statement st = this.connection.createStatement();
+        //this.connection.prepareStatement(commandToUpdateHealthProfessionals);
+        wasUpdated = wasUpdated && (st.executeUpdate(commandToUpdateHealthProfessionals) > 0);   
         
         return wasUpdated;
-        
-        //String commandToUpdateSpecialization = String.format("UPDATE specialization SET id=%d, name='%s' WHERE id=%d;",
-        //specialization.getId(), specialization.getNome(), specialization.getIdProfessions());
-                
-        //wasUpdated = wasUpdated && ExecuteCommand(commandToUpdateSpecialization).getRow() > 0;  
-               */
-        return false;
     }
     
     /**
@@ -232,13 +212,37 @@ public class RegisteredEmployeeDAO {
         }
         
         return registeredEmployeeList;
-    }
-
-    public List<RegisteredEmployee> SelectAllregisteredEmployee() throws SQLException, Exception   {
+    }  
+    
+    public List<RegisteredEmployee> SelectAllEmployee() throws SQLException, Exception   {
         
         List<RegisteredEmployee> registeredEmployeeList = new ArrayList<RegisteredEmployee>();
        
-        String commandToExecute = String.format("SELECT * FROM [bdci17].[bdci17].[registered_employee] WHERE [registered_employee].[inactive] = 0 AND [registered_employee].[id] != %d;", ConnectionSetup.id);
+        String commandToExecute = String.format("SELECT * " +
+                                                " FROM [bdci17].[bdci17].[registered_employee] " +
+                                                " JOIN [employee] ON [employee].[id_registered_employee] = [registered_employee].[id] " +
+                                                " WHERE [registered_employee].[inactive] = 0 AND [registered_employee].[id] != %d;", ConnectionSetup.id);
+        
+        Statement st = this.connection.createStatement();
+        ResultSet resultSet = st.executeQuery(commandToExecute);
+        while(resultSet.next())
+        {
+            //int id, String name, String password, String login
+           RegisteredEmployee employee = new RegisteredEmployee(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getString("password"), resultSet.getString("login"));
+           registeredEmployeeList.add(employee);
+        }
+                  
+        return registeredEmployeeList;
+    }
+    
+    public List<RegisteredEmployee> SelectAllHealthProfessionals() throws SQLException, Exception   {
+        
+        List<RegisteredEmployee> registeredEmployeeList = new ArrayList<RegisteredEmployee>();
+       
+        String commandToExecute = String.format("SELECT * " +
+                                                "FROM [bdci17].[bdci17].[registered_employee] " +
+                                                "JOIN [health_professionals] ON [health_professionals].[id_registered_employee] = [registered_employee].[id] " +
+                                                "WHERE [registered_employee].[inactive] = 0 AND [registered_employee].[id] != %d;", ConnectionSetup.id);
         
         Statement st = this.connection.createStatement();
         ResultSet resultSet = st.executeQuery(commandToExecute);
@@ -270,14 +274,4 @@ public class RegisteredEmployeeDAO {
         return roles;
     }
     
-    public void FecharConexao()  {
-        try{
-            this.connection.close();
-            System.out.println("Conexão fechada.");
-        }catch (SQLException e) {
-            // se ocorrerem erros na conexão
-            System.out.println("Problemas ao fechar a conexão: " + e);
-        }  
-    }
-
 }

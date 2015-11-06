@@ -83,9 +83,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;O cadastro ser&#xe1; inativado. &lt;/center&gt;&lt;br&gt; &lt;center&gt;Ele estar&#xe1; dispon&#xed;vel apenas para consulta.&lt;/center&gt;&lt;/html&gt;"/>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;O cadastro ser&#xe1; inativado. &lt;/center&gt;&lt;br&gt; &lt;center&gt;Ele estar&#xe1; dispon&#xed;vel apenas para consulta.&lt;/center&gt;&lt;/html&gt;"/>
-      </AccessibilityProperties>
     </Component>
     <Component class="javax.swing.JButton" name="btnExcluir">
       <Properties>

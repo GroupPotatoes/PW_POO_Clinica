@@ -84,15 +84,14 @@
               <Component id="lblCadastro" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="lblNome" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblNome1" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="lblNome" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="txtNome" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="cbbTipo" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cbbTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNome1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -124,7 +123,7 @@
           <Font name="Arial" size="14" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value=":: Cadastro ::"/>
+        <Property name="text" type="java.lang.String" value=":: Cadastro de Funcion&#xe1;rio Administrativo ::"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblNome">

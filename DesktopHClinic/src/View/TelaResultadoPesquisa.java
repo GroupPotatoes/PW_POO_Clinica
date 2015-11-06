@@ -5,6 +5,7 @@
  */
 package View;
 
+import Module.DAO.ConnectionSetup;
 import Module.DAO.RegisteredEmployeeDAO;
 import Module.DAO.RegisteredEmployee;
 import java.sql.SQLException;
@@ -29,7 +30,7 @@ public class TelaResultadoPesquisa extends javax.swing.JFrame {
         
         try {
             
-            RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO();
+            RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
             List<RegisteredEmployee> registeredEmployeeList = registeredEmployeeDAO.SearchregisteredEmployee(TelaPesquisa.itemPesquisado);
             
             if(registeredEmployeeList.size() > 0){

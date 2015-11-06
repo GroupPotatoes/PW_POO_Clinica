@@ -1,28 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Module.DAO;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
-/**
- *
- * @author William
- */
+
 public class ConnectionSetup {
     
-    /*
-    ("jdbc:sqlserver://FS5:1433;databasename=bdci17;", "bdci17", "ert985")
-    */
-    
-    public static String serverName="FS5";
-    public static String port="1433";
-    public static String database="bdci17";
-    public static String login="bdci17";
-    public static String password="ert985";
-    public static int id=0;
-    public static RegisteredEmployee currentEmployeeSelect = null;
+    public static Connection connection;
+    public static  int id=0;
+    public static int id_hp=0;
+    public static  RegisteredEmployee currentEmployeeSelect = null;
+    private String serverName="FS5";
+    private String port="1433";
+    private String database="bdci17";
+    private String login="bdci17";
+    private String password="ert985";
   
+    public ConnectionSetup() throws SQLException{
+        
+        this.connection = DriverManager.getConnection("jdbc:sqlserver://"+this.serverName+":"+this.port+
+                        ";databasename="+this.database+";", this.login, this.password);
+
+          if(!connection.isValid(0))
+                    System.err.println(("Conexão inválida"));
+    }
     
+    public void FecharConexao()  {
+        try{
+            this.connection.close();
+            System.out.println("Conexão fechada.");
+        }catch (SQLException e) {
+            // se ocorrerem erros na conexão
+            System.out.println("Problemas ao fechar a conexão: " + e);
+        }  
+    }
 }

@@ -1,6 +1,7 @@
 package View;
 
 import Module.Conexao.Controle;
+import Module.DAO.ConnectionSetup;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.util.Random;
@@ -8,7 +9,6 @@ import Module.DAO.RegisteredEmployee;
 import Module.DAO.Employee;
 import Module.DAO.RegisteredEmployeeDAO;
 import Module.DAO.Role;
-import java.awt.event.ItemListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -66,7 +66,7 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         lblCadastro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblCadastro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCadastro.setText(":: Cadastro ::");
+        lblCadastro.setText(":: Cadastro de Funcionário Administrativo ::");
 
         lblNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblNome.setText("Seu nome");
@@ -156,14 +156,13 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addComponent(lblCadastro)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblNome)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblNome1))
+                    .addComponent(lblNome)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(cbbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNome1))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblResultados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -195,7 +194,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             try {
                 
                 //criando meu manipulador do BD                
-                this.employeeDAO = new RegisteredEmployeeDAO();
+                this.employeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
                 
                 //vou gerar logins enquanto forem exclusivos
                 this.geraLoginSenha();
@@ -246,7 +245,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             
-            RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO();
+            RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
             
             for(Role role : registeredEmployeeDAO.SelectAllRole())
                  this.cbbTipo.addItem(role);

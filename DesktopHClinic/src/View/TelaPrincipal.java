@@ -1,24 +1,13 @@
 package View;
 
-import Module.DAO.RegisteredEmployeeDAO;
-
-/**
- * Classe que contém todas as funcionalidades da Tela Principal.
- * @author Maiara Rodrigues
- */
 public class TelaPrincipal extends javax.swing.JFrame {
     
-    /**
-     * Construtor da classe.
-     */
     public TelaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null); 
         
     }
 
-    
-  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -26,6 +15,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblTexto = new javax.swing.JLabel();
         mnuMenuPrincipal = new javax.swing.JMenuBar();
         smnIncluir = new javax.swing.JMenu();
+        mnuAdministrarMedico = new javax.swing.JMenu();
         smnSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,6 +33,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         mnuMenuPrincipal.add(smnIncluir);
+
+        mnuAdministrarMedico.setText("Administrar Médicos");
+        mnuAdministrarMedico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnuAdministrarMedicoMouseClicked(evt);
+            }
+        });
+        mnuMenuPrincipal.add(mnuAdministrarMedico);
 
         smnSair.setText("Sair");
         smnSair.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -69,7 +67,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         pack();
@@ -83,9 +81,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         AdministracaoFuncionarios administracaoFuncionarios = new AdministracaoFuncionarios();
         administracaoFuncionarios.setVisible(true);
     }//GEN-LAST:event_smnIncluirMouseClicked
+
+    private void mnuAdministrarMedicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuAdministrarMedicoMouseClicked
+        AdministracaoMedicos admMedicos = new AdministracaoMedicos();
+        admMedicos.setVisible(true);
+    }//GEN-LAST:event_mnuAdministrarMedicoMouseClicked
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblTexto;
+    private javax.swing.JMenu mnuAdministrarMedico;
     private javax.swing.JMenuBar mnuMenuPrincipal;
     private javax.swing.JMenu smnIncluir;
     private javax.swing.JMenu smnSair;

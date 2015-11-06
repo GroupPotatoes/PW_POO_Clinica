@@ -1,5 +1,6 @@
 package View;
 
+import Module.DAO.ConnectionSetup;
 import java.awt.Color;
 import java.sql.SQLException;
 
@@ -18,7 +19,8 @@ public class TelaLogin extends javax.swing.JFrame {
     private RegisteredEmployeeDAO registeredEmployeeDAO;
     private String login, senha;
     
-    public TelaLogin() {
+    public TelaLogin() throws SQLException {
+         ConnectionSetup connection = new ConnectionSetup();
         initComponents();
         
         //setando para o centro  da tela
@@ -128,7 +130,7 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public void login() {
         try {
-                registeredEmployeeDAO = new RegisteredEmployeeDAO();
+                registeredEmployeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
                 this.senha=txtSenha.getText();
                 this.login=txtLogin.getText();
                 
@@ -146,9 +148,7 @@ public class TelaLogin extends javax.swing.JFrame {
             System.err.print("SQLException: " + ex.getMessage());
             System.err.println("SQLState: " + ex.getSQLState());
             System.err.println("VendorError: " + ex.getErrorCode());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
