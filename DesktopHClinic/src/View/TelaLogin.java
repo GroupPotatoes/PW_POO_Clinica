@@ -1,5 +1,6 @@
 package View;
 
+import Module.DAO.ConnectionSetup;
 import java.awt.Color;
 import java.sql.SQLException;
 
@@ -18,7 +19,8 @@ public class TelaLogin extends javax.swing.JFrame {
     private RegisteredEmployeeDAO registeredEmployeeDAO;
     private String login, senha;
     
-    public TelaLogin() {
+    public TelaLogin() throws SQLException {
+         ConnectionSetup connection = new ConnectionSetup();
         initComponents();
         
         //setando para o centro  da tela
@@ -54,8 +56,6 @@ public class TelaLogin extends javax.swing.JFrame {
         txtLogin = new javax.swing.JTextField();
         txtSenha = new javax.swing.JPasswordField();
         btnLogar = new javax.swing.JButton();
-        lblCadastro = new javax.swing.JLabel();
-        btnCadastro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,20 +71,12 @@ public class TelaLogin extends javax.swing.JFrame {
 
         txtLogin.setText("Digite seu login...");
 
+        txtSenha.setEchoChar('\u2022');
+
         btnLogar.setText("LOGAR");
         btnLogar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogarActionPerformed(evt);
-            }
-        });
-
-        lblCadastro.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
-        lblCadastro.setText("Não possui login?\n");
-
-        btnCadastro.setText("CADASTRE-SE!");
-        btnCadastro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastroActionPerformed(evt);
             }
         });
 
@@ -97,9 +89,6 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblCadastro)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblLogin)
                             .addComponent(lblSenha))
@@ -107,8 +96,7 @@ public class TelaLogin extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                             .addComponent(txtSenha)))
-                    .addComponent(btnLogar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnLogar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -127,11 +115,7 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addComponent(lblSenha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(lblCadastro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCadastro)
-                .addGap(7, 7, 7))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -140,22 +124,13 @@ public class TelaLogin extends javax.swing.JFrame {
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
         this.login();
     }//GEN-LAST:event_btnLogarActionPerformed
-
-    private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
-        try {
-            new TelaCadastro().setVisible(true);
-        } catch (Exception ex) {
-            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        dispose();
-    }//GEN-LAST:event_btnCadastroActionPerformed
           
     /**
      * Method that logs in, to be called when Login button is clicked and when enter key is pressed on Password field
      */
     public void login() {
         try {
-                registeredEmployeeDAO = new RegisteredEmployeeDAO();
+                registeredEmployeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
                 this.senha=txtSenha.getText();
                 this.login=txtLogin.getText();
                 
@@ -173,15 +148,11 @@ public class TelaLogin extends javax.swing.JFrame {
             System.err.print("SQLException: " + ex.getMessage());
             System.err.println("SQLState: " + ex.getSQLState());
             System.err.println("VendorError: " + ex.getErrorCode());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCadastro;
     private javax.swing.JButton btnLogar;
-    private javax.swing.JLabel lblCadastro;
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblTexto;

@@ -1,55 +1,51 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Module.DAO;
 
-/**
- *
- * @author William
- */
 public class Professions {
     /*
-	[id] [int] NOT NULL,
-	[name] [varchar](50) NOT NULL,
+     [id] [int] NOT NULL,
+     [name] [varchar](50) NOT NULL,
       
-    */
-    
+     */
+
     // <editor-fold defaultstate="collapsed" desc="Attributes">
-    
-        private int id;
-        private String name;
+    private int id;
+    private String name;
 
     // </editor-fold>
-       
-            
+    public Professions(int id, String name) throws Exception {
+        this.setId(id);
+        this.setName(name);
+    }
+
     // <editor-fold defaultstate="collapsed" desc="Setter">
-        
-        public void setId(int id) throws Exception {
-            if(id <= 0)
-                throw new Exception("ID inválido");
-        
-            this.id = id;
+    public void setId(int id) throws Exception {
+        if (id <= 0) {
+            throw new Exception("ID inválido");
         }
 
-        public void setName(String name)throws Exception {
-            if(name == null)
-                throw new Exception("Nome inválido");
+        this.id = id;
+    }
 
-            this.name = name;
+    public void setName(String name) throws Exception {
+        if (name == null) {
+            throw new Exception("Nome inválido");
         }
+
+        this.name = name;
+    }
 
     // </editor-fold>
-  
     // <editor-fold defaultstate="collapsed" desc="Getter">
-        public int getId() {
-            return id;
-        }
+    public int getId() {
+        return id;
+    }
 
-        public String getName() {
-            return name;
-        }
+    public String getName() {
+        return name;
+    }
     // </editor-fold>
+
+    public String toString() {
+        return this.name;
+    }
 }

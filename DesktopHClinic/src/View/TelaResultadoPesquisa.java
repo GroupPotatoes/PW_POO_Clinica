@@ -5,6 +5,7 @@
  */
 package View;
 
+import Module.DAO.ConnectionSetup;
 import Module.DAO.RegisteredEmployeeDAO;
 import Module.DAO.RegisteredEmployee;
 import java.sql.SQLException;
@@ -29,7 +30,7 @@ public class TelaResultadoPesquisa extends javax.swing.JFrame {
         
         try {
             
-            RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO();
+            RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
             List<RegisteredEmployee> registeredEmployeeList = registeredEmployeeDAO.SearchregisteredEmployee(TelaPesquisa.itemPesquisado);
             
             if(registeredEmployeeList.size() > 0){
@@ -71,7 +72,7 @@ public class TelaResultadoPesquisa extends javax.swing.JFrame {
         lblTitulo = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstResultado = new javax.swing.JList();
-        btnBuscar = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -94,7 +95,12 @@ public class TelaResultadoPesquisa extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(lstResultado);
 
-        btnBuscar.setText("Nova Busca");
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,7 +117,7 @@ public class TelaResultadoPesquisa extends javax.swing.JFrame {
                             .addComponent(lblTitulo)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(150, 150, 150)
-                        .addComponent(btnBuscar)))
+                        .addComponent(btnVoltar)))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -122,7 +128,7 @@ public class TelaResultadoPesquisa extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnBuscar)
+                .addComponent(btnVoltar)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -132,6 +138,11 @@ public class TelaResultadoPesquisa extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,7 +180,7 @@ public class TelaResultadoPesquisa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JButton jButton1;
     private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane1;

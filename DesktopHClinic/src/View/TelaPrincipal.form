@@ -13,6 +13,14 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="smnIncluirMouseClicked"/>
           </Events>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="mnuAdministrarMedico">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Administrar M&#xe9;dicos"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mnuAdministrarMedicoMouseClicked"/>
+          </Events>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="smnSair">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sair"/>
@@ -60,7 +68,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblTexto" min="-2" pref="30" max="-2" attributes="0"/>
-              <EmptySpace pref="183" max="32767" attributes="0"/>
+              <EmptySpace pref="185" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
