@@ -287,7 +287,10 @@ public class TelaCadastro extends javax.swing.JFrame {
             
             //atrelando os dois caracteres iniciais com o nome da pessoa
             login[0]=txtNome.getText().charAt(0);
-            login[1]=txtNome.getText().charAt(1);
+            if(txtNome.getText().length()>1)
+                login[1]=txtNome.getText().charAt(1);
+            else
+                login[1]=txtNome.getText().charAt(0);
             
             //me baseando no valor do Enum para a parada do laço
             for(int i=2;i<Controle.NUM_CARACTERES_LOGIN.getValor();i++){ 
