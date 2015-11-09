@@ -24,7 +24,7 @@ public class AvailabilityDAO {
     public boolean SetAvailability(Availability schedule) throws SQLException {
         String commandToExecute = String.format("INSERT INTO [bdci17].[bdci17].[availability] "
                 + "(week_day, iniciation, finish, id_health_professionals, id_specialization) "
-                + "VALUES (%d, %d, %d, %d, %d)", schedule.getWeekDay(), schedule.getIniciation(), schedule.getFinish(), schedule.getIdHealthProfessionals(), schedule.getIdSpecialization());
+                + "VALUES (%d, '%s', '%s', %d, %d)", schedule.getWeekDay(), schedule.getIniciation(), schedule.getFinish(), schedule.getIdHealthProfessionals(), schedule.getIdSpecialization());
         Statement st = this.connection.createStatement();
         return st.executeUpdate(commandToExecute) > 0;
     }

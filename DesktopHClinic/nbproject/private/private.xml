@@ -3,11 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/PW_POO_Clinica/DesktopHClinic/src/Module/DAO/Professions.java</file>
+            <file>file:/D:/PW_POO_Clinica/DesktopHClinic/src/Module/DAO/Availability.java</file>
+            <file>file:/D:/PW_POO_Clinica/DesktopHClinic/src/Module/DAO/RegisteredEmployeeDAO.java</file>
+            <file>file:/D:/PW_POO_Clinica/DesktopHClinic/src/View/AdministracaoMedicos.java</file>
+            <file>file:/D:/PW_POO_Clinica/DesktopHClinic/src/View/TelaAlterarProfSaude.java</file>
+            <file>file:/D:/PW_POO_Clinica/DesktopHClinic/src/Module/DAO/AvailabilityDAO.java</file>
             <file>file:/D:/PW_POO_Clinica/DesktopHClinic/src/View/TelaDisponibilidades.java</file>
             <file>file:/D:/PW_POO_Clinica/DesktopHClinic/src/View/InserirProfissionalSaude.java</file>
             <file>file:/D:/PW_POO_Clinica/DesktopHClinic/src/Module/DAO/SpecializationDAO.java</file>
-            <file>file:/D:/PW_POO_Clinica/DesktopHClinic/src/Module/DAO/ProfessionsDAO.java</file>
+            <file>file:/D:/PW_POO_Clinica/DesktopHClinic/src/Module/DAO/Specialization.java</file>
+            <file>file:/D:/PW_POO_Clinica/DesktopHClinic/src/View/TelaPrincipal.java</file>
         </group>
     </open-files>
 </project-private>

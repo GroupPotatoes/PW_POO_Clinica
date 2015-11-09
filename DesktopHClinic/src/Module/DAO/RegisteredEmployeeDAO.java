@@ -84,6 +84,7 @@ public class RegisteredEmployeeDAO {
         ResultSet resultSet = st.executeQuery("SELECT id FROM [bdci17].[bdci17].[registered_employee] WHERE [login]='" + registeredEmployee.getLogin() + "';");
         if (resultSet.next()) {
             healthProfessionalsID = resultSet.getInt("id");
+            healthProfessionals.setidRegisteredEmployee(healthProfessionalsID);
         }
 
         HealthProfessionalsDAO hpDAO = new HealthProfessionalsDAO(ConnectionSetup.connection);
