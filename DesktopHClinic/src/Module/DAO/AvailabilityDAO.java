@@ -8,6 +8,7 @@ package Module.DAO;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 /**
  *
@@ -21,10 +22,21 @@ public class AvailabilityDAO {
         this.connection = connection;
     }
     
-    public boolean SetAvailability(Availability schedule) throws SQLException {
+    public boolean setAvailability(List<Availability> schedule) throws SQLException {
+       
         String commandToExecute = String.format("INSERT INTO [bdci17].[bdci17].[availability] "
                 + "(week_day, iniciation, finish, id_health_professionals, id_specialization) "
-                + "VALUES (%d, '%s', '%s', %d, %d)", schedule.getWeekDay(), schedule.getIniciation(), schedule.getFinish(), schedule.getIdHealthProfessionals(), schedule.getIdSpecialization());
+                + "VALUES ");
+        //Adiciona cada Availability criada na tela ao string:
+        for (Availability workday : schedule) {
+            commandToExecute += "(" + workday.getWeekDay() + "," + "'" + workday.getIniciation() + "'" + "," 
+                    + "'" + workday.getFinish() + "'"  + "," + workday.getIdHealthProfessionals() + "," + workday.getIdSpecialization() + "), ";
+        }
+        //apaga o espaço e a virgula apos a ultima inserção de valores
+        commandToExecute = commandToExecute.substring(0, commandToExecute.length() - 2);
+        //insere ponto-e-virgula ao final da string!
+        commandToExecute += ";";
+        System.out.println(commandToExecute);
         Statement st = this.connection.createStatement();
         return st.executeUpdate(commandToExecute) > 0;
     }
