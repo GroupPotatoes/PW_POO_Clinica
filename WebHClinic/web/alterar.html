@@ -10,14 +10,22 @@
     </head>
     <body>
         <nav class="navbar navbar-fixed-top"><ul class="topMenu">
-                <li> <a href="home.html" class="current">Home</a>
+                <li> <a href="home.jsp" class="current">Home</a>
                 <li> <a href="#">Administrar conta</a>
                     <ul class="subMenu">
                         <li><a href="alterar.html">Alterar</a></li>
                         <li><a href="excluir.html">Excluir</a></li>
                     </ul>
                 </li>
-            </ul></nav>
+                <li> <a href="#">Consultas</a>
+                    <ul class="subMenu">
+                        <li><a href="criarconsulta_carregarespecializacao.jsp">Marcar consulta</a></li>
+                        <li><a href="consultasanteriores.jsp">Consultas anteriores</a></li>
+                            <li><a href="minhasconsultas.jsp">Proximas consultas</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
         <div id="page-container">
              <form action="Alterar" method="get">
                 <fieldset>

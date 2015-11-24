@@ -6,14 +6,9 @@
 package View;
 
 import Module.DAO.*;
-import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.text.AbstractDocument;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DocumentFilter;
 
 /**
  *
@@ -21,17 +16,15 @@ import javax.swing.text.DocumentFilter;
  */
 public class TelaAlterarProfSaude extends javax.swing.JPanel {
     private RegisteredEmployeeDAO employeeDAO;
-    private InserirProfissionalSaude.MyDocumentFilter documentFilter;
     private RegisteredEmployee registeredEmployee;
     private HealthProfessionals healthprof;
-
+    int idHealthProfessional;
+    
     /**
      * Creates new form TelaAlterarProfSaude
      */
-    public TelaAlterarProfSaude() {
+    public TelaAlterarProfSaude(){
         initComponents();
-        //ConnectionSetup.currentEmployeeSelect.getId()
-        //this.cpfField.setText();
     }
 
     /**
@@ -43,6 +36,10 @@ public class TelaAlterarProfSaude extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        labelProfissao = new javax.swing.JLabel();
+        profissaoProfSaude = new javax.swing.JComboBox();
+        labelEspec = new javax.swing.JLabel();
+        especialProfSaude = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         labelNome = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -51,19 +48,34 @@ public class TelaAlterarProfSaude extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         registroField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         loginFIeld = new javax.swing.JTextField();
         senhaField = new javax.swing.JTextField();
+        btnAlteraDisp = new javax.swing.JButton();
+        labelProfissao1 = new javax.swing.JLabel();
+        profissaoProfSaude1 = new javax.swing.JComboBox();
+        labelEspec1 = new javax.swing.JLabel();
+        especialProfSaude1 = new javax.swing.JComboBox();
+
+        labelProfissao.setText("Profissão");
+
+        labelEspec.setText("Especialidade");
+
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         jLabel1.setText(":: Alterar cadastro de profissional de saúde ::");
 
-        labelNome.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        labelNome.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         labelNome.setText("Nome");
 
-        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel2.setText("CPF");
 
         cpfField.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -72,7 +84,7 @@ public class TelaAlterarProfSaude extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel3.setText("Registro profissional");
 
         jButton1.setText("Salvar");
@@ -82,101 +94,148 @@ public class TelaAlterarProfSaude extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel4.setText("Login");
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel5.setText("Senha");
+
+        btnAlteraDisp.setText("Alterar disponibilidade");
+        btnAlteraDisp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlteraDispActionPerformed(evt);
+            }
+        });
+
+        labelProfissao1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        labelProfissao1.setText("Profissão");
+
+        profissaoProfSaude1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                profissaoProfSaude1ItemStateChanged(evt);
+            }
+        });
+        profissaoProfSaude1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                profissaoProfSaude1ActionPerformed(evt);
+            }
+        });
+
+        labelEspec1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        labelEspec1.setText("Especialidade");
+
+        especialProfSaude1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                especialProfSaude1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnAlteraDisp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCancelar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(labelNome)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jButton1)
-                                    .addGap(4, 4, 4)))
-                            .addComponent(jLabel2))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(76, 76, 76)
-                                .addComponent(jButton2))
-                            .addComponent(loginFIeld)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cpfField)
-                                    .addComponent(nomeProfSaude, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(registroField, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(senhaField))))
-                .addContainerGap(41, Short.MAX_VALUE))
+                            .addComponent(jLabel3)
+                            .addComponent(labelNome)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(labelProfissao1)
+                            .addComponent(labelEspec1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(especialProfSaude1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(profissaoProfSaude1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(nomeProfSaude, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                                .addComponent(cpfField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                                .addComponent(loginFIeld, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(registroField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                                .addComponent(senhaField, javax.swing.GroupLayout.Alignment.TRAILING))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 45, Short.MAX_VALUE)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addContainerGap()
                 .addComponent(jLabel1)
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNome)
+                    .addComponent(nomeProfSaude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cpfField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(registroField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelNome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3))
+                        .addGap(26, 26, 26)
+                        .addComponent(labelProfissao1))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(nomeProfSaude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cpfField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(registroField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28)
+                        .addComponent(profissaoProfSaude1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelEspec1)
+                    .addComponent(especialProfSaude1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(loginFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(senhaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnCancelar)
+                    .addComponent(btnAlteraDisp))
                 .addGap(28, 28, 28))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void cpfFieldComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_cpfFieldComponentShown
-        ((AbstractDocument)cpfField.getDocument()).setDocumentFilter(
-            new MyDocumentFilter());
+
     }//GEN-LAST:event_cpfFieldComponentShown
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
        this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             //int id, String name, String password, String login
-            this.registeredEmployee = new RegisteredEmployee(ConnectionSetup.currentEmployeeSelect.getId(),this.nomeProfSaude.getText(),this.senhaField.getText(),this.loginFIeld.getText());
+            this.registeredEmployee = new RegisteredEmployee(idHealthProfessional,this.nomeProfSaude.getText(),this.senhaField.getText(),this.loginFIeld.getText());
             this.employeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
-            this.healthprof = new HealthProfessionals(ConnectionSetup.currentEmployeeSelect.getId(), this.cpfField.getText(), this.registroField.getText());
-            if(employeeDAO.UpdateHealthProfessionals(registeredEmployee, healthprof))
+            HealthProfessionalsDAO hpDAO = new HealthProfessionalsDAO(ConnectionSetup.connection);
+            this.healthprof = new HealthProfessionals(idHealthProfessional, this.cpfField.getText(), this.registroField.getText());
+            if(hpDAO.UpdateHealthProfessionals(registeredEmployee, healthprof))
             {
                 JOptionPane.showMessageDialog(null, "Cadastro foi alterado com sucesso!");
                 this.setVisible(false);
@@ -189,59 +248,112 @@ public class TelaAlterarProfSaude extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    class MyDocumentFilter extends DocumentFilter {
-
-        @Override
-        public void insertString(DocumentFilter.FilterBypass fp, int offset, String string, AttributeSet aset)
-                throws BadLocationException {
-            int len = string.length();
-            boolean isValidInteger = true;
-
-            for (int i = 0; i < len; i++) {
-                if (!Character.isDigit(string.charAt(i))) {
-                    isValidInteger = false;
-                    break;
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        try {
+            this.idHealthProfessional = ConnectionSetup.currentEmployeeSelect.getId();
+            RegisteredEmployee re = new RegisteredEmployeeDAO(ConnectionSetup.connection).getInfoRegisteredEmployee(idHealthProfessional);
+            HealthProfessionals hp = new HealthProfessionalsDAO(ConnectionSetup.connection).getInfoHealthProfessional(idHealthProfessional);
+            Specialization sp = new SpecializationDAO(ConnectionSetup.connection).getSpecialization(idHealthProfessional);
+            Professions pr = new ProfessionsDAO(ConnectionSetup.connection).getProfession(sp.getIdProfessions());
+            this.cpfField.setText(hp.getCPF());
+            this.nomeProfSaude.setText(re.getName());
+            this.registroField.setText(hp.getIDClass());
+            
+            this.loginFIeld.setText(re.getLogin());
+            this.senhaField.setText(re.getPassword());
+            
+            try {
+                ProfessionsDAO p = new ProfessionsDAO(ConnectionSetup.connection);
+                for (Professions profession : p.SelectAllProfessions()) {
+                    this.profissaoProfSaude1.addItem(profession);
                 }
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(InserirProfissionalSaude.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(InserirProfissionalSaude.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (isValidInteger) {
-                super.insertString(fp, offset, string, aset);
-            } else {
-                Toolkit.getDefaultToolkit().beep();
-            }
-        }
-
-        @Override
-        public void replace(DocumentFilter.FilterBypass fp, int offset, int length, String string, AttributeSet aset)
-                throws BadLocationException {
-            int len = string.length();
-            boolean isValidInteger = true;
-
-            for (int i = 0; i < len; i++) {
-                if (!Character.isDigit(string.charAt(i))) {
-                    isValidInteger = false;
-                    break;
+            this.profissaoProfSaude1.setSelectedItem(pr);
+            try {
+                this.especialProfSaude1.removeAllItems();
+                SpecializationDAO s = new SpecializationDAO(ConnectionSetup.connection);
+                for (Specialization specialization : s.SelectSpecializations(this.profissaoProfSaude1.getSelectedIndex() + 1)) {
+                    this.especialProfSaude1.addItem(specialization);
+                    System.out.println(specialization);
                 }
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(InserirProfissionalSaude.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(InserirProfissionalSaude.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (isValidInteger) {
-                super.replace(fp, offset, length, string, aset);
-            } else {
-                Toolkit.getDefaultToolkit().beep();
-            }
+            this.especialProfSaude1.setSelectedItem(sp);
+            
+        } catch (Exception ex) {
+            Logger.getLogger(TelaAlterarProfSaude.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
+    }//GEN-LAST:event_formComponentShown
+
+    private void btnAlteraDispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlteraDispActionPerformed
+        try {
+            Specialization sp = new SpecializationDAO(ConnectionSetup.connection).getSpecialization(idHealthProfessional);
+            if(sp == null) {
+                JOptionPane.showMessageDialog(this, "O médico não tem uma especialização. Para configurar horários de disponibilidade, preencha este campo.", "Opção indisponível", JOptionPane.ERROR_MESSAGE);
+            }
+            else {
+                TelaDisponibilidades alteradisp = new TelaDisponibilidades(idHealthProfessional, sp.getId());
+            alteradisp.setVisible(true);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(TelaAlterarProfSaude.class.getName()).log(Level.SEVERE, null, ex);
+        }
+              
+    }//GEN-LAST:event_btnAlteraDispActionPerformed
+
+    private void profissaoProfSaude1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profissaoProfSaude1ActionPerformed
+
+        try {
+            this.especialProfSaude1.removeAllItems();
+            SpecializationDAO s = new SpecializationDAO(ConnectionSetup.connection);
+            for (Specialization specialization : s.SelectSpecializations(this.profissaoProfSaude1.getSelectedIndex() + 1)) {
+                this.especialProfSaude1.addItem(specialization);
+                System.out.println(specialization);
+            }
+            this.especialProfSaude1.setEnabled(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(InserirProfissionalSaude.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(InserirProfissionalSaude.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_profissaoProfSaude1ActionPerformed
+
+    private void especialProfSaude1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialProfSaude1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_especialProfSaude1ActionPerformed
+
+    private void profissaoProfSaude1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_profissaoProfSaude1ItemStateChanged
+        
+    }//GEN-LAST:event_profissaoProfSaude1ItemStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlteraDisp;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JTextField cpfField;
+    private javax.swing.JComboBox especialProfSaude;
+    private javax.swing.JComboBox especialProfSaude1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel labelEspec;
+    private javax.swing.JLabel labelEspec1;
     private javax.swing.JLabel labelNome;
+    private javax.swing.JLabel labelProfissao;
+    private javax.swing.JLabel labelProfissao1;
     private javax.swing.JTextField loginFIeld;
     private javax.swing.JTextField nomeProfSaude;
+    private javax.swing.JComboBox profissaoProfSaude;
+    private javax.swing.JComboBox profissaoProfSaude1;
     private javax.swing.JTextField registroField;
     private javax.swing.JTextField senhaField;
     // End of variables declaration//GEN-END:variables

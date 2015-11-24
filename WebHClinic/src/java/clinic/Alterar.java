@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package clinic;
 
 import java.io.IOException;
@@ -61,7 +56,7 @@ public class Alterar extends HttpServlet {
                             + "<BODY>"
                                 + "<form id=\"page-container\">"
                                     + "<p>Parabéns! Seu cadastro foi alterado com sucesso! <br>"
-                                    + "<p>Volte agora para a <a href=\"home.html\">tela inicial</a>, e continue a"
+                                    + "<p>Volte agora para a <a href=\"home.jsp\">tela inicial</a>, e continue a"
                                     + " mexer em nosso sistema!</p>"
                                 + "</form>"
                             + "</BODY>"

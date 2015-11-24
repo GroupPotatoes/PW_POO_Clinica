@@ -40,4 +40,23 @@ public class ProfessionsDAO {
 
         return professions;
     }
+    /**
+     * Retorna objeto Professions com id e nome, porém é necessário JÁ TER O ID!
+     * Usar SpecializationDAO, metodo getSpecialization 
+     * @param idProfession
+     * @return 
+     */
+    public Professions getProfession(int idProfession) throws SQLException, Exception {
+        Professions prof;
+        String commandToExecute = String.format("SELECT * FROM [bdci17].[bdci17].[specialization]"
+                    + "WHERE id = %d;", idProfession);
+        Statement st = this.connection.createStatement();
+        ResultSet resultSet = st.executeQuery(commandToExecute);
+        if (resultSet.next()) {
+            //id, name
+            prof = new Professions(resultSet.getInt("id"), resultSet.getString("name"));
+            return prof;
+        }
+        return null;
+    }
 }

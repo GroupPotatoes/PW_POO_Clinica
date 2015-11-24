@@ -17,35 +17,26 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author amanda
- */
 @WebServlet(name = "Validate", urlPatterns = {"/Validate"})
 public class Validate extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     * @throws java.lang.ClassNotFoundException
-     * @throws java.sql.SQLException
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
         PatientDAO patient = new PatientDAO();
         PrintWriter out = response.getWriter();
-        if (patient.ExistLogin(login, senha) == true) { //validar no BD
-            RequestDispatcher view = request.getRequestDispatcher("home.html");
+        if (patient.ExistLogin(login, senha)) {
+            
+            HttpSession session = request.getSession(true);
+            session.setAttribute("patientID", ConnectionSetup.id);
+            
+            RequestDispatcher view = request.getRequestDispatcher("home.jsp");
             view.forward(request, response);
-        } else {
+        } 
+        else {
             
             RequestDispatcher view = request.getRequestDispatcher("failed.html");
             view.forward(request, response);

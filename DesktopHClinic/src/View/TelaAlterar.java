@@ -5,6 +5,7 @@ import Module.DAO.Employee;
 import Module.DAO.RegisteredEmployee;
 import Module.DAO.RegisteredEmployeeDAO;
 import Module.DAO.Role;
+import Module.DAO.RoleDAO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -199,9 +200,9 @@ public class TelaAlterar extends javax.swing.JFrame {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
        
         try {
-            RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
+            RoleDAO rlDAO = new RoleDAO(ConnectionSetup.connection);
             
-            for(Role role : registeredEmployeeDAO.SelectAllRole())
+            for(Role role : rlDAO.SelectAllRole())
                  this.cbbTipo.addItem(role);
                 
              

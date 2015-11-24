@@ -8,16 +8,11 @@ package View;
 import Module.Conexao.Controle;
 import Module.DAO.*;
 import java.awt.Color;
-import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.text.AbstractDocument;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DocumentFilter;
 
 /**
  *
@@ -29,7 +24,6 @@ public class InserirProfissionalSaude extends javax.swing.JPanel {
     private String login;
     private String senha;
     private String nome;
-    private MyDocumentFilter documentFilter;
     private RegisteredEmployee registeredEmployee;
     private String cpf;
     private String registro;
@@ -59,7 +53,7 @@ public class InserirProfissionalSaude extends javax.swing.JPanel {
 
         lblCadastroProfSaude = new javax.swing.JLabel();
         labelNome = new javax.swing.JLabel();
-        nomeProfSaude = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
         labelProfissao = new javax.swing.JLabel();
         labelEspec = new javax.swing.JLabel();
         profissaoProfSaude = new javax.swing.JComboBox();
@@ -182,7 +176,7 @@ public class InserirProfissionalSaude extends javax.swing.JPanel {
                                 .addComponent(registroField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cpfField, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nomeProfSaude, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(btnCadastrar)
@@ -215,7 +209,7 @@ public class InserirProfissionalSaude extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nomeProfSaude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelNome))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cpfField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -266,9 +260,9 @@ public class InserirProfissionalSaude extends javax.swing.JPanel {
          Enviar ao banco de dados
          A lista deverá ser atualizada mediante a escolha de uma profissao de acordo
          */
-        if (this.nomeProfSaude.getText().isEmpty() || this.nomeProfSaude.getText() == null) {
-            this.nomeProfSaude.setText("Este campo é obrigatório!");
-            this.nomeProfSaude.setForeground(Color.red);
+        if (this.txtNome.getText().isEmpty() || this.txtNome.getText() == null) {
+            this.txtNome.setText("Este campo é obrigatório!");
+            this.txtNome.setForeground(Color.red);
         }
         if (this.profissaoProfSaude.getSelectedIndex() == -1) {
             this.profissaoProfSaude.setForeground(Color.red);
@@ -283,40 +277,40 @@ public class InserirProfissionalSaude extends javax.swing.JPanel {
         if (this.registroField.getText().isEmpty() || this.registroField.getText() == null) {
             this.registroField.setText("Este campo é obrigatório!");
             this.registroField.setForeground(Color.red);
-        }
-        else {
+        } else {
             try {
-                
+
                 this.employeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
                 this.geraLoginSenha();
                 this.txtLogin.setText(this.login);
                 this.txtSenha.setText(this.senha);
-                this.nome = nomeProfSaude.getText();
+                this.nome = txtNome.getText();
                 this.cpf = cpfField.getText();
                 this.registro = registroField.getText();
-               
+
                 //Criar novo RegisteredEmployee
                 this.registeredEmployee = new RegisteredEmployee(nome, senha, login);
-                int indexProf = ((Professions)this.profissaoProfSaude.getSelectedItem()).getId();
-                int indexSpec = ((Specialization)this.especialProfSaude.getSelectedItem()).getId();
+                int indexProf = ((Professions) this.profissaoProfSaude.getSelectedItem()).getId();
+                int indexSpec = ((Specialization) this.especialProfSaude.getSelectedItem()).getId();
 
                 //Criar um health professional
                 this.healthprof = new HealthProfessionals(this.cpf, this.registro);
+                this.hpDAO = new HealthProfessionalsDAO(ConnectionSetup.connection);
+
                 //this.healthprofHasSpecialization = new HealthProfessionalsHaveSpecialization(indexSpec);
-                if(this.employeeDAO.InsertHealthProfessionals(registeredEmployee, healthprof, indexSpec)) {
-                   
+                if (this.hpDAO.InsertHealthProfessionals(registeredEmployee, healthprof, indexSpec)) {
                     JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
                     this.setVisible(false);
-                    TelaDisponibilidades disp = new TelaDisponibilidades(indexProf, indexSpec);
+                    TelaDisponibilidades disp = new TelaDisponibilidades(healthprof.getidRegisteredEmployee(), indexSpec);
+                    disp.setLocationRelativeTo(null);
                     disp.setVisible(true);
                     disp.setAlwaysOnTop(true);
-                }
-                else {
+                } else {
                     this.txtLogin.setText(null);
                     this.txtSenha.setText(null);
                     this.lblCadastroProfSaude.setText("Houve um erro no cadastro do profissional!");
                     this.lblCadastroProfSaude.setForeground(Color.red);
-                    
+
                 }
             } catch (Exception ex) {
                 Logger.getLogger(InserirProfissionalSaude.class.getName()).log(Level.SEVERE, null, ex);
@@ -349,8 +343,12 @@ public class InserirProfissionalSaude extends javax.swing.JPanel {
                     valorMaximo = Controle.ASCII_VALOR_MAX.getValor();
 
             //atrelando os dois caracteres iniciais com o nome da pessoa
-            login[0] = nomeProfSaude.getText().charAt(0);
-            login[1] = nomeProfSaude.getText().charAt(1);
+            login[0] = txtNome.getText().charAt(0);
+            if (txtNome.getText().length() > 1) {
+                login[1] = txtNome.getText().charAt(1);
+            } else {
+                login[1] = txtNome.getText().charAt(0);
+            }
 
             //me baseando no valor do Enum para a parada do laço
             for (int i = 2; i < Controle.NUM_CARACTERES_LOGIN.getValor(); i++) {
@@ -378,18 +376,18 @@ public class InserirProfissionalSaude extends javax.swing.JPanel {
     }
 
     private void profissaoProfSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profissaoProfSaudeActionPerformed
-        if(this.profissaoProfSaude.getSelectedIndex()!= 0) {
-            try {
-                SpecializationDAO s = new SpecializationDAO(ConnectionSetup.connection);
-                for (Specialization specialization : s.SelectSpecializations(this.profissaoProfSaude.getSelectedIndex())) {
-                    this.especialProfSaude.addItem(specialization);
-                }
-                this.especialProfSaude.setEnabled(true);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(InserirProfissionalSaude.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Exception ex) {
-                Logger.getLogger(InserirProfissionalSaude.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            this.especialProfSaude.removeAllItems();
+            SpecializationDAO s = new SpecializationDAO(ConnectionSetup.connection);
+            for (Specialization specialization : s.SelectSpecializations(this.profissaoProfSaude.getSelectedIndex() + 1)) {
+                this.especialProfSaude.addItem(specialization);
+                System.out.println(specialization);
             }
+            this.especialProfSaude.setEnabled(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(InserirProfissionalSaude.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(InserirProfissionalSaude.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_profissaoProfSaudeActionPerformed
 
@@ -398,8 +396,7 @@ public class InserirProfissionalSaude extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSenhaActionPerformed
 
     private void cpfFieldComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_cpfFieldComponentShown
-       ((AbstractDocument)cpfField.getDocument()).setDocumentFilter(
-                new MyDocumentFilter()); 
+
     }//GEN-LAST:event_cpfFieldComponentShown
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
@@ -407,6 +404,7 @@ public class InserirProfissionalSaude extends javax.swing.JPanel {
             ProfessionsDAO p = new ProfessionsDAO(ConnectionSetup.connection);
             for (Professions profession : p.SelectAllProfessions()) {
                 this.profissaoProfSaude.addItem(profession);
+                System.out.println(profession);
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(InserirProfissionalSaude.class.getName()).log(Level.SEVERE, null, ex);
@@ -419,46 +417,7 @@ public class InserirProfissionalSaude extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_especialProfSaudeActionPerformed
 
-    class MyDocumentFilter extends DocumentFilter {
-
-        @Override
-        public void insertString(DocumentFilter.FilterBypass fp, int offset, String string, AttributeSet aset)
-                throws BadLocationException {
-            int len = string.length();
-            boolean isValidInteger = true;
-
-            for (int i = 0; i < len; i++) {
-                if (!Character.isDigit(string.charAt(i))) {
-                    isValidInteger = false;
-                    break;
-                }
-            }
-            if (isValidInteger) {
-                super.insertString(fp, offset, string, aset);
-            } else {
-                Toolkit.getDefaultToolkit().beep();
-            }
-        }
-
-        @Override
-        public void replace(DocumentFilter.FilterBypass fp, int offset, int length, String string, AttributeSet aset)
-                throws BadLocationException {
-            int len = string.length();
-            boolean isValidInteger = true;
-
-            for (int i = 0; i < len; i++) {
-                if (!Character.isDigit(string.charAt(i))) {
-                    isValidInteger = false;
-                    break;
-                }
-            }
-            if (isValidInteger) {
-                super.replace(fp, offset, length, string, aset);
-            } else {
-                Toolkit.getDefaultToolkit().beep();
-            }
-        }
-    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnCancelar;
@@ -474,10 +433,10 @@ public class InserirProfissionalSaude extends javax.swing.JPanel {
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblResultados;
     private javax.swing.JLabel lblSenha;
-    private javax.swing.JTextField nomeProfSaude;
     private javax.swing.JComboBox profissaoProfSaude;
     private javax.swing.JTextField registroField;
     private javax.swing.JTextField txtLogin;
+    private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

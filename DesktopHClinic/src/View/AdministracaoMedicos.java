@@ -1,6 +1,7 @@
 package View;
 
 import Module.DAO.ConnectionSetup;
+import Module.DAO.HealthProfessionalsDAO;
 import Module.DAO.RegisteredEmployee;
 import Module.DAO.RegisteredEmployeeDAO;
 import java.awt.BorderLayout;
@@ -166,7 +167,7 @@ public class AdministracaoMedicos extends javax.swing.JFrame {
         setVisibility(false, false, false, true, false);
         
         this.parentPanel.add(this.insereProfSaude, BorderLayout.CENTER);
-        this.insereProfSaude.setPreferredSize(new Dimension(480, 390));
+        this.insereProfSaude.setPreferredSize(new Dimension(600, 390));
         this.parentPanel.revalidate();
         this.parentPanel.repaint();
         this.pack();
@@ -208,8 +209,8 @@ public class AdministracaoMedicos extends javax.swing.JFrame {
     private void loadRegisteredEmployeeList() {
           try 
         {
-            RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
-            List<RegisteredEmployee> employees = registeredEmployeeDAO.SelectAllHealthProfessionals();
+            HealthProfessionalsDAO hpDAO = new HealthProfessionalsDAO(ConnectionSetup.connection);
+            List<RegisteredEmployee> employees = hpDAO.SelectAllHealthProfessionals();
             this.employeeList.setEmployeeList(employees.toArray());
              
         } catch (ClassNotFoundException ex) {

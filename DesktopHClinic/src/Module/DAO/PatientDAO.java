@@ -28,7 +28,7 @@ public class PatientDAO {
         ///TODO: Verificar se todos os campos existem no form
         /// TODO: Verificar como o tipo Date será adicionado.
         String commandToInsertPatient = String.format("INSERT INTO [bdci17].[bdci17].[patient] (name, cpf, rg, birth_date, cep, number, complement, login, password) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",
-        patient.getName(), patient.getCpf(), patient.getRg(), patient.getBirthDate(), patient.getCep(),patient.getNumber(), patient.getComplement(), patient.getLogin(), patient.getPassword());
+        patient.getName(), patient.getCpf(), patient.getRg(), patient.getBirth_Date(), patient.getCep(),patient.getNumber(), patient.getComplement(), patient.getLogin(), patient.getPassword());
         
         String commandToInsertPhone = String.format("INSERT INTO [bdci17].[bdci17].[phone_number](id_phone_type, id_patient, area_code, number) VALUES (%d, %d, %d, '%s');",
         phoneNumber.getIdPhoneType(), phoneNumber.getIdPatient(), phoneNumber.getAreaCode(), phoneNumber.getNumber());
@@ -69,7 +69,7 @@ public class PatientDAO {
         
         ///TODO: Verificar como insere Data
         String commandToExecute = String.format("UPDATE [bdci17].[bdci17].[patient] SET [name]='%s', [cpf]='%s', [rg]='%s', [number]='%s', [complement]='%s', [cep]='%s', [birth_date]='%s', [login]='%s', [password]='%s' WHERE [id]=%d;",
-        patient.getName(), patient.getCpf(), patient.getRg(), patient.getNumber(), patient.getComplement(), patient.getCep(), patient.getBirthDate(), patient.getLogin(), patient.getPassword(), patient.getId());
+        patient.getName(), patient.getCpf(), patient.getRg(), patient.getNumber(), patient.getComplement(), patient.getCep(), patient.getBirth_Date(), patient.getLogin(), patient.getPassword(), patient.getId());
         
         Statement st = this.connection.createStatement();
         return st.executeUpdate(commandToExecute) > 0;
@@ -92,7 +92,36 @@ public class PatientDAO {
            resultSet.getString("name"),
            resultSet.getString("cep"),
            resultSet.getString("rg"),
-           resultSet.getDate("birth_date"),
+           resultSet.getString("birth_date"),
+           resultSet.getString("cpf"),
+           resultSet.getString("number"),
+           resultSet.getString("complement"),
+           resultSet.getString("login"),
+           resultSet.getString("password")
+           );
+           
+           patients.add(patient);
+        }
+        
+        return patients;
+    }
+    
+     public List<Patient> listPatients() throws SQLException, Exception{
+        
+        List<Patient> patients = new ArrayList();
+        
+        String commandToExecute = "SELECT * FROM [bdci17].[bdci17].[patient];";
+        
+        Statement st = this.connection.createStatement();
+        ResultSet resultSet = st.executeQuery(commandToExecute);
+        while(resultSet.next())
+        {
+           //String name, String cep, String rg, Date birthDate, String cpf, String number, String complement, String login, String password
+           Patient patient = new Patient(
+           resultSet.getString("name"),
+           resultSet.getString("cep"),
+           resultSet.getString("rg"),
+           resultSet.getString("birth_date"),
            resultSet.getString("cpf"),
            resultSet.getString("number"),
            resultSet.getString("complement"),

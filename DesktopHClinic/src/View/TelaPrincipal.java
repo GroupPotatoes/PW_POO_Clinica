@@ -79,11 +79,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void smnIncluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_smnIncluirMouseClicked
         AdministracaoFuncionarios administracaoFuncionarios = new AdministracaoFuncionarios();
+        administracaoFuncionarios.setLocationRelativeTo(null);
         administracaoFuncionarios.setVisible(true);
     }//GEN-LAST:event_smnIncluirMouseClicked
 
     private void mnuAdministrarMedicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuAdministrarMedicoMouseClicked
         AdministracaoMedicos admMedicos = new AdministracaoMedicos();
+        admMedicos.setLocationRelativeTo(null);
         admMedicos.setVisible(true);
     }//GEN-LAST:event_mnuAdministrarMedicoMouseClicked
   

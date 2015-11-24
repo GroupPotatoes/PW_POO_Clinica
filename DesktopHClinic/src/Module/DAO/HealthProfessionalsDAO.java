@@ -10,11 +10,92 @@ import java.util.List;
 public class HealthProfessionalsDAO {
 
     private Connection connection;
-
+    
+    /**
+     * Construtor do HP DAO
+     * @param connection - conexão com BD, ConnectionSetup.connection é passado como parametro 
+     */
     public HealthProfessionalsDAO(Connection connection) {
         this.connection = connection;
     }
+    
+    /**
+     * Método que insere na tabela HealthProfessionals
+     *
+     * @param registeredEmployee
+     * @param healthProfessionals
+     * @return true se inseriu dados e false caso não tenha inserido.
+     * @throws SQLException
+     */
+    public boolean InsertHealthProfessionals(RegisteredEmployee registeredEmployee, HealthProfessionals healthProfessionals, int idSpecialization) throws SQLException, Exception {
 
+        int healthProfessionalsID = 0;
+        boolean inserted = true;
+
+        int employeeID = new RegisteredEmployeeDAO(this.connection).InsertregisteredEmployee(registeredEmployee);
+        inserted = inserted && employeeID > 0;
+
+        String commandToInsertHealthProfessional = String.format("INSERT INTO health_professionals (id_registered_employee, cpf, id_class) VALUES (%d, '%s', '%s');",
+                employeeID, healthProfessionals.getCPF(), healthProfessionals.getIDClass());
+
+        this.connection.prepareStatement(commandToInsertHealthProfessional);
+        Statement st = this.connection.createStatement();
+        inserted = inserted && st.executeUpdate(commandToInsertHealthProfessional) > 0;
+
+        ResultSet resultSet = st.executeQuery("SELECT id FROM [bdci17].[bdci17].[registered_employee] WHERE [login]='" + registeredEmployee.getLogin() + "';");
+        if (resultSet.next()) {
+            healthProfessionalsID = resultSet.getInt("id");
+            healthProfessionals.setidRegisteredEmployee(healthProfessionalsID);
+        }
+
+        inserted = inserted && this.InsertHealthProfessionalsHaveSpecialization(new HealthProfessionalsHaveSpecialization(healthProfessionalsID, idSpecialization));
+
+        return inserted;
+    }
+    
+    /**
+     * Atualiza perfil do health professional
+     * @param registeredEmployee
+     * @param healthProfessional
+     * @return
+     * @throws SQLException 
+     */
+    public boolean UpdateHealthProfessionals(RegisteredEmployee registeredEmployee, HealthProfessionals healthProfessional) throws SQLException {
+
+        boolean wasUpdated = true;
+
+        wasUpdated = wasUpdated && new RegisteredEmployeeDAO(this.connection).UpdateregisteredEmployee(registeredEmployee);
+
+        String commandToUpdateHealthProfessionals = String.format("UPDATE health_professionals SET cpf='%s', id_class='%s' WHERE id_registered_employee=%d;",
+                healthProfessional.getCPF(), healthProfessional.getIDClass(), ConnectionSetup.currentEmployeeSelect.getId());
+        Statement st = this.connection.createStatement();
+        //this.connection.prepareStatement(commandToUpdateHealthProfessionals);
+        wasUpdated = wasUpdated && (st.executeUpdate(commandToUpdateHealthProfessionals) > 0);
+
+        return wasUpdated;
+    }
+    
+    public HealthProfessionals getInfoHealthProfessional(int idHealthProfessional) throws Exception {
+        HealthProfessionals healthprof;
+        String commandToExecute = String.format("SELECT [health_professionals].[cpf], [health_professionals].[id_class] FROM [bdci17].[bdci17].[health_professionals] WHERE [id_registered_employee]=%d;", idHealthProfessional);
+        Statement st = this.connection.createStatement();
+        ResultSet resultSet = st.executeQuery(commandToExecute);
+         
+        if (resultSet.next()) {
+            healthprof = new HealthProfessionals(idHealthProfessional, resultSet.getString("cpf"), resultSet.getString("id_class"));
+            return healthprof;
+        }
+        
+        return null;
+    }
+    /**
+     * Busca por HP
+     * @param filtrer
+     * @param searchWord
+     * @return
+     * @throws SQLException
+     * @throws Exception 
+     */
     public List<String> SearchHealthProfessionals(String filtrer, String searchWord) throws SQLException, Exception {
         //RegistroNomeTipo de profissionalEspecialidade
         List<String> healthProfessionals = new ArrayList<String>();
@@ -59,6 +140,26 @@ public class HealthProfessionalsDAO {
         return healthProfessionals;
     }
 
+    public List<RegisteredEmployee> SelectAllHealthProfessionals() throws SQLException, Exception {
+
+        List<RegisteredEmployee> registeredEmployeeList = new ArrayList<RegisteredEmployee>();
+
+        String commandToExecute = String.format("SELECT * "
+                + "FROM [bdci17].[bdci17].[registered_employee] "
+                + "JOIN [health_professionals] ON [health_professionals].[id_registered_employee] = [registered_employee].[id] "
+                + "WHERE [registered_employee].[inactive] = 0 AND [registered_employee].[id] != %d;", ConnectionSetup.id);
+
+        Statement st = this.connection.createStatement();
+        ResultSet resultSet = st.executeQuery(commandToExecute);
+        while (resultSet.next()) {
+            //int id, String name, String password, String login
+            RegisteredEmployee employee = new RegisteredEmployee(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getString("password"), resultSet.getString("login"));
+            registeredEmployeeList.add(employee);
+        }
+
+        return registeredEmployeeList;
+    }
+    
     /**
      * Metodo que insere id do health professional e o id de specialization na
      * tabela HealthProfessionalsHaveSpecialization
@@ -75,17 +176,8 @@ public class HealthProfessionalsDAO {
         return st.executeUpdate(commandToExecute) > 0;
     }
 
-       //funcoes de inserir health professional e update hp estao no registered employee DAO. mudar para ca? 
+       
         /*
-        UPDATE [bdci17].[bdci17].[registered_employee] 
-        SET name='%s', password='%s', login='%s'
-        WHERE id = 1012;
-        colocar esse update no registeredemployeedao?? ou chamar funcao q faca isso
-
-        UPDATE [bdci17].[bdci17].[health_professionals]
-        SET cpf='333', id_class='%s'
-        WHERE id_registered_employee = 1012;
-
                 nao dei opcao de mexer nisso:
         UPDATE [bdci17].[bdci17].[health_professionals_have_specialization] 
         SET id_specialization = 2

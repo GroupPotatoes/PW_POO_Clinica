@@ -32,7 +32,7 @@ public class SpecializationDAO {
                 + "WHERE id_professions = %d;", professionId);
 
         Statement st = this.connection.createStatement();
-            ResultSet resultSet = st.executeQuery(commandToExecute);
+        ResultSet resultSet = st.executeQuery(commandToExecute);
         while (resultSet.next()) {
             //id, name
             Specialization specialization = new Specialization(resultSet.getInt("id"), resultSet.getString("name"));
@@ -40,5 +40,29 @@ public class SpecializationDAO {
         }
 
         return specializations;
+    }
+
+    /**
+     * Get single specialization with the idHealthProfessionals, which is the same as idRegisteredEmployee
+     * @param idHealthProfessionals
+     * @return
+     * @throws SQLException
+     * @throws Exception 
+     */
+    public Specialization getSpecialization(int idHealthProfessionals) throws SQLException, Exception {
+
+        Specialization spec;
+        int id_specialization = new HealthProfessionalsHaveSpecializationDAO(ConnectionSetup.connection).getHealthProfessionalsHaveSpecialization(idHealthProfessionals).getIdSpecialization();
+       
+        String commandToExecute = String.format("SELECT * FROM [bdci17].[bdci17].[specialization]"
+                    + "WHERE id = %d;", id_specialization);
+        Statement st = this.connection.createStatement();
+        ResultSet resultSet = st.executeQuery(commandToExecute);
+        if (resultSet.next()) {
+            //id, name
+            spec = new Specialization(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getInt("id_professions"));
+            return spec;
+        }
+        return null;
     }
 }

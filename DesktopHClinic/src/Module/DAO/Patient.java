@@ -6,8 +6,6 @@
 
 package Module.DAO;
 
-import java.util.Date;
-
 /**
  *
  * @author William
@@ -33,13 +31,13 @@ public class Patient {
         private String login;
         private String password;
         private String rg;
-        private Date birthDate;
+        private String birth_date;
         
     // </editor-fold>
       
     // <editor-fold defaultstate="collapsed" desc="Construction">    
         
-     public Patient(String name, String cep, String rg, Date birthDate, String cpf, String number, String complement, String login, String password) throws Exception{
+     public Patient(String name, String cep, String rg, String birth_date, String cpf, String number, String complement, String login, String password) throws Exception{
          /*
             Construtor para inserir patient no DB
          */
@@ -47,14 +45,14 @@ public class Patient {
          this.setCep(cep);
          this.setCpf(cpf);
          this.setRg(rg);
-         this.setBirthDate(birthDate);
+         this.setBirth_Date(birth_date);
          this.setNumber(number);
          this.setComplement(complement);
          this.setLogin(login);
          this.setPassword(password);
      }   
      
-     public Patient(int id, String name, String cep, String rg, Date birthDate, String cpf, String number, String complement, String login, String password) throws Exception{        
+     public Patient(int id, String name, String cep, String rg, String birth_date, String cpf, String number, String complement, String login, String password) throws Exception{        
          /*
             Construtor completo
             Construtor para atualizar patient no DB
@@ -64,7 +62,7 @@ public class Patient {
          this.setCep(cep);
          this.setCpf(cpf);
          this.setRg(rg);
-         this.setBirthDate(birthDate);
+         this.setBirth_Date(birth_date);
          this.setNumber(number);
          this.setComplement(complement);
          this.setLogin(login);
@@ -140,11 +138,11 @@ public class Patient {
             this.rg = rg;
         }
 
-        public void setBirthDate(Date birthDate)throws Exception {
-           // if(birthDate == null)
-             //   throw new Exception("BirthDate inválido.");
+        public void setBirth_Date(String birth_date)throws Exception {
+           if(birth_date == null)
+               throw new Exception("BirthDate inválido.");
             
-            this.birthDate = birthDate;
+            this.birth_date = birth_date;
         }
           
     // </editor-fold>
@@ -186,8 +184,8 @@ public class Patient {
         return rg;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public String getBirth_Date() {
+        return birth_date;
     }
     
     // </editor-fold>

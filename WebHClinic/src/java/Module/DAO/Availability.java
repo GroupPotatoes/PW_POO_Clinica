@@ -27,7 +27,8 @@ public class Availability {
     // <editor-fold defaultstate="collapsed" desc="Attributes">
     
         private int id;
-        private int idHealthProfessionals;
+        private HealthProfessionals healthProfessionals;
+        private int idHealthProfessional;
         private int idSpecialization;
         private int weekDay;
         private Date iniciation;
@@ -35,6 +36,29 @@ public class Availability {
            
     // </editor-fold>
     
+    // <editor-fold defaultstate="collapsed" desc="Constructions">
+         
+    public Availability(int week, Date iniciation, Date finish, HealthProfessionals healthProfessionals, int idSpecialization) throws Exception{
+        this.setWeekDay(week);
+        this.setFinish(finish);
+        this.setIniciation(iniciation);
+        this.setIdHealthProfessionals(healthProfessionals);
+        this.setIdSpecialization(idSpecialization);
+    }     
+    
+    public Availability(int id, int week, Date iniciation, Date finish, HealthProfessionals healthProfessionals, int idSpecialization) throws Exception{
+        
+        this.setId(id);
+        this.setWeekDay(week);
+        this.setFinish(finish);
+        this.setIniciation(iniciation);
+        this.setIdHealthProfessionals(healthProfessionals);
+        this.setIdSpecialization(idSpecialization);
+    }
+
+    
+    // </editor-fold>
+        
     // <editor-fold defaultstate="collapsed" desc="Setter">
         
         public void setId(int id)throws Exception {
@@ -44,11 +68,11 @@ public class Availability {
             this.id = id;
         }
 
-        public void setIdHealthProfessionals(int idHealthProfessionals)throws Exception {
-            if(idHealthProfessionals <= 0)
+        public void setIdHealthProfessionals(HealthProfessionals healthProfessionals)throws Exception {
+            if(healthProfessionals == null)
                 throw new Exception("ID inválido");
         
-            this.idHealthProfessionals = idHealthProfessionals;
+            this.healthProfessionals = healthProfessionals;
         }
 
         public void setIdSpecialization(int idSpecialization)throws Exception {
@@ -86,8 +110,8 @@ public class Availability {
         return id;
     }
 
-    public int getIdHealthProfessionals() {
-        return idHealthProfessionals;
+    public HealthProfessionals getIdHealthProfessionals() {
+        return healthProfessionals;
     }
 
     public int getIdSpecialization() {
@@ -107,5 +131,23 @@ public class Availability {
     }
     
     // </editor-fold>
+    
+    public String toString()
+    {
+        return String.format("Médico: %s Dia da Semana: %s Horario: %s até %s", this.healthProfessionals.name, this.getDiaDaSemana(), this.getIniciation().toString(), this.getFinish().toString());
+    }
+    
+    public String getDiaDaSemana(){
+        switch(this.getWeekDay()){
+            case 1: return "Domingo";
+            case 2: return "Segunda-feira";
+            case 3: return "Terça-feira";
+            case 4: return "Quarta-feira";
+            case 5: return "Quinta-feira";
+            case 6: return "Sexta-feira";
+            case 7: return "Sábado";
+            default: return "Nenhum";
+        }
+    }
     
 }

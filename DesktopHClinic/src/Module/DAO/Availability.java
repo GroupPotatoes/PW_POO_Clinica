@@ -6,24 +6,29 @@
 
 package Module.DAO;
 
-import java.sql.Time;
-/**
- *
- * @author William
- */
+
 public class Availability {
     
     /*
     [id] [int] NOT NULL,
     [week_day] [int] NOT NULL,
-    [iniciation] [time](7) NOT NULL,
-    [finish] [time](7) NOT NULL,
+    [iniciation] [String](7) NOT NULL,
+    [finish] [String](7) NOT NULL,
     [id_health_professionals] [int] NOT NULL,
     [id_specialization] [int] NOT NULL,
      */
-    public Availability(int id, int idHealthProfessionals, int idSpecialization, int weekDay, Time iniciation, Time finish) throws Exception {
+    
+    public Availability(int idHealthProfessionals, int idSpecialization, int weekDay, String iniciation, String finish) throws Exception {
         this.setFinish(finish);
+        this.setIdHealthProfessionals(idHealthProfessionals);
+        this.setIdSpecialization(idSpecialization);
+        this.setIniciation(iniciation);
+        this.setWeekDay(weekDay);
+    }
+
+    public Availability(int id, int idHealthProfessionals, int idSpecialization, int weekDay, String iniciation, String finish) throws Exception {
         this.setId(id);
+        this.setFinish(finish);
         this.setIdHealthProfessionals(idHealthProfessionals);
         this.setIdSpecialization(idSpecialization);
         this.setIniciation(iniciation);
@@ -38,8 +43,8 @@ public class Availability {
         private int idHealthProfessionals;
         private int idSpecialization;
         private int weekDay;
-        private Time iniciation;
-        private Time finish;
+        private String iniciation;
+        private String finish;
            
     // </editor-fold>
     
@@ -73,16 +78,16 @@ public class Availability {
             this.weekDay = weekDay;
         }
 
-        public void setIniciation(Time iniciation) throws Exception {
+        public void setIniciation(String iniciation) throws Exception {
             if(iniciation == null)
-                throw new Exception("TimeIniciation inválido");
+                throw new Exception("Inicio inválido");
 
             this.iniciation = iniciation;
         }
 
-        public void setFinish(Time finish) throws Exception {
+        public void setFinish(String finish) throws Exception {
             if(finish == null)
-                throw new Exception("TimeFinish inválido");
+                throw new Exception("Fim inválido");
 
             this.finish = finish;
         }
@@ -106,14 +111,46 @@ public class Availability {
         return weekDay;
     }
 
-    public Time getIniciation() {
+    public String getIniciation() {
         return iniciation;
     }
 
-    public Time getFinish() {
+    public String getFinish() {
         return finish;
     }
     
     // </editor-fold>
     
+    @Override
+    public String toString() {
+        String day = "";
+        switch(this.weekDay) {
+            case 1:
+                day = "Domingo";
+                break;
+            case 2:
+                day = "Segunda";
+                break;
+            case 3:
+                day = "Terça";
+                break;
+            case 4:
+                day = "Quarta";
+                break;
+            case 5:
+                day = "Quinta";
+                break;
+            case 6:
+                day = "Sexta";
+                break;
+            case 7:
+                day = "Sábado";
+                break;
+        }
+        String inicio = this.iniciation;
+        String fim = this.finish;
+        inicio = inicio.substring(0, inicio.length() - 11);
+        fim = fim.substring(0, fim.length() - 11);
+        return (day + ", das " + inicio + " às " + fim);
+    }
 }

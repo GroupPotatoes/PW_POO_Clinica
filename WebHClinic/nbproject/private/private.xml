@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Owner/Documents/projects/PW_POO_Clinica/WebHClinic/web/alterar.html</file>
-            <file>file:/C:/Users/Owner/Documents/projects/PW_POO_Clinica/WebHClinic/web/index.html</file>
-            <file>file:/C:/Users/Owner/Documents/projects/PW_POO_Clinica/WebHClinic/src/java/Module/DAO/PatientDAO.java</file>
-            <file>file:/C:/Users/Owner/Documents/projects/PW_POO_Clinica/WebHClinic/src/java/clinic/MeuPreparedStatement.java</file>
-            <file>file:/C:/Users/Owner/Documents/projects/PW_POO_Clinica/WebHClinic/src/java/Module/DAO/Patient.java</file>
-            <file>file:/C:/Users/Owner/Documents/projects/PW_POO_Clinica/WebHClinic/src/java/clinic/Validate.java</file>
-            <file>file:/C:/Users/Owner/Documents/projects/PW_POO_Clinica/WebHClinic/src/java/clinic/Alterar.java</file>
+            <file>file:/C:/Users/amanda/Desktop/WebHClinic%2023-11/web/consultasanteriores.jsp</file>
+            <file>file:/C:/Users/amanda/Desktop/WebHClinic%2023-11/web/resultado.jsp</file>
+            <file>file:/C:/Users/amanda/Desktop/WebHClinic%2023-11/web/minhasconsultas.jsp</file>
+            <file>file:/C:/Users/amanda/Desktop/WebHClinic%2023-11/src/java/Module/DAO/DoctorAppointment.java</file>
         </group>
     </open-files>
 </project-private>

@@ -49,6 +49,13 @@ button{
     font-size:70%;
 }
 
+.panel-info {
+    width: 760px;
+    margin: auto;
+    margin-top: 100px;
+    padding: 25px;
+    opacity: 60%;
+}
 
 //NAVBAR 
 
@@ -141,4 +148,13 @@ ul.subMenu li a:hover{
 	padding-top:.2em;
 	top:0;
 	border-radius:0;
+}
+
+#row{
+    padding: 20px;
+    text-align: center;
+}
+
+.list-group{
+    padding: 20px;
 }

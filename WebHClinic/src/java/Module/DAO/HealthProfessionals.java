@@ -22,6 +22,7 @@ public class HealthProfessionals {
     // <editor-fold defaultstate="collapsed" desc="Attributes">
     
     private int idRegisteredEmployee;
+    public String name;
     private String cpf;
     private String idClass;
     
@@ -29,8 +30,9 @@ public class HealthProfessionals {
    
     // <editor-fold defaultstate="collapsed" desc="Construction">
     
-    public HealthProfessionals(int idRegisteredEmployee, String cpf, String idClass) throws Exception{
+    public HealthProfessionals(int idRegisteredEmployee, String cpf, String idClass, String name) throws Exception{
         this.setidRegisteredEmployee(idRegisteredEmployee);
+        this.name = name;
         this.setCPF(cpf);
         this.setIDClass(idClass);
     }
@@ -38,6 +40,17 @@ public class HealthProfessionals {
     public HealthProfessionals(String cpf, String idClass) throws Exception{
         this.setCPF(cpf);
         this.setIDClass(idClass);
+    }
+    
+    public HealthProfessionals(int idRegisteredEmployee, String name) throws Exception{
+        this.setidRegisteredEmployee(idRegisteredEmployee);
+        this.name = name;
+    }
+
+    public HealthProfessionals(int idRegisteredEmployee, String name, String idClass) {
+        this.idRegisteredEmployee = idRegisteredEmployee;
+        this.name = name;
+        this.idClass = idClass;
     }
     
     // </editor-fold>
@@ -54,6 +67,10 @@ public class HealthProfessionals {
 
     public String getIDClass() {
         return idClass;
+    }
+    
+    public String getName() {
+        return this.name;
     }
     
     // </editor-fold>
