@@ -19,7 +19,6 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
     private HealthProfessionalsDAO healthProfessionalsDAO = new HealthProfessionalsDAO(ConnectionSetup.connection);
     private RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
     private SpecializationDAO specializationDAO = new SpecializationDAO(ConnectionSetup.connection);
-    private ProfessionsDAO professionalsDAO = new ProfessionsDAO(ConnectionSetup.connection);
 
     private RegisteredEmployee registeredEmployee = null;
     private HealthProfessionals healthprof = null;
@@ -51,10 +50,6 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
         loginFIeld = new javax.swing.JTextField();
         senhaField = new javax.swing.JTextField();
         btnAlteraDisp = new javax.swing.JButton();
-        labelProfissao1 = new javax.swing.JLabel();
-        escolheProfissao = new javax.swing.JComboBox();
-        labelEspec1 = new javax.swing.JLabel();
-        escolheEspecialidade = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstEmployees = new javax.swing.JList();
         txtNomePesquisado = new javax.swing.JTextField();
@@ -79,18 +74,18 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
 
         labelNome.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         labelNome.setText("Nome");
-        add(labelNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, 20));
+        add(labelNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, 20));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel2.setText("CPF");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, 20));
-        add(nomeProfSaude, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 191, 20));
-        add(cpfField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, 191, 20));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, -1, 20));
+        add(nomeProfSaude, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 191, 20));
+        add(cpfField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 191, 20));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel3.setText("Registro profissional");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, -1, 20));
-        add(registroField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 191, 20));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, -1, 20));
+        add(registroField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 191, 20));
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -125,28 +120,6 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
             }
         });
         add(btnAlteraDisp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, -1, 20));
-
-        labelProfissao1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        labelProfissao1.setText("Profissão");
-        add(labelProfissao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, -1, 20));
-
-        escolheProfissao.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                escolheProfissaoMouseClicked(evt);
-            }
-        });
-        escolheProfissao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                escolheProfissaoActionPerformed(evt);
-            }
-        });
-        add(escolheProfissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 191, 20));
-
-        labelEspec1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        labelEspec1.setText("Especialidade");
-        add(labelEspec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, -1, 20));
-
-        add(escolheEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 191, 20));
 
         lstEmployees.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -230,10 +203,6 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnAlteraDispActionPerformed
 
-    private void escolheProfissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escolheProfissaoActionPerformed
-        loadSpecialization();
-    }//GEN-LAST:event_escolheProfissaoActionPerformed
-
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
 
         try {
@@ -252,15 +221,9 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
 //        }
     }//GEN-LAST:event_lstEmployeesMouseClicked
 
-    private void escolheProfissaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_escolheProfissaoMouseClicked
-        loadSpecialization();
-    }//GEN-LAST:event_escolheProfissaoMouseClicked
-
     private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
         try {
             loadHealthProfessionals();
-            loadProfessionals();
-            loadSpecialization();
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TelaCadastro_HealthProfessionals.class.getName()).log(Level.SEVERE, null, ex);
@@ -284,10 +247,6 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
             idHealthProfessional = ((RegisteredEmployee) lstEmployees.getSelectedValue()).getId();
             RegisteredEmployee re = this.registeredEmployeeDAO.getInfoRegisteredEmployee(idHealthProfessional);
             HealthProfessionals hp = this.healthProfessionalsDAO.getInfoHealthProfessional(idHealthProfessional);
-            Specialization sp = this.specializationDAO.getSpecialization(idHealthProfessional);
-            Professions pf = this.professionalsDAO.getProfession(sp.getIdProfessions());
-            this.escolheEspecialidade.setSelectedItem(sp);
-            this.escolheProfissao.setSelectedItem(pf);
             this.cpfField.setText(hp.getCPF());
             this.nomeProfSaude.setText(re.getName());
             this.registroField.setText(hp.getIDClass());
@@ -304,24 +263,6 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
         this.lstEmployees.setListData(registeredEmployees.toArray());
     }
 
-    private void loadSpecialization() {
-        try {
-            this.escolheEspecialidade.removeAllItems();
-            int professionsID = ((Professions) this.escolheProfissao.getSelectedItem()).getId();
-
-            for (Specialization specialization : this.specializationDAO.SelectSpecializations(professionsID)) {
-                this.escolheEspecialidade.addItem(specialization);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(TelaAlterar_HealthProfessional.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void loadProfessionals() throws Exception {
-        for (Professions profession : this.professionalsDAO.SelectAllProfessions()) {
-            this.escolheProfissao.addItem(profession);
-        }
-    }
 
     private boolean hasError() {
 
@@ -339,8 +280,6 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JTextField cpfField;
-    private javax.swing.JComboBox escolheEspecialidade;
-    private javax.swing.JComboBox escolheProfissao;
     private javax.swing.JComboBox especialProfSaude;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -350,11 +289,9 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelEspec;
-    private javax.swing.JLabel labelEspec1;
     private javax.swing.JLabel labelEspec2;
     private javax.swing.JLabel labelNome;
     private javax.swing.JLabel labelProfissao;
-    private javax.swing.JLabel labelProfissao1;
     private java.awt.Label lblError;
     private javax.swing.JTextField loginFIeld;
     private javax.swing.JList lstEmployees;
