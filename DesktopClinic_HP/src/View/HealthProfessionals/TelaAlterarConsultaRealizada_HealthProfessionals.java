@@ -9,13 +9,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class TelaAlterarConsultaRealizada_HealthProfessionals extends javax.swing.JPanel {
-    
-    private DoctorAppointmentDAO doctorAppointmentDAO = null;
+
+    private DoctorAppointmentDAO doctorAppointmentDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
 
     public TelaAlterarConsultaRealizada_HealthProfessionals() {
         initComponents();
-        
-        doctorAppointmentDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
     }
 
     @SuppressWarnings("unchecked")
@@ -173,32 +171,28 @@ public class TelaAlterarConsultaRealizada_HealthProfessionals extends javax.swin
 
             this.lblError.setForeground(Color.RED);
             this.lblError.setText("");
-            if(lstConsultas.getSelectedValue() != null)
-            {
-                DoctorAppointment doctorAppointment =  ((DoctorAppointment)lstConsultas.getSelectedValue());
+            if (lstConsultas.getSelectedValue() != null) {
+                DoctorAppointment doctorAppointment = ((DoctorAppointment) lstConsultas.getSelectedValue());
                 doctorAppointment.setObservation(this.txtObservacao.getText());
                 doctorAppointment.setMedicalExamRequest(this.txtRequisicaoDeExame.getText());
                 doctorAppointment.setPrescription(this.txtPrescricao.getText());
                 doctorAppointment.setRecommendation(this.txtRecomendacao.getText());
 
-                if(doctorAppointmentDAO.InsertDoctorAppointmentResult(doctorAppointment))
-                {
+                if (doctorAppointmentDAO.InsertDoctorAppointmentResult(doctorAppointment)) {
                     this.lblError.setForeground(Color.GREEN);
                     this.lblError.setText("Consulta Alterada!");
+                } else {
+                    this.lblError.setText("Não foi possível alterar consulta.");
                 }
-                else
-                this.lblError.setText("Não foi possível alterar consulta.");
+            } else {
+                this.lblError.setText("Selecione uma consulta!");
             }
-            else
-            this.lblError.setText("Selecione uma consulta!");
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             Logger.getLogger(TelaAlterarConsultaRealizada_HealthProfessionals.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
-    
-    
+
     private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
         try {
             carregarConsultasValidas();
@@ -207,17 +201,16 @@ public class TelaAlterarConsultaRealizada_HealthProfessionals extends javax.swin
         }
     }//GEN-LAST:event_formComponentAdded
 
-    private void carregarConsultasValidas() throws Exception{
+    private void carregarConsultasValidas() throws Exception {
         this.lblError.setText("");
         List<DoctorAppointment> consultas = this.doctorAppointmentDAO.SelectDoctorAppointmentUntilCurrentDate();
-        if(consultas.isEmpty())
+        if (consultas.isEmpty()) {
             this.lblError.setText("Não há consultas para serem exibidas.");
-        else
-        {
+        } else {
             this.lstConsultas.setListData(consultas.toArray());
         }
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JButton btnFechar;

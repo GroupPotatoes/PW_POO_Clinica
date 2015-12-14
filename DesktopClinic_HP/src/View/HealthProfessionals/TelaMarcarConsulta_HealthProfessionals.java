@@ -18,20 +18,13 @@ import javax.swing.JOptionPane;
 
 public class TelaMarcarConsulta_HealthProfessionals extends javax.swing.JPanel {
 
-    private DoctorAppointmentDAO doctorAppointmentDAO = null;
-    private PatientDAO patientDAO = null;
+    private DoctorAppointmentDAO doctorAppointmentDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
+    private PatientDAO patientDAO = new PatientDAO(ConnectionSetup.connection);
     private AvailabilityDAO availabilityDAO = null;
-    private DoctorAppointmentDAO doctorAppDAO = null;
-    
-    
+    private DoctorAppointmentDAO doctorAppDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
+
     public TelaMarcarConsulta_HealthProfessionals() {
         initComponents();
-        
-        this.doctorAppointmentDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
-        this.patientDAO = new PatientDAO(ConnectionSetup.connection);
-        this.availabilityDAO = new AvailabilityDAO(ConnectionSetup.connection);
-        this.doctorAppDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
-        
     }
 
     /**
@@ -211,17 +204,16 @@ public class TelaMarcarConsulta_HealthProfessionals extends javax.swing.JPanel {
     private void btnConfimarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfimarActionPerformed
         try {
 
-            if(lstPacientes.getSelectedValue() == null)
-            this.lblError.setText("Selecione um paciente!");
-            else if(lstHorarios.getSelectedValue() == null)
-            this.lblError.setText("Selecione um horário!");
-            else
-            {
-                int idPatient = ((Patient)lstPacientes.getSelectedValue()).getId();
-                int idAvailability = ((Availability)lstHorarios.getSelectedValue()).getId();
+            if (lstPacientes.getSelectedValue() == null) {
+                this.lblError.setText("Selecione um paciente!");
+            } else if (lstHorarios.getSelectedValue() == null) {
+                this.lblError.setText("Selecione um horário!");
+            } else {
+                int idPatient = ((Patient) lstPacientes.getSelectedValue()).getId();
+                int idAvailability = ((Availability) lstHorarios.getSelectedValue()).getId();
 
-                String dateIniciation = ((Availability)lstHorarios.getSelectedValue()).getIniciation();
-                String dateFinish = ((Availability)lstHorarios.getSelectedValue()).getFinish();
+                String dateIniciation = ((Availability) lstHorarios.getSelectedValue()).getIniciation();
+                String dateFinish = ((Availability) lstHorarios.getSelectedValue()).getFinish();
 
                 dateIniciation = dateIniciation.substring(0, dateIniciation.length() - 11);
                 dateFinish = dateFinish.substring(0, dateFinish.length() - 11);
@@ -230,20 +222,16 @@ public class TelaMarcarConsulta_HealthProfessionals extends javax.swing.JPanel {
 
                 //int idPatient, int idAvailability, Date dateIniciation, Date dateFinish
                 DoctorAppointment doctorAppointment = new DoctorAppointment(idPatient, idAvailability, dateIniciation, dateFinish);
-                if(this.doctorAppointmentDAO.InsertDoctorAppointment(doctorAppointment, date))
-                {
+                if (this.doctorAppointmentDAO.InsertDoctorAppointment(doctorAppointment, date)) {
                     JOptionPane.showMessageDialog(this, "Consulta marcada!");
                     recarregarForm();
-                }
-                else
-                {
+                } else {
                     recarregarForm();
                     this.lblError.setText("Erro ao tentar marcar consulta.");
                 }
             }
 
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             this.lblError.setText("Erro ao tentar marcar consulta.");
         }
     }//GEN-LAST:event_btnConfimarActionPerformed
@@ -261,59 +249,60 @@ public class TelaMarcarConsulta_HealthProfessionals extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDisponibilidadeActionPerformed
 
     private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
-       try {
+        try {
             carregarPacientes();
         } catch (Exception ex) {
             Logger.getLogger(TelaMarcarConsulta_HealthProfessionals.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formComponentAdded
 
- private void carregarPacientes() throws Exception{
+    private void carregarPacientes() throws Exception {
         this.lblError.setText("");
         List<Patient> pacientes = this.patientDAO.SelectAllPatient();
-        if(!pacientes.isEmpty())
+        if (!pacientes.isEmpty()) {
             this.lstPacientes.setListData(pacientes.toArray());
-        else
+        } else {
             this.lblError.setText("Não existe pacientes.");
+        }
     }
-    
-    private void recarregarForm() throws Exception{
+
+    private void recarregarForm() throws Exception {
         this.lblError.setText("");
         carregarDisponibilidades();
-    } 
-    
-    private void carregarDisponibilidades() throws Exception{
-        
-        List<Availability> availabilities = new ArrayList<Availability>();
+    }
+
+    private void carregarDisponibilidades() throws Exception {
+
+        List<Availability> availabilities = new ArrayList<>();
         this.lstHorarios.setListData(availabilities.toArray());
-        
+
         String date = getValidDate();
         int dayOfWeek = this.getDayOfWeek();
         availabilities = getValidAvailability(ConnectionSetup.id, dayOfWeek, date);
-        if(!availabilities.isEmpty())
-        {  
-           this.lblError.setText("");
-           this.lstHorarios.setListData(availabilities.toArray());
+        if (!availabilities.isEmpty()) {
+            this.lblError.setText("");
+            this.lstHorarios.setListData(availabilities.toArray());
+        } else {
+            this.lblError.setText("Não foi encontrado disponibilidades para esse dia!");
         }
-        else
-           this.lblError.setText("Não foi encontrado disponibilidades para esse dia!");
     }
-   
-    private List<Availability> getValidAvailability(int healthProfessionalID, int  dayOfWeek, String data) throws Exception{
-   
-        List<Availability> availabilities = this.availabilityDAO.SelectAllAvailability(healthProfessionalID, dayOfWeek); 
+
+    private List<Availability> getValidAvailability(int healthProfessionalID, int dayOfWeek, String data) throws Exception {
+
+        List<Availability> availabilities = this.availabilityDAO.SelectAllAvailability(healthProfessionalID, dayOfWeek);
         List<Availability> avscopy = new ArrayList(availabilities);
-        
+
         List<String> busyHours = this.doctorAppDAO.SelectBusyHours(data);
-        
-        for(String h : busyHours)
-            for(Availability av : avscopy)
-            {
-                String iniciation = av.getIniciation().toString().substring(0, av.getIniciation().toString().length() - 8);
-                if(h.equals(iniciation))
+
+        for (String h : busyHours) {
+            for (Availability av : avscopy) {
+                String iniciation = av.getIniciation().substring(0, av.getIniciation().toString().length() - 8);
+                if (h.equals(iniciation)) {
                     availabilities.remove(av);
+                }
             }
-         
+        }
+
         return availabilities;
     }
 
@@ -331,13 +320,13 @@ public class TelaMarcarConsulta_HealthProfessionals extends javax.swing.JPanel {
         }
         return valid;
     }
-    
+
     private int getDayOfWeek() {
-       Calendar c = this.dateSelected.getSelectedDate();
-       return c.get(Calendar.DAY_OF_WEEK);
+        Calendar c = this.dateSelected.getSelectedDate();
+        return c.get(Calendar.DAY_OF_WEEK);
     }
-   
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnConfimar;

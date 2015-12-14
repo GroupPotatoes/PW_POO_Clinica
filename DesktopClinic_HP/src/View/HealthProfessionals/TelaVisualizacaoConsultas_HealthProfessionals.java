@@ -20,33 +20,34 @@ import java.util.logging.Logger;
 public class TelaVisualizacaoConsultas_HealthProfessionals extends javax.swing.JPanel {
 
     protected int idDoctor;
-    private ConnectionSetup conexao ;   
-    DoctorAppointmentDAO daDAO;
-    
+    DoctorAppointmentDAO daDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
+
     /**
      * Creates new form TelaVisualizacaoConsultas_HealthProfessionals
+     *
+     * @param idDoctor id do médico.
      */
     public TelaVisualizacaoConsultas_HealthProfessionals(int idDoctor) {
         try {
             this.setIdDoctor(idDoctor);
-            this.conexao  = new ConnectionSetup();
-            this.daDAO = new DoctorAppointmentDAO(conexao.connection);
             initComponents();
         } catch (Exception ex) {
             Logger.getLogger(TelaVisualizacaoConsultas_HealthProfessionals.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * Setter do atributo idDoctor.
+     *
      * @param id
-     * @throws Exception 
+     * @throws Exception
      */
-    public void setIdDoctor(int id) throws Exception{
-        if(id>0)
+    public void setIdDoctor(int id) throws Exception {
+        if (id > 0) {
             this.idDoctor = id;
-        else
+        } else {
             throw new Exception("Id inválido!");
+        }
     }
 
     /**
@@ -228,17 +229,19 @@ public class TelaVisualizacaoConsultas_HealthProfessionals extends javax.swing.J
         this.setVisible(false);
     }//GEN-LAST:event_btnVisualizar1ActionPerformed
 
-     /**
+    /**
      * Carrega as disponibilidades no JList.
-     * @throws Exception 
+     *
+     * @throws Exception
      */
-    private void carregarDisponibilidades() throws Exception{        
-        List<String> todasConsultasMedicasPeriodo = new ArrayList<String>(); //array com as disponibilidades
+    private void carregarDisponibilidades() throws Exception {
+        List<String> todasConsultasMedicasPeriodo = new ArrayList<>(); //array com as disponibilidades
         Date dtInicio = this.dtcINicio.getCurrent().getTime(), //datas para seleção
-             dtFinal  = this.dtcFinal.getCurrent().getTime();
+                dtFinal = this.dtcFinal.getCurrent().getTime();
         todasConsultasMedicasPeriodo = this.daDAO.selectDoctorAppointmentInPeriod(dtInicio, dtFinal, this.idDoctor); //retornando as datas
-        if(todasConsultasMedicasPeriodo.isEmpty())
+        if (todasConsultasMedicasPeriodo.isEmpty()) {
             todasConsultasMedicasPeriodo.add("Nenhuma consulta marcada no período!");
+        }
         this.lstListaConsltas.setListData(todasConsultasMedicasPeriodo.toArray());
     }
 
