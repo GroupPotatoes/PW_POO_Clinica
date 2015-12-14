@@ -195,18 +195,20 @@ public class TelaAlterarEmployee extends javax.swing.JPanel {
     private void lstEmployeesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEmployeesValueChanged
         try {
             // TODO add your handling code here:
-            int idRegisteredEmployee = ((RegisteredEmployee) this.lstEmployees.getSelectedValue()).getId();
-            RegisteredEmployee re = this.registeredEmployeeDAO.getInfoRegisteredEmployee(idRegisteredEmployee);
-            Role rl = this.roleDAO.selectRole(idRegisteredEmployee);
-            if(rl.getId() == 1) 
-                this.cbbTipo.setSelectedIndex(0);
-            else if (rl.getId() == 2) 
-                this.cbbTipo.setSelectedIndex(1);
-            else
-                this.cbbTipo.setSelectedIndex(2);
-            this.txtNome.setText(re.getName());
-            this.txtLogin.setText(re.getLogin());
-            this.txtSenha.setText(re.getPassword());
+            if (this.lstEmployees.getSelectedIndex() > 0) {
+                int idRegisteredEmployee = ((RegisteredEmployee) this.lstEmployees.getSelectedValue()).getId();
+                RegisteredEmployee re = this.registeredEmployeeDAO.getInfoRegisteredEmployee(idRegisteredEmployee);
+                Role rl = this.roleDAO.selectRole(idRegisteredEmployee);
+                if(rl.getId() == 1) 
+                    this.cbbTipo.setSelectedIndex(0);
+                else if (rl.getId() == 2) 
+                    this.cbbTipo.setSelectedIndex(1);
+                else
+                    this.cbbTipo.setSelectedIndex(2);
+                this.txtNome.setText(re.getName());
+                this.txtLogin.setText(re.getLogin());
+                this.txtSenha.setText(re.getPassword());
+            }
         } catch (Exception ex) {
             Logger.getLogger(TelaAlterarEmployee.class.getName()).log(Level.SEVERE, null, ex);
         }
