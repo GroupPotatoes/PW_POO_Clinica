@@ -51,6 +51,7 @@ public class TelaPrincipal_RecepSecret extends javax.swing.JFrame {
     public TelaPrincipal_RecepSecret() {
         try {
             this.connection = new ConnectionSetup();
+            this.setResizable(false); //bloqueando o tamanho do frame
         } catch (SQLException ex) {
             Logger.getLogger(TelaPrincipal_RecepSecret.class.getName()).log(Level.SEVERE, null, ex);
         }

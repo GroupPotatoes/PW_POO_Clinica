@@ -42,6 +42,7 @@ public class TelaPrincipal_HealthProf extends javax.swing.JFrame {
     public TelaPrincipal_HealthProf() {
         try {
             this.connection = new ConnectionSetup();
+            this.setResizable(false); //bloqueando o tamanho do frame
         } catch (SQLException ex) {
             Logger.getLogger(TelaPrincipal_HealthProf.class.getName()).log(Level.SEVERE, null, ex);
         }
