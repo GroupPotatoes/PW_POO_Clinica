@@ -29,9 +29,11 @@ public class TelaExclusao extends javax.swing.JPanel {
         txtNomePesquisado = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(300, 300));
-        setPreferredSize(new java.awt.Dimension(300, 300));
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         setRequestFocusEnabled(false);
         addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
@@ -43,7 +45,7 @@ public class TelaExclusao extends javax.swing.JPanel {
         lblEnunciado.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         lblEnunciado.setForeground(new java.awt.Color(255, 0, 0));
         lblEnunciado.setText("<html><center>O cadastro será inativado. </center><br> <center>Ele estará disponível apenas para consulta.</center></html>");
-        add(lblEnunciado, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        add(lblEnunciado, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, -1, -1));
 
         btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -51,7 +53,7 @@ public class TelaExclusao extends javax.swing.JPanel {
                 btnExcluirActionPerformed(evt);
             }
         });
-        add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 136, -1));
+        add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, 136, -1));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -59,7 +61,7 @@ public class TelaExclusao extends javax.swing.JPanel {
                 btnCancelarActionPerformed(evt);
             }
         });
-        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 136, -1));
+        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 480, 136, -1));
 
         lstEmployees.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -68,8 +70,8 @@ public class TelaExclusao extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(lstEmployees);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 240, 160));
-        add(txtNomePesquisado, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 165, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 430, 180));
+        add(txtNomePesquisado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 210, -1));
 
         btnPesquisar.setText("Filtrar");
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -77,11 +79,15 @@ public class TelaExclusao extends javax.swing.JPanel {
                 btnPesquisarActionPerformed(evt);
             }
         });
-        add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, -1));
+        add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, -1, -1));
 
         jLabel1.setText("Selecionar Profissional:");
         jLabel1.setToolTipText("");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 165, 22));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 165, 22));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setText(":: Excluir funcionário ::");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -153,6 +159,7 @@ public class TelaExclusao extends javax.swing.JPanel {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEnunciado;
     private javax.swing.JList lstEmployees;

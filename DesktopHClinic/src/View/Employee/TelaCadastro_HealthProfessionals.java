@@ -66,27 +66,36 @@ public class TelaCadastro_HealthProfessionals extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         registroField = new javax.swing.JTextField();
 
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
             }
         });
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblCadastroProfSaude.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblCadastroProfSaude.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCadastroProfSaude.setText(":: Cadastro de Profissional de Saúde ::");
+        add(lblCadastroProfSaude, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 728, -1));
 
         labelNome.setText("Nome Completo");
+        add(labelNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, -1));
+        add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 250, -1));
 
         labelProfissao.setText("Profissão");
+        add(labelProfissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, -1, -1));
 
         labelEspec.setText("Especialidade");
+        add(labelEspec, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, -1, -1));
 
         profissaoProfSaude.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 profissaoProfSaudeActionPerformed(evt);
             }
         });
+        add(profissaoProfSaude, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 250, -1));
 
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -94,6 +103,7 @@ public class TelaCadastro_HealthProfessionals extends javax.swing.JPanel {
                 btnCadastrarActionPerformed(evt);
             }
         });
+        add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, -1, -1));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -101,130 +111,41 @@ public class TelaCadastro_HealthProfessionals extends javax.swing.JPanel {
                 btnCancelarActionPerformed(evt);
             }
         });
+        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, -1, -1));
+
+        add(especialProfSaude, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 250, -1));
 
         lblResultados.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblResultados.setForeground(new java.awt.Color(102, 102, 102));
         lblResultados.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblResultados.setText("_Resultados do Cadastro");
+        add(lblResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 730, -1));
 
         lblLogin.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblLogin.setText("Login gerado");
+        add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, -1, -1));
 
         txtLogin.setText("Nenhum login gerado");
+        add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, 202, -1));
 
         txtSenha.setText("Nenhuma senha gerada");
+        add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 470, 202, -1));
 
         lblSenha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblSenha.setText("Senha gerada");
+        add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 470, -1, -1));
 
         jLabel1.setText("CPF");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
+        add(cpfField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 250, -1));
 
         jLabel2.setText("Registro profissional");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 10)); // NOI18N
         jLabel3.setText("(exemplos: CRO, CRM, CREFITO)");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblCadastroProfSaude, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(35, 35, 35))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(labelNome)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(labelProfissao)
-                            .addComponent(labelEspec))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(registroField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cpfField, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(profissaoProfSaude, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(especialProfSaude, javax.swing.GroupLayout.Alignment.LEADING, 0, 202, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCadastrar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnCancelar)))
-                        .addGap(39, 39, 39))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblResultados, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblLogin)
-                                    .addComponent(lblSenha))
-                                .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(81, 81, 81)))
-                        .addContainerGap())))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(lblCadastroProfSaude)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelNome))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cpfField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(registroField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(labelProfissao))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(profissaoProfSaude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(especialProfSaude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelEspec))))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCadastrar)
-                    .addComponent(btnCancelar))
-                .addGap(18, 18, 18)
-                .addComponent(lblResultados)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLogin))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSenha))
-                .addGap(23, 23, 23))
-        );
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, -1, -1));
+        add(registroField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 250, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

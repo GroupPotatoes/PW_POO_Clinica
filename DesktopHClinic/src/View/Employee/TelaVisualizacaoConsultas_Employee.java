@@ -55,12 +55,19 @@ public class TelaVisualizacaoConsultas_Employee extends javax.swing.JPanel {
         lblTitulo = new javax.swing.JLabel();
         lblTitulo1 = new javax.swing.JLabel();
 
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         scrLista.setViewportView(lstListaConsltas);
+
+        add(scrLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 353, 630, 168));
 
         lblData.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblData.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblData.setText("Selecione uma data...");
         lblData.setEnabled(false);
+        add(lblData, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 569, 17));
 
         btnIndisponibilizar.setText("Indisponibilizar Horário");
         btnIndisponibilizar.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +75,7 @@ public class TelaVisualizacaoConsultas_Employee extends javax.swing.JPanel {
                 btnIndisponibilizarActionPerformed(evt);
             }
         });
+        add(btnIndisponibilizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 560, 420, -1));
 
         dtCalendario.setCurrentView(new datechooser.view.appearance.AppearancesList("Light",
             new datechooser.view.appearance.ViewAppearance("custom",
@@ -115,71 +123,29 @@ public class TelaVisualizacaoConsultas_Employee extends javax.swing.JPanel {
             dtCalendarioOnSelectionChange(evt);
         }
     });
+    add(dtCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 520, 219));
+    add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 420, -1));
 
     jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+    add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 80, 10, 219));
 
     lblTitulo2.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
     lblTitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     lblTitulo2.setText("Clique em uma data para mais detalhes");
+    add(lblTitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 46, 758, 17));
 
     jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+    add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 14, 219));
 
     lblTitulo.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
     lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     lblTitulo.setText(":: Visualização de Consultas - Administrativo ::");
+    add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 23, 758, 17));
 
     lblTitulo1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
     lblTitulo1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
     lblTitulo1.setText("DETALHES DE CADA DATA  -");
-
-    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-    this.setLayout(layout);
-    layout.setHorizontalGroup(
-        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-            .addGap(19, 19, 19)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(jSeparator3)
-                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(dtCalendario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(18, 18, 18)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(scrLista, javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                    .addComponent(lblTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(lblData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addComponent(btnIndisponibilizar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTitulo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE))
-            .addGap(23, 23, 23))
-    );
-    layout.setVerticalGroup(
-        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(layout.createSequentialGroup()
-            .addGap(23, 23, 23)
-            .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(lblTitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(24, 24, 24)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                .addComponent(dtCalendario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator2))
-            .addGap(18, 18, 18)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lblTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblData, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(12, 12, 12)
-            .addComponent(scrLista, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(32, 32, 32)
-            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(18, 18, 18)
-            .addComponent(btnIndisponibilizar)
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-    );
+    add(lblTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 179, 17));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIndisponibilizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIndisponibilizarActionPerformed

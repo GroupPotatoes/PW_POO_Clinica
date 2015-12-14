@@ -86,6 +86,9 @@ public class TelaPrincipal_Admin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Administrativo do Hospital Plus");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setName("SAHP"); // NOI18N
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -198,17 +201,6 @@ public class TelaPrincipal_Admin extends javax.swing.JFrame {
 
         setJMenuBar(mnuMenuPrincipal);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 794, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 451, Short.MAX_VALUE)
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -261,7 +253,6 @@ public class TelaPrincipal_Admin extends javax.swing.JFrame {
                 true, false, false, false,
                 false, false, false);
         this.parentPanel.add(this.telaCadastro, BorderLayout.CENTER);
-        //this.telaCadastro.setPreferredSize(new Dimension(300, 300));
         this.parentPanel.revalidate();
         this.parentPanel.repaint();
         this.pack();
@@ -273,7 +264,6 @@ public class TelaPrincipal_Admin extends javax.swing.JFrame {
                 false, false, false);
         
         this.parentPanel.add(this.excluiCadastroFunc, BorderLayout.CENTER);
-        //this.excluiCadastro.setPreferredSize(new Dimension(400, 300));
         this.parentPanel.revalidate();
         this.parentPanel.repaint();
         this.pack();
@@ -284,7 +274,6 @@ public class TelaPrincipal_Admin extends javax.swing.JFrame {
                 false, false, true, false,
                 false, false, false);
         this.parentPanel.add(this.pesquisaFuncionario, BorderLayout.CENTER);
-        //this.pesquisaFuncionario.setPreferredSize(new Dimension(300, 300));
         this.parentPanel.revalidate();
         this.parentPanel.repaint();
         this.pack();
@@ -295,7 +284,6 @@ public class TelaPrincipal_Admin extends javax.swing.JFrame {
                 false, false, false, true,
                 false, false, false);
         this.parentPanel.add(this.telaAlterar, BorderLayout.CENTER);
-        //this.telaAlterar.setPreferredSize(new Dimension(300, 300));
         this.parentPanel.revalidate();
         this.parentPanel.repaint();
         this.pack();
@@ -307,7 +295,6 @@ public class TelaPrincipal_Admin extends javax.swing.JFrame {
                 false, false, false, false,
                 true, false, false);
         this.parentPanel.add(this.marcarConsulta, BorderLayout.CENTER);
-        //this.telaAlterar.setPreferredSize(new Dimension(300, 300));
         this.parentPanel.revalidate();
         this.parentPanel.repaint();
         this.pack();
@@ -319,7 +306,6 @@ public class TelaPrincipal_Admin extends javax.swing.JFrame {
                 false, false, false, false,
                 false, true, false);
         this.parentPanel.add(this.desmarcarConsulta, BorderLayout.CENTER);
-       // this.telaAlterar.setPreferredSize(new Dimension(300, 300));
         this.parentPanel.revalidate();
         this.parentPanel.repaint();
         this.pack();
@@ -331,7 +317,6 @@ public class TelaPrincipal_Admin extends javax.swing.JFrame {
                 false, false, false, false,
                 false, false, true);
         this.parentPanel.add(this.visualizarConsulta, BorderLayout.CENTER);
-        //this.telaAlterar.setPreferredSize(new Dimension(300, 300));
         this.parentPanel.revalidate();
         this.parentPanel.repaint();
         this.pack();
@@ -343,7 +328,6 @@ public class TelaPrincipal_Admin extends javax.swing.JFrame {
             false, false, false);
 
         this.parentPanel.add(this.telaAlterarSaude, BorderLayout.CENTER);
-        //this.telaAlterarSaude.setPreferredSize(new Dimension(445, 300));
         this.parentPanel.revalidate();
         this.parentPanel.repaint();
         this.pack();
@@ -355,7 +339,6 @@ public class TelaPrincipal_Admin extends javax.swing.JFrame {
             false, false, false);
 
         this.parentPanel.add(this.pesquisaMedico, BorderLayout.CENTER);
-        //this.pesquisaMedico.setPreferredSize(new Dimension(400, 300));
         this.parentPanel.revalidate();
         this.parentPanel.repaint();
         this.pack();
@@ -367,7 +350,6 @@ public class TelaPrincipal_Admin extends javax.swing.JFrame {
             false, false, false);
 
         this.parentPanel.add(this.insereProfSaude, BorderLayout.CENTER);
-        //this.insereProfSaude.setPreferredSize(new Dimension(600, 390));
         this.parentPanel.revalidate();
         this.parentPanel.repaint();
         this.pack();

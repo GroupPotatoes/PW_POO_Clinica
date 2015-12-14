@@ -62,11 +62,14 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         labelEspec2 = new javax.swing.JLabel();
         lblError = new java.awt.Label();
+        jLabel6 = new javax.swing.JLabel();
 
         labelProfissao.setText("Profissão");
 
         labelEspec.setText("Especialidade");
 
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 formComponentAdded(evt);
@@ -76,18 +79,18 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
 
         labelNome.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         labelNome.setText("Nome");
-        add(labelNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 12, -1, -1));
+        add(labelNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, 20));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel2.setText("CPF");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 43, -1, -1));
-        add(nomeProfSaude, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 11, 191, -1));
-        add(cpfField, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 42, 191, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, 20));
+        add(nomeProfSaude, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 191, 20));
+        add(cpfField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, 191, 20));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel3.setText("Registro profissional");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 81, -1, -1));
-        add(registroField, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 80, 191, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, -1, 20));
+        add(registroField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 191, 20));
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +98,7 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
                 btnSalvarActionPerformed(evt);
             }
         });
-        add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, 100, -1));
+        add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 490, 100, 20));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -103,17 +106,17 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
                 btnCancelarActionPerformed(evt);
             }
         });
-        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 100, -1));
+        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 490, 100, 20));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel4.setText("Login");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 253, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, 20));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel5.setText("Senha");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 291, -1, -1));
-        add(loginFIeld, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 252, 191, -1));
-        add(senhaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 290, 191, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, -1, 20));
+        add(loginFIeld, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 360, 191, 20));
+        add(senhaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 191, 20));
 
         btnAlteraDisp.setText("Alterar disponibilidade");
         btnAlteraDisp.addActionListener(new java.awt.event.ActionListener() {
@@ -121,11 +124,11 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
                 btnAlteraDispActionPerformed(evt);
             }
         });
-        add(btnAlteraDisp, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 198, -1, -1));
+        add(btnAlteraDisp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, -1, 20));
 
         labelProfissao1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         labelProfissao1.setText("Profissão");
-        add(labelProfissao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 126, -1, -1));
+        add(labelProfissao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, -1, 20));
 
         profissaoProfSaude1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -137,13 +140,13 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
                 profissaoProfSaude1ActionPerformed(evt);
             }
         });
-        add(profissaoProfSaude1, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 118, 191, -1));
+        add(profissaoProfSaude1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 191, 20));
 
         labelEspec1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         labelEspec1.setText("Especialidade");
-        add(labelEspec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 160, -1, -1));
+        add(labelEspec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, -1, 20));
 
-        add(especialProfSaude1, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 160, 191, -1));
+        add(especialProfSaude1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 191, 20));
 
         lstEmployees.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -152,29 +155,33 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(lstEmployees);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 200, 280));
-        add(txtNomePesquisado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 165, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 240, 280));
+        add(txtNomePesquisado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 170, 20));
 
-        btnPesquisar.setText("...");
+        btnPesquisar.setText("Filtrar");
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarActionPerformed(evt);
             }
         });
-        add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 33, -1));
+        add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 60, 20));
 
         jLabel1.setText("Selecionar Profissional:");
         jLabel1.setToolTipText("");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 165, 22));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 170, 20));
 
         labelEspec2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         labelEspec2.setText("Disponibilidade");
-        add(labelEspec2, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 200, -1, -1));
+        add(labelEspec2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, -1, 20));
 
         lblError.setAlignment(java.awt.Label.CENTER);
         lblError.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblError.setForeground(new java.awt.Color(255, 0, 0));
-        add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 330, 320, 30));
+        add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, 320, 30));
+
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel6.setText(":: Alterar cadastro de profissional de saúde ::");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, -1, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -324,6 +331,7 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelEspec;
     private javax.swing.JLabel labelEspec1;

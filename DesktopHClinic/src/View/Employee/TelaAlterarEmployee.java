@@ -61,35 +61,53 @@ public class TelaAlterarEmployee extends javax.swing.JPanel {
         lblError = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setRequestFocusEnabled(false);
         addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 formComponentAdded(evt);
             }
         });
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Selecionar Profissional:");
         jLabel1.setToolTipText("");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 165, 22));
+        add(txtNomePesquisado, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 230, 20));
 
         jScrollPane1.setViewportView(lstEmployees);
 
-        btnPesquisar.setText("...");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 290, 280));
+
+        btnPesquisar.setText("Filtrar");
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarActionPerformed(evt);
             }
         });
+        add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 60, -1));
 
         lblNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblNome.setText("Nome:");
+        add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, -1, -1));
 
         lblLogin.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblLogin.setText("Login:");
+        add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, -1, -1));
 
         lblSenha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblSenha.setText("Senha:");
+        add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 260, -1, -1));
 
         lblNome1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblNome1.setText("Tipo");
+        add(lblNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 39, 22));
+
+        add(cbbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 210, -1));
+        add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, 210, -1));
+        add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 210, -1));
+        add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 210, -1));
 
         btnVoltar.setText("Fechar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +115,7 @@ public class TelaAlterarEmployee extends javax.swing.JPanel {
                 btnVoltarActionPerformed(evt);
             }
         });
+        add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 102, 31));
 
         btnAlterar.setText("Alterar dados");
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
@@ -104,102 +123,13 @@ public class TelaAlterarEmployee extends javax.swing.JPanel {
                 btnAlterarActionPerformed(evt);
             }
         });
+        add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 100, 31));
+        add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 394, -1, -1));
+        lblError.getAccessibleContext().setAccessibleName("lblError");
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText(":: Alterar cadastro de funcionário ::");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(161, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblError)
-                        .addGap(187, 187, 187))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(105, 105, 105))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 33, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(txtNomePesquisado, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(5, 5, 5)
-                            .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(30, 30, 30)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblNome)
-                                    .addGap(23, 23, 23)
-                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblLogin)
-                                    .addGap(26, 26, 26)
-                                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblSenha)
-                                    .addGap(21, 21, 21)
-                                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(21, 21, 21)
-                                    .addComponent(cbbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(8, 8, 8)
-                                    .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGap(0, 33, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 366, Short.MAX_VALUE)
-                .addComponent(lblError)
-                .addGap(35, 35, 35))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 44, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(8, 8, 8)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtNomePesquisado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnPesquisar))
-                    .addGap(7, 7, 7)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblNome)
-                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(10, 10, 10)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblLogin)
-                                .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(10, 10, 10)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblSenha)
-                                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(10, 10, 10)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cbbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(48, 48, 48)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGap(0, 45, Short.MAX_VALUE)))
-        );
-
-        lblError.getAccessibleContext().setAccessibleName("lblError");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed

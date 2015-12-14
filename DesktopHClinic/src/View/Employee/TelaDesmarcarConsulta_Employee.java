@@ -48,6 +48,8 @@ public class TelaDesmarcarConsulta_Employee extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 formComponentAdded(evt);
@@ -56,21 +58,21 @@ public class TelaDesmarcarConsulta_Employee extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblPaciente1.setText("Médico:");
-        add(lblPaciente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 72, 20));
+        add(lblPaciente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 72, 20));
 
         cboMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboMedicoActionPerformed(evt);
             }
         });
-        add(cboMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 336, -1));
+        add(cboMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 336, -1));
 
         jScrollPane1.setViewportView(lstConsultas);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 390, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 400, 150));
 
         jLabel1.setText("Selecione um horário e clique em desmarcar para apagar a consulta:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, -1, -1));
 
         btnDesmarcar.setText("Desmarcar");
         btnDesmarcar.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +80,7 @@ public class TelaDesmarcarConsulta_Employee extends javax.swing.JPanel {
                 btnDesmarcarActionPerformed(evt);
             }
         });
-        add(btnDesmarcar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, -1, -1));
+        add(btnDesmarcar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, -1, -1));
 
         jButton1.setText("Cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -86,11 +88,11 @@ public class TelaDesmarcarConsulta_Employee extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText(":: Desmarcar consulta ::");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void loadConsultas(int doctorId) {

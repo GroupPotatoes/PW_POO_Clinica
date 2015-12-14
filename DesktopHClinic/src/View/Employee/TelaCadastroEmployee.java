@@ -67,6 +67,8 @@ public class TelaCadastroEmployee extends javax.swing.JPanel {
         btnCancelar = new javax.swing.JButton();
         btnCadastrar = new javax.swing.JButton();
 
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 formComponentAdded(evt);
@@ -77,38 +79,38 @@ public class TelaCadastroEmployee extends javax.swing.JPanel {
         lblCadastro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblCadastro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCadastro.setText(":: Cadastro de Funcionário Administrativo ::");
-        add(lblCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 328, -1));
+        add(lblCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 328, -1));
 
         lblNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblNome.setText("Nome completo");
-        add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
-        add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 202, -1));
+        add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, -1));
+        add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 250, -1));
 
-        add(cbbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 202, -1));
+        add(cbbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 250, -1));
 
         lblNome1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblNome1.setText("Cargo ");
-        add(lblNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+        add(lblNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, -1, -1));
 
         lblResultados.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblResultados.setForeground(new java.awt.Color(102, 102, 102));
         lblResultados.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblResultados.setText("_Resultados do Cadastro");
-        add(lblResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 328, -1));
+        add(lblResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 330, 40));
 
         lblLogin.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblLogin.setText("Login gerado");
-        add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
+        add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, -1, -1));
 
         lblSenha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblSenha.setText("Senha gerada");
-        add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
+        add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, -1, -1));
 
         txtLogin.setText("Nenhum login gerado");
-        add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 202, -1));
+        add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 230, -1));
 
         txtSenha.setText("Nenhuma senha gerada");
-        add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 202, -1));
+        add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 230, -1));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +118,7 @@ public class TelaCadastroEmployee extends javax.swing.JPanel {
                 btnCancelarActionPerformed(evt);
             }
         });
-        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 92, 31));
+        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 440, 92, 31));
 
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +126,7 @@ public class TelaCadastroEmployee extends javax.swing.JPanel {
                 btnCadastrarActionPerformed(evt);
             }
         });
-        add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 92, 31));
+        add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 440, 92, 31));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

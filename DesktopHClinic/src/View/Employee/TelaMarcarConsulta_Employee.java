@@ -80,14 +80,20 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
         lblDisponibilidadeTitulo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         btnEncaixe.setText("Encaixe");
         btnEncaixe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEncaixeActionPerformed(evt);
             }
         });
+        add(btnEncaixe, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 98, -1));
 
         lblPaciente1.setText("Médico:");
+        add(lblPaciente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 72, 20));
 
         btnDisponibilidade.setText("Disponibilidade");
         btnDisponibilidade.addActionListener(new java.awt.event.ActionListener() {
@@ -95,18 +101,21 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
                 btnDisponibilidadeActionPerformed(evt);
             }
         });
+        add(btnDisponibilidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, -1, -1));
 
         cboMedico.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cboMedicoMouseClicked(evt);
             }
         });
+        add(cboMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, 250, -1));
 
         cboEspecialidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboEspecialidadeActionPerformed(evt);
             }
         });
+        add(cboEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 250, -1));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -114,8 +123,10 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
                 btnCancelarActionPerformed(evt);
             }
         });
+        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 530, 134, -1));
 
         lblData.setText("Data:");
+        add(lblData, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 72, 20));
 
         btnConfimar.setText("Confirmar");
         btnConfimar.addActionListener(new java.awt.event.ActionListener() {
@@ -123,9 +134,13 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
                 btnConfimarActionPerformed(evt);
             }
         });
+        add(btnConfimar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 530, 134, -1));
 
         lblEspecialidade.setText("Especialização:");
         lblEspecialidade.setToolTipText("");
+        add(lblEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, -1, 22));
+        add(txtNomePesquisado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 126, -1));
+        add(dateSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 250, -1));
 
         btnPesquisar.setText("...");
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -133,23 +148,31 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
                 btnPesquisarActionPerformed(evt);
             }
         });
+        add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 33, -1));
 
         lblError.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblError.setForeground(new java.awt.Color(255, 51, 51));
         lblError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, 480, 60));
 
         jScrollPane1.setViewportView(lstPacientes);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 160, 400));
 
         cboProfissao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboProfissaoActionPerformed(evt);
             }
         });
+        add(cboProfissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 250, -1));
 
         lblprofissao.setText("Profissao:");
         lblprofissao.setToolTipText("");
+        add(lblprofissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, 22));
 
         jScrollPane2.setViewportView(lstHorarios);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 510, 174));
 
         jLabel1.setText("Selecionar Paciente:");
         jLabel1.addContainerListener(new java.awt.event.ContainerAdapter() {
@@ -157,131 +180,21 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
                 jLabel1ComponentAdded(evt);
             }
         });
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 513, 22));
 
         lblDisponibilidadeTitulo.setText("Horários disponíveis:");
+        add(lblDisponibilidadeTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 155, 26));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText(":: Marcar consulta ::");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(37, 37, 37))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtNomePesquisado, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(lblDisponibilidadeTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(71, 71, 71)
-                                                .addComponent(btnDisponibilidade)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(btnEncaixe, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(lblData, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(lblEspecialidade)
-                                                        .addComponent(lblPaciente1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(lblprofissao))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(cboProfissao, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(cboEspecialidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(cboMedico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(dateSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnConfimar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(203, 203, 203)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtNomePesquisado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnPesquisar))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cboProfissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblprofissao, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cboEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cboMedico)
-                                    .addComponent(lblPaciente1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblData, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(dateSelected, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnEncaixe)
-                                    .addComponent(btnDisponibilidade, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblDisponibilidadeTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(3, 3, 3)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(332, 332, 332)
-                        .addComponent(lblError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnConfimar))
-                .addGap(16, 16, 16))
-        );
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEncaixeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncaixeActionPerformed
         try {
             carregarEncaixes();
         } catch (Exception ex) {
-            Logger.getLogger(TelaMarcarConsulta_EmployeeF.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaMarcarConsulta_Employee.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnEncaixeActionPerformed
 
@@ -289,7 +202,7 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
         try {
             carregarDisponibilidades();
         } catch (Exception ex) {
-            Logger.getLogger(TelaMarcarConsulta_EmployeeF.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaMarcarConsulta_Employee.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnDisponibilidadeActionPerformed
 
@@ -306,7 +219,7 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
         try {
             carregarMedicos();
         } catch (Exception ex) {
-            Logger.getLogger(TelaMarcarConsulta_EmployeeF.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaMarcarConsulta_Employee.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_cboEspecialidadeActionPerformed
 
@@ -345,7 +258,7 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
             }
 
         } catch (Exception ex) {
-            Logger.getLogger(TelaMarcarConsulta_EmployeeF.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaMarcarConsulta_Employee.class.getName()).log(Level.SEVERE, null, ex);
             this.lblError.setText("Erro ao tentar marcar consulta.");
         }
     }//GEN-LAST:event_btnConfimarActionPerformed
@@ -356,7 +269,7 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
             List<Patient> pacientes = this.patientDAO.SearchPatient(this.txtNomePesquisado.getText());
             this.lstPacientes.setListData(pacientes.toArray());
         } catch (Exception ex) {
-            Logger.getLogger(TelaMarcarConsulta_EmployeeF.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaMarcarConsulta_Employee.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
@@ -364,7 +277,7 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
         try {
             carregarEspecialidade();
         } catch (Exception ex) {
-            Logger.getLogger(TelaMarcarConsulta_EmployeeF.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaMarcarConsulta_Employee.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_cboProfissaoActionPerformed
 
@@ -376,7 +289,7 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
             carregarPacientes();
             carregarMedicos();
         } catch (Exception ex) {
-            Logger.getLogger(TelaMarcarConsulta_EmployeeF.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaMarcarConsulta_Employee.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_jLabel1ComponentAdded
@@ -396,7 +309,7 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
                 this.cboEspecialidade.addItem(specialization);
             }
         } catch (Exception ex) {
-            Logger.getLogger(TelaMarcarConsulta_EmployeeF.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaMarcarConsulta_Employee.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

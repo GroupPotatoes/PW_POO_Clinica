@@ -26,12 +26,13 @@ public class TelaPesquisa_HealthProfessionals extends javax.swing.JPanel {
         lblError = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(300, 300));
-        setPreferredSize(new java.awt.Dimension(300, 300));
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtItemPesquisado.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        add(txtItemPesquisado, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 156, 27));
+        add(txtItemPesquisado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 340, 27));
 
         btnPesquisar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnPesquisar.setText("Buscar");
@@ -40,30 +41,30 @@ public class TelaPesquisa_HealthProfessionals extends javax.swing.JPanel {
                 btnPesquisarActionPerformed(evt);
             }
         });
-        add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, -1, -1));
+        add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 90, 30));
 
         jScrollPane1.setViewportView(lstResultado);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 397, 203));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 430, 240));
 
         cboFiltro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Registro", "Nome", "Tipo de profissional", "Especialidade" }));
-        add(cboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 156, 26));
+        add(cboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 156, 26));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel1.setText("Pesquisar por:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 84, -1));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Para efetuar sua pesquisa, digite um nome ou parte do nome do funcionário:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 520, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("Filtrar por:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 63, -1));
+        jLabel2.setText("Filtrar:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 63, -1));
 
         lblError.setForeground(new java.awt.Color(255, 0, 0));
         lblError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 397, 35));
+        add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, 397, 35));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setText(":: Pesquisar profissionais de saúde ::");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
