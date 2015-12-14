@@ -155,7 +155,6 @@ public class TelaCadastroEmployee extends javax.swing.JPanel {
                 //Inserindo no BD
                 if (this.registeredEmployeeDAO.InsertEmployee(registeredEmployee, employee)) {
                     JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
-                    this.setVisible(false);
                 } else {
                     lblCadastro.setText("Nao foi possivel criar cadastro.");
                     lblCadastro.setForeground(Color.red);
@@ -173,6 +172,7 @@ public class TelaCadastroEmployee extends javax.swing.JPanel {
 
     private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
         // TODO add your handling code here:
+        this.cbbTipo.removeAllItems();
         try {
             for (Role role : roleDAO.SelectAllRole()) {
                 this.cbbTipo.addItem(role);

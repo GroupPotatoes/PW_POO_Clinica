@@ -281,15 +281,14 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
         // TODO add your handling code here:
         try {
             carregarProfissao();
-            carregarEspecialidade();
             carregarPacientes();
-            carregarMedicos();
         } catch (Exception ex) {
             Logger.getLogger(TelaMarcarConsulta_Employee.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formComponentAdded
 
     private void carregarProfissao() throws Exception {
+        this.cboProfissao.removeAllItems();
         for (Professions profession : professionsDAO.SelectAllProfessions()) {
             this.cboProfissao.addItem(profession);
         }

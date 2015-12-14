@@ -110,7 +110,7 @@ public class RegisteredEmployeeDAO {
      * @return true se desabilitou e false caso contrário
      * @throws SQLException
      */
-    public boolean DisableregisteredEmployee(int idRegisteredEmployee) throws SQLException {
+    public boolean disableRegisteredEmployee(int idRegisteredEmployee) throws SQLException {
 
         String commandToExecute = String.format("UPDATE [bdci17].[bdci17].[registered_employee] SET [inactive] = 1 WHERE [id] = %d;", idRegisteredEmployee);
 
@@ -125,7 +125,7 @@ public class RegisteredEmployeeDAO {
      * @return true caso tenha alterado e false caso contrário
      * @throws SQLException
      */
-    public boolean UpdateregisteredEmployee(RegisteredEmployee registeredEmployee) throws SQLException {
+    public boolean updateRegisteredEmployee(RegisteredEmployee registeredEmployee) throws SQLException {
 
         String commandToUpdateEmployee = String.format("UPDATE [bdci17].[bdci17].[registered_employee] SET [name]='%s', [password]='%s', [login]='%s' WHERE [id]=%d;",
                 registeredEmployee.getName(), registeredEmployee.getPassword(), registeredEmployee.getLogin(), registeredEmployee.getId());
@@ -163,7 +163,7 @@ public class RegisteredEmployeeDAO {
                 employee.getIdRole(), registeredEmployee.getId());
 
         Statement st = this.connection.createStatement();
-        return st.executeUpdate(commandToUpdateEmployee) > 0 && UpdateregisteredEmployee(registeredEmployee);
+        return st.executeUpdate(commandToUpdateEmployee) > 0 && updateRegisteredEmployee(registeredEmployee);
     }
 
     /**

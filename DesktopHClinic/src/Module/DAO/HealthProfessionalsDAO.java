@@ -57,7 +57,7 @@ public class HealthProfessionalsDAO {
 
         boolean wasUpdated = true;
 
-        wasUpdated = wasUpdated && new RegisteredEmployeeDAO(this.connection).UpdateregisteredEmployee(registeredEmployee);
+        wasUpdated = wasUpdated && new RegisteredEmployeeDAO(this.connection).updateRegisteredEmployee(registeredEmployee);
 
         String commandToUpdateHealthProfessionals = String.format("UPDATE health_professionals SET cpf='%s', id_class='%s' WHERE id_registered_employee=%d;",
                 healthProfessional.getCPF(), healthProfessional.getIDClass(), ConnectionSetup.currentEmployeeSelect.getId());

@@ -94,19 +94,20 @@ public class TelaExclusao extends javax.swing.JPanel {
         try {
             if (this.lstEmployees.getSelectedValue() != null) {
                 int idRegisteredEmployee = ((RegisteredEmployee) this.lstEmployees.getSelectedValue()).getId();
-                if (registeredEmployeeDAO.DisableregisteredEmployee(idRegisteredEmployee)) {
-                    JOptionPane.showMessageDialog(null, "<html><center>Seu cadastro foi inativado.</center><br>"
+                if (registeredEmployeeDAO.disableRegisteredEmployee(idRegisteredEmployee)) {
+                    JOptionPane.showMessageDialog(null, "<html><center>O cadastro foi inativado.</center><br>"
                             + "<center> Procure um administrador do sistema para reativá-lo.</center></html>");
+                    try {
+                        this.loadRegisteredEmployee();
+                    } catch (Exception ex) {
+                        Logger.getLogger(TelaExclusao.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
-                    this.setVisible(false);
                 } else {
                     lblEnunciado.setText("<html><center> Sinto muito, houve algum problema ao inativar seu cadastro.</center>"
                             + "<br><center>Tente novamente ou contate um administrador do sistema.</center</html>");
-
                 }
 
-                btnExcluir.setVisible(false);
-                btnCancelar.setVisible(false);
             } else {
                 lblEnunciado.setText("Nenhum profissional foi selecionado. Selecione um para desabilitar!");
             }

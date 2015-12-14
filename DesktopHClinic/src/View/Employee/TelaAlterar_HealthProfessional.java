@@ -52,9 +52,9 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
         senhaField = new javax.swing.JTextField();
         btnAlteraDisp = new javax.swing.JButton();
         labelProfissao1 = new javax.swing.JLabel();
-        profissaoProfSaude1 = new javax.swing.JComboBox();
+        escolheProfissao = new javax.swing.JComboBox();
         labelEspec1 = new javax.swing.JLabel();
-        especialProfSaude1 = new javax.swing.JComboBox();
+        escolheEspecialidade = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstEmployees = new javax.swing.JList();
         txtNomePesquisado = new javax.swing.JTextField();
@@ -130,23 +130,23 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
         labelProfissao1.setText("Profissão");
         add(labelProfissao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, -1, 20));
 
-        profissaoProfSaude1.addMouseListener(new java.awt.event.MouseAdapter() {
+        escolheProfissao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                profissaoProfSaude1MouseClicked(evt);
+                escolheProfissaoMouseClicked(evt);
             }
         });
-        profissaoProfSaude1.addActionListener(new java.awt.event.ActionListener() {
+        escolheProfissao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                profissaoProfSaude1ActionPerformed(evt);
+                escolheProfissaoActionPerformed(evt);
             }
         });
-        add(profissaoProfSaude1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 191, 20));
+        add(escolheProfissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 191, 20));
 
         labelEspec1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         labelEspec1.setText("Especialidade");
         add(labelEspec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, -1, 20));
 
-        add(especialProfSaude1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 191, 20));
+        add(escolheEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 191, 20));
 
         lstEmployees.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -225,9 +225,9 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnAlteraDispActionPerformed
 
-    private void profissaoProfSaude1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profissaoProfSaude1ActionPerformed
+    private void escolheProfissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escolheProfissaoActionPerformed
         loadSpecialization();
-    }//GEN-LAST:event_profissaoProfSaude1ActionPerformed
+    }//GEN-LAST:event_escolheProfissaoActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
 
@@ -247,9 +247,9 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_lstEmployeesMouseClicked
 
-    private void profissaoProfSaude1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profissaoProfSaude1MouseClicked
+    private void escolheProfissaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_escolheProfissaoMouseClicked
         loadSpecialization();
-    }//GEN-LAST:event_profissaoProfSaude1MouseClicked
+    }//GEN-LAST:event_escolheProfissaoMouseClicked
 
     private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
         try {
@@ -271,8 +271,9 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
             RegisteredEmployee re = this.registeredEmployeeDAO.getInfoRegisteredEmployee(idHealthProfessional);
             HealthProfessionals hp = this.healthProfessionalsDAO.getInfoHealthProfessional(idHealthProfessional);
             Specialization sp = this.specializationDAO.getSpecialization(idHealthProfessional);
-            this.professionalsDAO.getProfession(sp.getIdProfessions());
-
+            Professions pf = this.professionalsDAO.getProfession(sp.getIdProfessions());
+            this.escolheEspecialidade.setSelectedItem(sp);
+            this.escolheProfissao.setSelectedItem(pf);
             this.cpfField.setText(hp.getCPF());
             this.nomeProfSaude.setText(re.getName());
             this.registroField.setText(hp.getIDClass());
@@ -291,11 +292,11 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
 
     private void loadSpecialization() {
         try {
-            this.especialProfSaude1.removeAllItems();
-            int professionsID = ((Professions) this.profissaoProfSaude1.getSelectedItem()).getId();
+            this.escolheEspecialidade.removeAllItems();
+            int professionsID = ((Professions) this.escolheProfissao.getSelectedItem()).getId();
 
             for (Specialization specialization : this.specializationDAO.SelectSpecializations(professionsID)) {
-                this.especialProfSaude1.addItem(specialization);
+                this.escolheEspecialidade.addItem(specialization);
             }
         } catch (Exception ex) {
             Logger.getLogger(TelaAlterar_HealthProfessional.class.getName()).log(Level.SEVERE, null, ex);
@@ -304,7 +305,7 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
 
     private void loadProfessionals() throws Exception {
         for (Professions profession : this.professionalsDAO.SelectAllProfessions()) {
-            this.profissaoProfSaude1.addItem(profession);
+            this.escolheProfissao.addItem(profession);
         }
     }
 
@@ -324,8 +325,9 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JTextField cpfField;
+    private javax.swing.JComboBox escolheEspecialidade;
+    private javax.swing.JComboBox escolheProfissao;
     private javax.swing.JComboBox especialProfSaude;
-    private javax.swing.JComboBox especialProfSaude1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -344,7 +346,6 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
     private javax.swing.JList lstEmployees;
     private javax.swing.JTextField nomeProfSaude;
     private javax.swing.JComboBox profissaoProfSaude;
-    private javax.swing.JComboBox profissaoProfSaude1;
     private javax.swing.JTextField registroField;
     private javax.swing.JTextField senhaField;
     private javax.swing.JTextField txtNomePesquisado;

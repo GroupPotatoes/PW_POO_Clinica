@@ -73,9 +73,14 @@ public class TelaAlterarEmployee extends javax.swing.JPanel {
 
         jLabel1.setText("Selecionar Profissional:");
         jLabel1.setToolTipText("");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 165, 22));
-        add(txtNomePesquisado, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 230, 20));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 165, 22));
+        add(txtNomePesquisado, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 210, 20));
 
+        lstEmployees.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstEmployeesValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(lstEmployees);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 290, 280));
@@ -86,15 +91,15 @@ public class TelaAlterarEmployee extends javax.swing.JPanel {
                 btnPesquisarActionPerformed(evt);
             }
         });
-        add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 60, -1));
+        add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 80, -1));
 
         lblNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblNome.setText("Nome:");
-        add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, -1, -1));
+        add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, -1, -1));
 
         lblLogin.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblLogin.setText("Login:");
-        add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, -1, -1));
+        add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 220, -1, -1));
 
         lblSenha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblSenha.setText("Senha:");
@@ -102,12 +107,12 @@ public class TelaAlterarEmployee extends javax.swing.JPanel {
 
         lblNome1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblNome1.setText("Tipo");
-        add(lblNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 39, 22));
+        add(lblNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, 39, 22));
 
-        add(cbbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 210, -1));
+        add(cbbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, 210, -1));
         add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, 210, -1));
-        add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 210, -1));
-        add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 210, -1));
+        add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 210, -1));
+        add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, 210, -1));
 
         btnVoltar.setText("Fechar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -123,13 +128,13 @@ public class TelaAlterarEmployee extends javax.swing.JPanel {
                 btnAlterarActionPerformed(evt);
             }
         });
-        add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 100, 31));
+        add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 120, 31));
         add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 394, -1, -1));
         lblError.getAccessibleContext().setAccessibleName("lblError");
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText(":: Alterar cadastro de funcionário ::");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
@@ -187,6 +192,20 @@ public class TelaAlterarEmployee extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_formComponentAdded
 
+    private void lstEmployeesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEmployeesValueChanged
+        try {
+            // TODO add your handling code here:
+            int idRegisteredEmployee = ((RegisteredEmployee) this.lstEmployees.getSelectedValue()).getId();
+            RegisteredEmployee re = this.registeredEmployeeDAO.getInfoRegisteredEmployee(idRegisteredEmployee);
+            this.txtNome.setText(re.getName());
+            this.txtLogin.setText(re.getLogin());
+            this.txtSenha.setText(re.getPassword());
+        } catch (Exception ex) {
+            Logger.getLogger(TelaAlterarEmployee.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_lstEmployeesValueChanged
+
     private boolean hasError() {
 
         return this.txtNome.getText() == null || this.txtNome.getText().isEmpty()
@@ -195,6 +214,7 @@ public class TelaAlterarEmployee extends javax.swing.JPanel {
     }
 
     private void carregarRole() throws Exception {
+        this.cbbTipo.removeAllItems();
         for (Role role : this.roleDAO.SelectAllRole()) {
             this.cbbTipo.addItem(role);
         }
