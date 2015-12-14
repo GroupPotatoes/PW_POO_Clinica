@@ -15,24 +15,21 @@ import javax.swing.JOptionPane;
 
 public class TelaAlterarConsulta_HealthProfessionals extends javax.swing.JPanel {
 
-    private AvailabilityDAO availabilityDAO = null;
-    private DoctorAppointmentDAO doctorAppDAO = null;
+    private AvailabilityDAO availabilityDAO = new AvailabilityDAO(ConnectionSetup.connection);
+    private DoctorAppointmentDAO doctorAppDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
     private DoctorAppointment consulta = null;
-    
+
     public TelaAlterarConsulta_HealthProfessionals() {
         initComponents();
-        
-        this.doctorAppDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
-        this.availabilityDAO = new AvailabilityDAO(ConnectionSetup.connection);
     }
- 
-    public void setConsulta(DoctorAppointment consulta) throws Exception{
-        if(consulta == null)
+
+    public void setConsulta(DoctorAppointment consulta) throws Exception {
+        if (consulta == null) {
             throw new Exception("Valor para consulta inválido.");
-        
+        }
         this.consulta = consulta;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -195,26 +192,24 @@ public class TelaAlterarConsulta_HealthProfessionals extends javax.swing.JPanel 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         try {
             this.lblError.setText("");
-            if(lstHorarios.getSelectedValue() != null)
-            {
+            if (lstHorarios.getSelectedValue() != null) {
 
-                int id_Availability = ((Availability)lstHorarios.getSelectedValue()).getId();
+                int id_Availability = ((Availability) lstHorarios.getSelectedValue()).getId();
                 String date = getValidDate();
 
                 this.consulta.setIdAvailability(id_Availability);
                 this.consulta.setDate(date);
 
-                if(this.doctorAppDAO.UpdateDoctorAppointmentDate(consulta)){
+                if (this.doctorAppDAO.UpdateDoctorAppointmentDate(consulta)) {
                     JOptionPane.showMessageDialog(this, "Consulta alterada!");
                     this.setVisible(false);
+                } else {
+                    this.lblError.setText("Não foi possível alterar data.");
                 }
-                else
-                this.lblError.setText("Não foi possível alterar data.");
+            } else {
+                this.lblError.setText("Selecione uma disponibilidade!");
             }
-            else
-            this.lblError.setText("Selecione uma disponibilidade!");
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             Logger.getLogger(TelaAlterarConsulta_HealthProfessionals.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -222,57 +217,57 @@ public class TelaAlterarConsulta_HealthProfessionals extends javax.swing.JPanel 
     private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
         carregarFormData();
     }//GEN-LAST:event_formComponentAdded
-    
-    private void carregarFormData(){
+
+    private void carregarFormData() {
         this.lblNomePaciente2.setText(consulta.namePatient);
         this.Date.setText(consulta.getDate());
     }
-    
-    private void carregarDisponibilidades() throws Exception{
-        
+
+    private void carregarDisponibilidades() throws Exception {
+
         this.lblError.setText("");
         List<Availability> availabilities = new ArrayList<Availability>();
         this.lstHorarios.setListData(availabilities.toArray());
-        
+
         String date = getValidDate();
         int dayOfWeek = this.getDayOfWeek();
         availabilities = getValidAvailability(ConnectionSetup.id, dayOfWeek, date);
-        if(!availabilities.isEmpty())
-        {  
-           this.lblError.setText("");
-           this.lstHorarios.setListData(availabilities.toArray());
+        if (!availabilities.isEmpty()) {
+            this.lblError.setText("");
+            this.lstHorarios.setListData(availabilities.toArray());
+        } else {
+            this.lblError.setText("Não foi encontrado disponibilidades para esse dia!");
         }
-        else
-           this.lblError.setText("Não foi encontrado disponibilidades para esse dia!");
     }
-   
-    private List<Availability> getValidAvailability(int healthProfessionalID, int  dayOfWeek, String data) throws Exception{
-   
-        List<Availability> availabilities = this.availabilityDAO.SelectAllAvailability(healthProfessionalID, dayOfWeek); 
+
+    private List<Availability> getValidAvailability(int healthProfessionalID, int dayOfWeek, String data) throws Exception {
+
+        List<Availability> availabilities = this.availabilityDAO.SelectAllAvailability(healthProfessionalID, dayOfWeek);
         List<Availability> avscopy = new ArrayList(availabilities);
-        
+
         List<String> busyHours = this.doctorAppDAO.SelectBusyHours(data);
-        
-        for(String h : busyHours)
-            for(Availability av : avscopy)
-            {
+
+        for (String h : busyHours) {
+            for (Availability av : avscopy) {
                 String iniciation = av.getIniciation().toString().substring(0, av.getIniciation().toString().length() - 8);
-                if(h.equals(iniciation))
+                if (h.equals(iniciation)) {
                     availabilities.remove(av);
+                }
             }
-         
+        }
+
         return availabilities;
     }
 
     private String getValidDate() {
         Calendar c = this.Date.getSelectedDate();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        return format.format(c.getTime());    
+        return format.format(c.getTime());
     }
-    
+
     private int getDayOfWeek() {
-       Calendar c = this.Date.getSelectedDate();
-       return c.get(Calendar.DAY_OF_WEEK);
+        Calendar c = this.Date.getSelectedDate();
+        return c.get(Calendar.DAY_OF_WEEK);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

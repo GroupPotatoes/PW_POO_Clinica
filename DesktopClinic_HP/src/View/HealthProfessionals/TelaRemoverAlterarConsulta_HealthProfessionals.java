@@ -16,13 +16,13 @@ import java.util.logging.Logger;
 
 public class TelaRemoverAlterarConsulta_HealthProfessionals extends javax.swing.JPanel {
 
-     private DoctorAppointmentDAO doctorAppointmentDAO = null;
+    private DoctorAppointmentDAO doctorAppointmentDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
+
     /**
      * Creates new form TelaRemoverAlterarConsulta_HealthProfessionals
      */
     public TelaRemoverAlterarConsulta_HealthProfessionals() {
         initComponents();
-        this.doctorAppointmentDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
     }
 
     /**
@@ -139,15 +139,14 @@ public class TelaRemoverAlterarConsulta_HealthProfessionals extends javax.swing.
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         try {
             lblError.setText("");
-            if(this.lstConsultas.getSelectedValue() != null)
-            {
+            if (this.lstConsultas.getSelectedValue() != null) {
                 TelaAlterarConsulta_HealthProfessionalsF telaAlterarConsulta = new TelaAlterarConsulta_HealthProfessionalsF();
-                telaAlterarConsulta.setConsulta(((DoctorAppointment)this.lstConsultas.getSelectedValue()));
+                telaAlterarConsulta.setConsulta(((DoctorAppointment) this.lstConsultas.getSelectedValue()));
                 telaAlterarConsulta.setVisible(true);
                 recarregarForm();
+            } else {
+                lblError.setText("Selecione uma consulta para alterar!");
             }
-            else
-            lblError.setText("Selecione uma consulta para alterar!");
         } catch (Exception ex) {
             Logger.getLogger(TelaRemoverAlterarConsulta_HealthProfessionalsF.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -159,11 +158,10 @@ public class TelaRemoverAlterarConsulta_HealthProfessionals extends javax.swing.
             this.lblError.setForeground(Color.RED);
             this.lblError.setText("");
 
-            if(lstConsultas.getSelectedValue() != null){
-                int idDoctorAppointment = ((DoctorAppointment)lstConsultas.getSelectedValue()).getId();
+            if (lstConsultas.getSelectedValue() != null) {
+                int idDoctorAppointment = ((DoctorAppointment) lstConsultas.getSelectedValue()).getId();
 
-                if(this.doctorAppointmentDAO.RemoveDoctorAppointment(idDoctorAppointment))
-                {
+                if (this.doctorAppointmentDAO.RemoveDoctorAppointment(idDoctorAppointment)) {
                     this.lblError.setForeground(Color.GREEN);
                     this.lblError.setText("Removido!");
                     try {
@@ -171,11 +169,10 @@ public class TelaRemoverAlterarConsulta_HealthProfessionals extends javax.swing.
                     } catch (Exception ex) {
                         Logger.getLogger(TelaRemoverAlterarConsulta_HealthProfessionalsF.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                } else {
+                    this.lblError.setText("Não foi possível remover essa consulta.");
                 }
-                else
-                this.lblError.setText("Não foi possível remover essa consulta.");
-            }
-            else{
+            } else {
                 this.lblError.setText("Selecione uma consulta para excluir!");
             }
         } catch (SQLException ex) {
@@ -191,16 +188,17 @@ public class TelaRemoverAlterarConsulta_HealthProfessionals extends javax.swing.
         }
     }//GEN-LAST:event_formComponentAdded
 
-        private void carregarConsultas() throws Exception{
-       lblError.setText("");
-       List<DoctorAppointment> doctorAppointments = this.doctorAppointmentDAO.SelectDoctorAppointmentByHealthProfessionals(ConnectionSetup.id);
-       if(!doctorAppointments.isEmpty())
-            this.lstConsultas.setListData(doctorAppointments.toArray());  
-       else
-           lblError.setText("Não há consultas para exibir.");
+    private void carregarConsultas() throws Exception {
+        lblError.setText("");
+        List<DoctorAppointment> doctorAppointments = this.doctorAppointmentDAO.SelectDoctorAppointmentByHealthProfessionals(ConnectionSetup.id);
+        if (!doctorAppointments.isEmpty()) {
+            this.lstConsultas.setListData(doctorAppointments.toArray());
+        } else {
+            lblError.setText("Não há consultas para exibir.");
+        }
     }
-    
-    private void recarregarForm() throws Exception{
+
+    private void recarregarForm() throws Exception {
         carregarConsultas();
     }
 
