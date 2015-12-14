@@ -225,7 +225,7 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
             this.cboMedico.setEnabled(false);
             this.cboMedico.removeAllItems();
             this.cboMedico.addItem("Nenhum");
-            if (this.cboEspecialidade.getSelectedIndex() > 0) {
+            if (this.cboEspecialidade.getSelectedIndex() >= 0) {
                 int specializationID = ((Specialization) this.cboEspecialidade.getSelectedItem()).getId();
                 List<RegisteredEmployee> registeredEmployees = this.healthProfessionalsDAO.SelectHealthProfessionalBySpecialization(specializationID);
                 if (registeredEmployees.isEmpty()) {
@@ -297,7 +297,7 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
     private void cboProfissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboProfissaoActionPerformed
         try {
             this.cboEspecialidade.removeAllItems();
-            if (this.cboProfissao.getSelectedIndex() > 0) {
+            if (this.cboProfissao.getSelectedIndex() >= 0) {
                 int professionsID = ((Professions) this.cboProfissao.getSelectedItem()).getId();
                 for (Specialization specialization : this.specializationDAO.SelectSpecializations(professionsID)) {
                     this.cboEspecialidade.addItem(specialization);

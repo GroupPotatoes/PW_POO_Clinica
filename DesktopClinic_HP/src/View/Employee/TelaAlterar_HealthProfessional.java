@@ -153,6 +153,11 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
                 lstEmployeesMouseClicked(evt);
             }
         });
+        lstEmployees.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstEmployeesValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(lstEmployees);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 240, 280));
@@ -240,11 +245,11 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void lstEmployeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstEmployeesMouseClicked
-        try {
-            loadHealthProfessionalsData();
-        } catch (Exception ex) {
-            Logger.getLogger(TelaAlterar_HealthProfessional.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            loadHealthProfessionalsData();
+//        } catch (Exception ex) {
+//            Logger.getLogger(TelaAlterar_HealthProfessional.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_lstEmployeesMouseClicked
 
     private void escolheProfissaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_escolheProfissaoMouseClicked
@@ -264,9 +269,18 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_formComponentAdded
 
+    private void lstEmployeesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEmployeesValueChanged
+        // TODO add your handling code here:
+        try {
+            loadHealthProfessionalsData();
+        } catch (Exception ex) {
+            Logger.getLogger(TelaAlterar_HealthProfessional.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_lstEmployeesValueChanged
+
     private void loadHealthProfessionalsData() throws Exception {
 
-        if (lstEmployees.getSelectedValue() != null) {
+        if (lstEmployees.getSelectedIndex() >= 0) {
             idHealthProfessional = ((RegisteredEmployee) lstEmployees.getSelectedValue()).getId();
             RegisteredEmployee re = this.registeredEmployeeDAO.getInfoRegisteredEmployee(idHealthProfessional);
             HealthProfessionals hp = this.healthProfessionalsDAO.getInfoHealthProfessional(idHealthProfessional);

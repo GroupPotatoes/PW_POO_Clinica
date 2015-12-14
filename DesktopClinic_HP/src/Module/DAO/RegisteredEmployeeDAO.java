@@ -129,7 +129,7 @@ public class RegisteredEmployeeDAO {
 
         String commandToUpdateEmployee = String.format("UPDATE [bdci17].[bdci17].[registered_employee] SET [name]='%s', [password]='%s', [login]='%s' WHERE [id]=%d;",
                 registeredEmployee.getName(), registeredEmployee.getPassword(), registeredEmployee.getLogin(), registeredEmployee.getId());
-
+        System.out.println(commandToUpdateEmployee);
         Statement st = this.connection.createStatement();
         return st.executeUpdate(commandToUpdateEmployee) > 0;
 

@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class HealthProfessionalsDAO {
 
@@ -53,19 +55,25 @@ public class HealthProfessionalsDAO {
      * @return
      * @throws SQLException 
      */
-    public boolean UpdateHealthProfessionals(RegisteredEmployee registeredEmployee, HealthProfessionals healthProfessional) throws SQLException {
+    public boolean UpdateHealthProfessionals(RegisteredEmployee registeredEmployee, HealthProfessionals healthProfessional)  {
 
-        boolean wasUpdated = true;
-
-        wasUpdated = wasUpdated && new RegisteredEmployeeDAO(this.connection).updateRegisteredEmployee(registeredEmployee);
-
-        String commandToUpdateHealthProfessionals = String.format("UPDATE health_professionals SET cpf='%s', id_class='%s' WHERE id_registered_employee=%d;",
-                healthProfessional.getCPF(), healthProfessional.getIDClass(), ConnectionSetup.currentEmployeeSelect.getId());
-        Statement st = this.connection.createStatement();
-        //this.connection.prepareStatement(commandToUpdateHealthProfessionals);
-        wasUpdated = wasUpdated && (st.executeUpdate(commandToUpdateHealthProfessionals) > 0);
-
-        return wasUpdated;
+        try {
+            boolean wasUpdated = true;
+            
+            wasUpdated = wasUpdated && new RegisteredEmployeeDAO(this.connection).updateRegisteredEmployee(registeredEmployee);
+            
+            String commandToUpdateHealthProfessionals = String.format("UPDATE health_professionals SET cpf='%s', id_class='%s' WHERE id_registered_employee=%d;",
+                    healthProfessional.getCPF(), healthProfessional.getIDClass(), registeredEmployee.getId());
+            System.out.println(commandToUpdateHealthProfessionals);
+            Statement st = this.connection.createStatement();
+            //this.connection.prepareStatement(commandToUpdateHealthProfessionals);
+            wasUpdated = wasUpdated && (st.executeUpdate(commandToUpdateHealthProfessionals) > 0);
+            
+            return wasUpdated;
+        } catch (SQLException ex) {
+            Logger.getLogger(HealthProfessionalsDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
     
     public HealthProfessionals getInfoHealthProfessional(int idHealthProfessional) throws Exception {
