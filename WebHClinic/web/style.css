@@ -2,15 +2,69 @@
     width: 760px;
     margin: auto;
     margin-top: 100px;
-    background: #cccccc;
-    padding: 25px;
+    background: #E5E5E5;
+    padding: 50px;
+    padding-bottom: 100px;
     opacity: 60%;
+    border-radius: 10px;
 }
+
 html, body {
     margin: 0;
     padding: 2px;
     background-image: url("images/bg.jpg");
 }
+
+.button-group{
+    text-align: center;
+}
+#menu{
+    text-align: center;
+}
+
+#menu > img{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#active{
+    color: #A0A0A0;
+    background-color: #A0A0A0
+}
+
+.nav-pills a {
+    color: #CC0000
+}
+
+.nav-pills a:hover {
+    color: #CC0000;
+    border-radius: 0px;
+}
+
+.nav-pills .active a:hover {
+    color: #CC0000;
+}
+.nav>li>a:hover, 
+.nav>li>a:focus {
+    color: #CC0000;
+    border-radius: 0px;
+}
+
+/*
+button{
+    display: inline-block;
+    background-color: #ccc;
+    color: #444;
+    padding: 10px 20px;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    border: 0px;
+}
+
 
 p {
     color: #6e2556;
@@ -31,17 +85,6 @@ h3 {
     font-size:80%;
 }
 
-button{
-    display: inline-block;
-    background-color: #ccc;
-    color: #444;
-    padding: 10px 20px;
-    text-decoration: none;
-    box-sizing: border-box;
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    border: 0px;
-}
 
 .option_radio{
     color: #002828;
@@ -49,15 +92,23 @@ button{
     font-size:70%;
 }
 
+.panel-info {
+    width: 760px;
+    margin: auto;
+    margin-top: 100px;
+    padding: 25px;
+    opacity: 60%;
+}
 
 //NAVBAR 
 
-/*horizontal menu styles*/
-nav{
+horizontal menu styles*/
+/*nav{
 	background:#6e2556;
 	height:5em;
 	margin-top:100px;
 }
+
 ul, li{
 	margin: 0;
 	padding: 0;
@@ -104,7 +155,8 @@ li a:hover, .topMenu > li:hover > a{
 	border-bottom:.3em solid #4B74BF;
 	cursor:default;
 }
-/*dropdown menu styles*/
+
+/*dropdown menu styles
 ul.subMenu{
 	float:none;
 	background:#00c7c7;
@@ -120,21 +172,26 @@ ul.subMenu{
 	transition:max-height 0.5s ease-in-out;
 	overflow:hidden;
 }
+
 ul.subMenu li{
 	float:none;
 }
+
 .topMenu li:hover ul{
 	left:0;
 	max-height:10em;
 }
+
 ul.subMenu li a{
 	border-bottom:1px solid #FFF;
 	padding: .2em 1em;
 	white-space:nowrap;
 }
+
 ul.subMenu li:last-child a{
 	border-bottom:none;
 }
+
 ul.subMenu li a:hover{
 	background:#cccccc;
 	height:2em;
@@ -142,3 +199,14 @@ ul.subMenu li a:hover{
 	top:0;
 	border-radius:0;
 }
+
+#row{
+    padding: 20px;
+    text-align: center;
+}
+
+.list-group{
+    padding: 20px;
+}
+*/
+

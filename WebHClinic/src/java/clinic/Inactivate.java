@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package clinic;
 
 import Module.DAO.*;
@@ -18,11 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author amanda
- */
 @WebServlet(name = "Inactivate", urlPatterns = {"/Inactivate"})
 public class Inactivate extends HttpServlet {
 
@@ -41,7 +33,9 @@ public class Inactivate extends HttpServlet {
             throws ServletException, IOException, SQLException, ClassNotFoundException {
         PrintWriter out = response.getWriter();
         PatientDAO patient = new PatientDAO();
-        if(patient.DisablePatient(ConnectionSetup.id)) {
+        HttpSession session = request.getSession();
+        int idPatient = (Integer) session.getAttribute("patientID");
+        if(patient.DisablePatient(idPatient)) {
             RequestDispatcher rd = request.getRequestDispatcher("inativo.html");
             request.setCharacterEncoding("UTF-8");
             rd.forward(request, response);
@@ -51,7 +45,7 @@ public class Inactivate extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Inactivate</title>");            
+            out.println("<title>Erro!</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Falhou :( !</h1>");

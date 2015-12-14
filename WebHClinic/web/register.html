@@ -1,55 +1,54 @@
 <!DOCTYPE html>
 <html>
-    <head>
+    <head>  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="style.css" type="text/css"/>
         <title>Faça seu cadastro</title>
+        <link rel="icon" type="image/png" href="images/logo_oficial.png" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <nav class="navbar navbar-fixed-top"><ul class="topMenu">
-                <li> <a href="index.html" class="current">Home</a>
-                </li>
-            </ul></nav>
         <div id="page-container">
             <form action="ValidateRegistration" method="get">
                 <fieldset>
-                   <h3> <legend>Preencha seus dados:</legend></h3>     
-
-                   <p> Nome:</p>
-                    <input type="text" maxlength="50" required value placeholder="Digite seu nome" name="name" id="name">
-                    <br>
-
-                   <p> CPF:</p>
-                    <input type="text"placeholder="Apenas números" name="cpf" id="cpf" maxlength="11" required value >
-                    <br>
-
-                   <p> CEP: </p>
-                    <input type="text"placeholder="Apenas números" name="cep" maxlength="7" id="cep" required value >   
-                    <br>
-
-                    <p>Número:</p>
-                    <input type="text" maxlength="4" name="number" id="number" required value >
-                    <br>
-
-                   <p> Complemento</p>
-                    <input type="text"placeholder="Se nenhum, digite 0" name="complement" id="complement" required value >
-                    <br>
-                    <br>
-
-                    <p>Telefone:</p>
-                    <table>                    
-                        <tr class="option_radio"> <!--Classe com estilização das opções de radioButtons-->
-                            <td><input type="radio" name="phone_type" id="phone_type" value="1" checked>Residencial</td>
-                            <td><input type="radio" name="phone_type" id="phone_type" value="2">Celular</td>
-                            <td><input type="radio" name="phone_type" id="phone_type" value="3">Trabalho</td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" size="2" maxlength="2"placeholder="xx" name="area_code" id="area_code"></td>
-                            <td><input type="text" Size="9" maxlength="8"placeholder="xxxxxxxx" name="phone_number" id="phone_number" pattern="[0-9]{4,6}[0-9]{3,4}$"></td>
-                        </tr>
-                    </table>
-                    <br>
+                <h2>Preencha seus dados:</h2>     
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" maxlength="50" class="form-control" name="name" id="name" placeholder="Digite seu nome" required value>
+                </div>
+                <div class="form-group">
+                    <label for="nome">CPF</label>
+                    <input type="text" class="form-control" placeholder="Apenas números" name="cpf" id="cpf" maxlength="11" required value>
+                </div>
+                <div class="form-group">
+                    <label for="nome">CEP</label>
+                    <input type="text" class="form-control" placeholder="Apenas números" name="cep" maxlength="7" id="cep" required value>
+                </div>
+                <div class="form-group">
+                    <label for="nome">Numero</label>
+                    <input type="text" class="form-control" maxlength="4" placeholder="Apenas números" name="number" id="number" required value>
+                </div>
+                <div class="form-group">
+                    <label for="nome">Complemento</label>
+                    <input type="text" class="form-control" placeholder="Se nenhum, digite 0" name="complement" id="complement" required value>
+                </div>
+                <div class="form-group">
+                    <label for="nome">Telefone</label>
+                    <div class="radio">
+                        <label><input type="radio" name="phone_type" id="phone_type" value="1" checked> Residencial </label>                             
+                        <label><input type="radio" name="phone_type" id="phone_type" value="2"> Celular</label>
+                        <label><input type="radio" name="phone_type" id="phone_type" value="3"> Trabalho</label>            
+                    </div>
+                    <div class="form-group">
+                            <label>
+                                <input type="text" class="form-control" size="2" maxlength="2" placeholder="xx" name="area_code" id="area_code">
+                            </label>
+                            <label>
+                                <input type="text" class="form-control" Size="9" maxlength="8" placeholder="xxxxxxxx" name="phone_number" id="phone_number" pattern="[0-9]{4,6}[0-9]{3,4}$">
+                            </label>
+                    </div>
+                </div>
 <!--
                     <p> Login: </p>
                     <input type="text" name="login" id="login" text="lala" readonly> <br>
@@ -57,7 +56,7 @@
                     <input type="password" name="senha" id="senha" text="lala" readonly>    
                     <br><br>-->
 
-                    <button class="but" type="submit" value="Cadastrar">Cadastrar</button>
+                    <button class="btn btn-default" type="submit" value="Cadastrar">Cadastrar</button>
                 </fieldset>
             </form>
         </div> 

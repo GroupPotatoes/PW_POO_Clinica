@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package clinic;
 
 import Module.Controle;
@@ -19,15 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author 14432843
- */
 @WebServlet(name = "ValidateRegistration", urlPatterns = {"/ValidateRegistration"})
 public class ValidateRegistration extends HttpServlet {
 
     protected String login, senha, nome;
-
     protected PatientDAO patientDAO;
     
     /**
@@ -64,12 +54,9 @@ public class ValidateRegistration extends HttpServlet {
                                 + "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">"                    
                             + "</head>"
                             + "<BODY>"
-                            + "<nav class=\"navbar navbar-fixed-top\"><ul class=\"topMenu\">\n" 
-                               + "<li> <a href=\"index.html\" class=\"current\">Home</a>\n" 
-                               + "</li></ul></nav>"
                                 + "<form id=\"page-container\">"
                                     + "<p>Parabéns! Seu cadastro foi efetuado com sucesso! <br>"
-                                    + "Veja abaixo e anote seu login e sua senha:</p>"
+                                    + "Anote seu login e sua senha:</p>"
                                     + "<table>"
                                         + "<tr>"
                                             + "<td><b>Login: </b></td>"
@@ -80,7 +67,7 @@ public class ValidateRegistration extends HttpServlet {
                                             + "<td>"+this.senha+"</td>"
                                         + "</tr>"
                                     + "</table>"
-                                    + "<p>Faça seu login <a href=\"index.html\">aqui</a></p>"
+                                    + "<p>Faça seu login <a href=\"index.jsp\">aqui</a></p>"
                                 + "</form>"
                             + "</BODY>"
                         + "</html>");
@@ -151,8 +138,7 @@ public class ValidateRegistration extends HttpServlet {
     }
     
     protected boolean exclusive(String login, String senha) throws SQLException{
-        boolean exclusive = !(patientDAO.ExistLogin(login, senha));
-        return exclusive;
+        return !(patientDAO.ExistLogin(login, senha));
     }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

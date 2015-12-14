@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package clinic;
 
 import java.io.IOException;
@@ -17,6 +12,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet que valida a alteração do cadastro de um funciomário.
@@ -38,6 +34,8 @@ public class Alterar extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            HttpSession session = request.getSession();
+            int idPatient = (Integer) session.getAttribute("patientID");
             String name = request.getParameter("name");
             String cpf = request.getParameter("cpf");
             String cep = request.getParameter("cep");
@@ -50,7 +48,7 @@ public class Alterar extends HttpServlet {
             String senha = request.getParameter("password");
             if(alterando(login, senha, name, cpf, cep, number, 
                 complement, phone_type, 
-                phone_number, area_code)){
+                phone_number, area_code, idPatient)){
                 out.println("<html>"
                             + "<head>"
                                 + "<link rel=\"stylesheet\" href=\"style.css\" type=\"text/css\"/>"
@@ -61,7 +59,7 @@ public class Alterar extends HttpServlet {
                             + "<BODY>"
                                 + "<form id=\"page-container\">"
                                     + "<p>Parabéns! Seu cadastro foi alterado com sucesso! <br>"
-                                    + "<p>Volte agora para a <a href=\"home.html\">tela inicial</a>, e continue a"
+                                    + "<p>Volte agora para a <a href=\"home.jsp\">tela inicial</a>, e continue a"
                                     + " mexer em nosso sistema!</p>"
                                 + "</form>"
                             + "</BODY>"
@@ -89,11 +87,11 @@ public class Alterar extends HttpServlet {
     
     protected boolean alterando(String login, String senha, String name,
             String cpf,  String cep, String number,  String comp, String phone_type,
-            String phone_number, String area_code){
+            String phone_number, String area_code, int id){
         try{
             
             //criando o paciente
-            Patient patient = new Patient(ConnectionSetup.id, name, cep, cpf, number, comp, login, senha);
+            Patient patient = new Patient(id, name, cep, cpf, number, comp, login, senha);
             PatientDAO patientDAO = new PatientDAO();
             
             //inserindo
