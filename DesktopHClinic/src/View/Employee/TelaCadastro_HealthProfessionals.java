@@ -24,10 +24,10 @@ public class TelaCadastro_HealthProfessionals extends javax.swing.JPanel {
     private RegisteredEmployee registeredEmployee = null;
     private HealthProfessionals healthprof = null;
     private HealthProfessionalsHaveSpecialization healthprofHasSpecialization = null;
-    private RegisteredEmployeeDAO employeeDAO = null;
-    private HealthProfessionalsDAO hpDAO = null;
-    private ProfessionsDAO p = null;
-    private SpecializationDAO specializationDAO = null;
+    private RegisteredEmployeeDAO employeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
+    private HealthProfessionalsDAO hpDAO = new HealthProfessionalsDAO(ConnectionSetup.connection);
+    private ProfessionsDAO p = new ProfessionsDAO(ConnectionSetup.connection);
+    private SpecializationDAO specializationDAO  = new SpecializationDAO(ConnectionSetup.connection);
     private String login = null;
     private String senha = null;
     private String nome = null;
@@ -36,11 +36,6 @@ public class TelaCadastro_HealthProfessionals extends javax.swing.JPanel {
 
     public TelaCadastro_HealthProfessionals() {
         initComponents();
-
-        this.employeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
-        this.hpDAO = new HealthProfessionalsDAO(ConnectionSetup.connection);
-        this.p = new ProfessionsDAO(ConnectionSetup.connection);
-        this.specializationDAO = new SpecializationDAO(ConnectionSetup.connection);
 
         //disables specialty field while profession is not chosen
         this.especialProfSaude.setEnabled(false);

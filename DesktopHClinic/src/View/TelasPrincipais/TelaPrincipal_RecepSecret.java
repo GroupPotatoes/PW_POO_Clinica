@@ -83,6 +83,7 @@ public class TelaPrincipal_RecepSecret extends javax.swing.JFrame {
         logout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema Administrativo do Hospital Plus");
         setSize(new java.awt.Dimension(780, 600));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {

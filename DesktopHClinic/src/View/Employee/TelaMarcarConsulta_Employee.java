@@ -33,26 +33,19 @@ import javax.swing.JOptionPane;
  */
 public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
 
-    private PatientDAO patientDAO = null;
-    private SpecializationDAO specializationDAO = null;
-    private HealthProfessionalsDAO healthProfessionalsDAO = null;
-    private DoctorAppointmentDAO doctorAppDAO = null;
-    private AvailabilityDAO availabilityDAO = null;
-    private DoctorAppointmentDAO doctorAppointmentDAO = null;
-    private ProfessionsDAO professionsDAO = null;
+    private PatientDAO patientDAO = new PatientDAO(ConnectionSetup.connection);
+    private SpecializationDAO specializationDAO = new SpecializationDAO(ConnectionSetup.connection);
+    private HealthProfessionalsDAO healthProfessionalsDAO = new HealthProfessionalsDAO(ConnectionSetup.connection);
+    private DoctorAppointmentDAO doctorAppDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
+    private AvailabilityDAO availabilityDAO = new AvailabilityDAO(ConnectionSetup.connection);
+    private DoctorAppointmentDAO doctorAppointmentDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
+    private ProfessionsDAO professionsDAO = new ProfessionsDAO(ConnectionSetup.connection);
 
     /**
      * Creates new form TelaMarcarConsulta_EmployeeP
      */
     public TelaMarcarConsulta_Employee() {
         initComponents();
-        this.patientDAO = new PatientDAO(ConnectionSetup.connection);
-        this.specializationDAO = new SpecializationDAO(ConnectionSetup.connection);
-        this.healthProfessionalsDAO = new HealthProfessionalsDAO(ConnectionSetup.connection);
-        this.doctorAppDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
-        this.availabilityDAO = new AvailabilityDAO(ConnectionSetup.connection);
-        this.doctorAppointmentDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
-        this.professionsDAO = new ProfessionsDAO(ConnectionSetup.connection);
     }
 
     /**

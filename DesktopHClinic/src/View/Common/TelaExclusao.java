@@ -11,12 +11,10 @@ import javax.swing.JOptionPane;
 
 public class TelaExclusao extends javax.swing.JPanel {
 
-    RegisteredEmployeeDAO registeredEmployeeDAO = null;
+    RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
 
     public TelaExclusao() {
         initComponents();
-
-        this.registeredEmployeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
     }
 
     @SuppressWarnings("unchecked")

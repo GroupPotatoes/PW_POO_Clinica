@@ -24,22 +24,14 @@ import java.util.logging.Logger;
  */
 public class TelaVisualizacaoConsultas_Employee extends javax.swing.JPanel {
 
-    private ConnectionSetup conexao;
-    DoctorAppointmentDAO daDAO;
-    AvailabilityDAO availabilityDAO;
+    DoctorAppointmentDAO daDAO  = new DoctorAppointmentDAO(ConnectionSetup.connection);
+    AvailabilityDAO availabilityDAO = new AvailabilityDAO(ConnectionSetup.connection);
 
     /**
      * Creates new form Panel_VisualizacaoConsultas_Administrativo
      */
     public TelaVisualizacaoConsultas_Employee() {
-        try {
-            initComponents();
-            this.conexao = new ConnectionSetup();
-            this.daDAO = new DoctorAppointmentDAO(conexao.connection);
-            this.availabilityDAO = new AvailabilityDAO(conexao.connection);
-        } catch (SQLException ex) {
-            Logger.getLogger(TelaVisualizacaoConsultas_Employee.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        initComponents();
     }
 
     /**

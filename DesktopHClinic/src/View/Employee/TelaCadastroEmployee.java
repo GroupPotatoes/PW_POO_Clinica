@@ -28,7 +28,7 @@ public class TelaCadastroEmployee extends javax.swing.JPanel {
     private String login, senha, nome;
     private RegisteredEmployee registeredEmployee = null;
     private Employee employee = null;
-    private RegisteredEmployeeDAO registeredEmployeeDAO = null;
+    private RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
     private RoleDAO roleDAO = new RoleDAO(ConnectionSetup.connection);
 
     /**
@@ -36,8 +36,6 @@ public class TelaCadastroEmployee extends javax.swing.JPanel {
      */
     public TelaCadastroEmployee() {
         initComponents();
-        this.registeredEmployeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
-        //this.roleDAO = new RoleDAO(ConnectionSetup.connection);
 
         //selecionando todo o texto do nome
         this.txtNome.requestFocus();

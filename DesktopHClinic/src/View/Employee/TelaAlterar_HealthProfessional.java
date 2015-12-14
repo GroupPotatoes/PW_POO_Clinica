@@ -16,10 +16,10 @@ import javax.swing.JOptionPane;
 
 public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
 
-    private HealthProfessionalsDAO healthProfessionalsDAO = null;
-    private RegisteredEmployeeDAO registeredEmployeeDAO = null;
-    private SpecializationDAO specializationDAO = null;
-    private ProfessionsDAO professionalsDAO = null;
+    private HealthProfessionalsDAO healthProfessionalsDAO = new HealthProfessionalsDAO(ConnectionSetup.connection);
+    private RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
+    private SpecializationDAO specializationDAO = new SpecializationDAO(ConnectionSetup.connection);
+    private ProfessionsDAO professionalsDAO = new ProfessionsDAO(ConnectionSetup.connection);
 
     private RegisteredEmployee registeredEmployee = null;
     private HealthProfessionals healthprof = null;
@@ -28,11 +28,6 @@ public class TelaAlterar_HealthProfessional extends javax.swing.JPanel {
 
     public TelaAlterar_HealthProfessional() {
         initComponents();
-
-        this.registeredEmployeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
-        this.healthProfessionalsDAO = new HealthProfessionalsDAO(ConnectionSetup.connection);
-        this.specializationDAO = new SpecializationDAO(ConnectionSetup.connection);
-        this.professionalsDAO = new ProfessionsDAO(ConnectionSetup.connection);
     }
 
     @SuppressWarnings("unchecked")

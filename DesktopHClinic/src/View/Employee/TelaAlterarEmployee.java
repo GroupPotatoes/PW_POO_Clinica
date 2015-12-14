@@ -23,22 +23,15 @@ import javax.swing.JOptionPane;
  */
 public class TelaAlterarEmployee extends javax.swing.JPanel {
 
-    private EmployeeDAO employeeDAO = null;
-    private RoleDAO roleDAO = null;
-    private RegisteredEmployeeDAO registeredEmployeeDAO = null;
+    private EmployeeDAO employeeDAO = new EmployeeDAO(ConnectionSetup.connection);
+    private RoleDAO roleDAO = new RoleDAO(ConnectionSetup.connection);
+    private RegisteredEmployeeDAO registeredEmployeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
 
     /**
      * Creates new form TelaAlterarEmployee
      */
     public TelaAlterarEmployee() {
         initComponents();
-
-        this.employeeDAO = new EmployeeDAO(ConnectionSetup.connection);
-        this.roleDAO = new RoleDAO(ConnectionSetup.connection);
-        this.registeredEmployeeDAO = new RegisteredEmployeeDAO(ConnectionSetup.connection);
-
-        initComponents();
-
     }
 
     /**

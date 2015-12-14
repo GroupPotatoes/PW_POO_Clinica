@@ -21,14 +21,13 @@ import javax.swing.JOptionPane;
  */
 public class TelaDesmarcarConsulta_Employee extends javax.swing.JPanel {
 
-    private DoctorAppointmentDAO docAppDAO;
+    private DoctorAppointmentDAO docAppDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
 
     /**
      * Creates new form TelaDesmarcarConsulta_Employee
      */
     public TelaDesmarcarConsulta_Employee() {
         initComponents();
-        this.docAppDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
     }
 
     /**
