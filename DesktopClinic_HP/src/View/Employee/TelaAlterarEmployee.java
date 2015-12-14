@@ -197,6 +197,13 @@ public class TelaAlterarEmployee extends javax.swing.JPanel {
             // TODO add your handling code here:
             int idRegisteredEmployee = ((RegisteredEmployee) this.lstEmployees.getSelectedValue()).getId();
             RegisteredEmployee re = this.registeredEmployeeDAO.getInfoRegisteredEmployee(idRegisteredEmployee);
+            Role rl = this.roleDAO.selectRole(idRegisteredEmployee);
+            if(rl.getId() == 1) 
+                this.cbbTipo.setSelectedIndex(0);
+            else if (rl.getId() == 2) 
+                this.cbbTipo.setSelectedIndex(1);
+            else
+                this.cbbTipo.setSelectedIndex(2);
             this.txtNome.setText(re.getName());
             this.txtLogin.setText(re.getLogin());
             this.txtSenha.setText(re.getPassword());
