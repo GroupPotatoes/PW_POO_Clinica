@@ -76,12 +76,16 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
         lblprofissao = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstHorarios = new javax.swing.JList();
-        jLabel1 = new javax.swing.JLabel();
         lblDisponibilidadeTitulo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
+        addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                formComponentAdded(evt);
+            }
+        });
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnEncaixe.setText("Encaixe");
@@ -173,14 +177,6 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
         jScrollPane2.setViewportView(lstHorarios);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 510, 174));
-
-        jLabel1.setText("Selecionar Paciente:");
-        jLabel1.addContainerListener(new java.awt.event.ContainerAdapter() {
-            public void componentAdded(java.awt.event.ContainerEvent evt) {
-                jLabel1ComponentAdded(evt);
-            }
-        });
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 513, 22));
 
         lblDisponibilidadeTitulo.setText("Horários disponíveis:");
         add(lblDisponibilidadeTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 155, 26));
@@ -281,7 +277,7 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cboProfissaoActionPerformed
 
-    private void jLabel1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jLabel1ComponentAdded
+    private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
         // TODO add your handling code here:
         try {
             carregarProfissao();
@@ -291,8 +287,7 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(TelaMarcarConsulta_Employee.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-    }//GEN-LAST:event_jLabel1ComponentAdded
+    }//GEN-LAST:event_formComponentAdded
 
     private void carregarProfissao() throws Exception {
         for (Professions profession : professionsDAO.SelectAllProfessions()) {
@@ -462,7 +457,6 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
     private javax.swing.JComboBox cboMedico;
     private javax.swing.JComboBox cboProfissao;
     private datechooser.beans.DateChooserCombo dateSelected;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
