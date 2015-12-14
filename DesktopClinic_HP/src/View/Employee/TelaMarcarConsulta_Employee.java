@@ -221,20 +221,22 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
     }//GEN-LAST:event_cboMedicoMouseClicked
 
     private void cboEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboEspecialidadeActionPerformed
-         try {
-             this.cboMedico.setEnabled(false);
+        try {
+            this.cboMedico.setEnabled(false);
             this.cboMedico.removeAllItems();
             this.cboMedico.addItem("Nenhum");
-            int specializationID = ((Specialization) this.cboEspecialidade.getSelectedItem()).getId();
-            List<RegisteredEmployee> registeredEmployees = this.healthProfessionalsDAO.SelectHealthProfessionalBySpecialization(specializationID);
-            if (registeredEmployees.isEmpty()) {
-                String nulo = "<SEM MÉDICO DISPONIVEL>";
-                this.cboMedico.addItem(nulo);
-                this.cboMedico.setSelectedItem(nulo);
-            } else {
-                this.cboMedico.setEnabled(true);
-                for (RegisteredEmployee registeredEmployee : registeredEmployees) {
-                    this.cboMedico.addItem(registeredEmployee);
+            if (this.cboEspecialidade.getSelectedIndex() > 0) {
+                int specializationID = ((Specialization) this.cboEspecialidade.getSelectedItem()).getId();
+                List<RegisteredEmployee> registeredEmployees = this.healthProfessionalsDAO.SelectHealthProfessionalBySpecialization(specializationID);
+                if (registeredEmployees.isEmpty()) {
+                    String nulo = "<SEM MÉDICO DISPONIVEL>";
+                    this.cboMedico.addItem(nulo);
+                    this.cboMedico.setSelectedItem(nulo);
+                } else {
+                    this.cboMedico.setEnabled(true);
+                    for (RegisteredEmployee registeredEmployee : registeredEmployees) {
+                        this.cboMedico.addItem(registeredEmployee);
+                    }
                 }
             }
         } catch (Exception ex) {
@@ -295,15 +297,13 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
     private void cboProfissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboProfissaoActionPerformed
         try {
             this.cboEspecialidade.removeAllItems();
-            int professionsID = -1;
-            Professions selected = (Professions) this.cboProfissao.getSelectedItem();
-            while(selected == null) {
-              selected = (Professions) this.cboProfissao.getSelectedItem();
+            if (this.cboProfissao.getSelectedIndex() > 0) {
+                int professionsID = ((Professions) this.cboProfissao.getSelectedItem()).getId();
+                for (Specialization specialization : this.specializationDAO.SelectSpecializations(professionsID)) {
+                    this.cboEspecialidade.addItem(specialization);
+                }
             }
-            professionsID = ((Professions) this.cboProfissao.getSelectedItem()).getId();
-            for (Specialization specialization : this.specializationDAO.SelectSpecializations(professionsID)) {
-                this.cboEspecialidade.addItem(specialization);
-            }
+
         } catch (Exception ex) {
             Logger.getLogger(TelaMarcarConsulta_Employee.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -331,41 +331,6 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
         this.cboProfissao.removeAllItems();
         for (Professions profession : professionsDAO.SelectAllProfessions()) {
             this.cboProfissao.addItem(profession);
-        }
-    }
-
-    private void carregarEspecialidade() throws Exception {
-        try {
-            this.cboEspecialidade.removeAllItems();
-            int professionsID = -1;
-            Professions selected = (Professions) this.cboProfissao.getSelectedItem();
-            while(selected == null) {
-              selected = (Professions) this.cboProfissao.getSelectedItem();
-            }
-            professionsID = ((Professions) this.cboProfissao.getSelectedItem()).getId();
-            for (Specialization specialization : this.specializationDAO.SelectSpecializations(professionsID)) {
-                this.cboEspecialidade.addItem(specialization);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(TelaMarcarConsulta_Employee.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void carregarMedicos() {
-        try {
-            this.cboMedico.removeAllItems();
-            this.cboMedico.addItem("Nenhum");
-            int specializationID = ((Specialization) this.cboEspecialidade.getSelectedItem()).getId();
-            List<RegisteredEmployee> registeredEmployees = this.healthProfessionalsDAO.SelectHealthProfessionalBySpecialization(specializationID);
-            if (registeredEmployees.isEmpty()) {
-                this.cboMedico.addItem("<SEM MÉDICO DISPONIVEL>");
-            } else {
-                for (RegisteredEmployee registeredEmployee : registeredEmployees) {
-                    this.cboMedico.addItem(registeredEmployee);
-                }
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(TelaMarcarConsulta_Employee.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
