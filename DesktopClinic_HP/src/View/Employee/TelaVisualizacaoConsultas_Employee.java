@@ -55,6 +55,7 @@ public class TelaVisualizacaoConsultas_Employee extends javax.swing.JPanel {
         lblTitulo = new javax.swing.JLabel();
         lblTitulo1 = new javax.swing.JLabel();
 
+        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -77,75 +78,34 @@ public class TelaVisualizacaoConsultas_Employee extends javax.swing.JPanel {
         });
         add(btnIndisponibilizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 560, 420, -1));
 
-        dtCalendario.setCurrentView(new datechooser.view.appearance.AppearancesList("Light",
-            new datechooser.view.appearance.ViewAppearance("custom",
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
-                    new java.awt.Color(0, 0, 255),
-                    true,
-                    true,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 255),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(128, 128, 128),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.LabelPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.LabelPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
-                    new java.awt.Color(255, 0, 0),
-                    false,
-                    false,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                (datechooser.view.BackRenderer)null,
-                false,
-                true)));
-    dtCalendario.addSelectionChangedListener(new datechooser.events.SelectionChangedListener() {
-        public void onSelectionChange(datechooser.events.SelectionChangedEvent evt) {
-            dtCalendarioOnSelectionChange(evt);
-        }
-    });
-    add(dtCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 520, 219));
-    add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 420, -1));
+        dtCalendario.addSelectionChangedListener(new datechooser.events.SelectionChangedListener() {
+            public void onSelectionChange(datechooser.events.SelectionChangedEvent evt) {
+                dtCalendarioOnSelectionChange(evt);
+            }
+        });
+        add(dtCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 520, 219));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 420, -1));
 
-    jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-    add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 80, 10, 219));
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 80, 10, 219));
 
-    lblTitulo2.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
-    lblTitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    lblTitulo2.setText("Clique em uma data para mais detalhes");
-    add(lblTitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 46, 758, 17));
+        lblTitulo2.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
+        lblTitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo2.setText("Clique em uma data para mais detalhes");
+        add(lblTitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 46, 758, 17));
 
-    jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-    add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 14, 219));
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 14, 219));
 
-    lblTitulo.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-    lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    lblTitulo.setText(":: Visualização de Consultas - Administrativo ::");
-    add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 23, 758, 17));
+        lblTitulo.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText(":: Visualização de Consultas - Administrativo ::");
+        add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 23, 758, 17));
 
-    lblTitulo1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-    lblTitulo1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-    lblTitulo1.setText("DETALHES DE CADA DATA  -");
-    add(lblTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 179, 17));
+        lblTitulo1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblTitulo1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTitulo1.setText("DETALHES DE CADA DATA  -");
+        add(lblTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 179, 17));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIndisponibilizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIndisponibilizarActionPerformed

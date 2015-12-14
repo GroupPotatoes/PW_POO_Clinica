@@ -224,6 +224,9 @@
           <Dimension value="[200, 23]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFecharActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnConfirmar">
       <Properties>

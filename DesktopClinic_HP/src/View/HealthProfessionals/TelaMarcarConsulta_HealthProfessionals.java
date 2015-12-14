@@ -20,7 +20,7 @@ public class TelaMarcarConsulta_HealthProfessionals extends javax.swing.JPanel {
 
     private DoctorAppointmentDAO doctorAppointmentDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
     private PatientDAO patientDAO = new PatientDAO(ConnectionSetup.connection);
-    private AvailabilityDAO availabilityDAO = null;
+    private AvailabilityDAO availabilityDAO = new AvailabilityDAO(ConnectionSetup.connection);
     private DoctorAppointmentDAO doctorAppDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
 
     public TelaMarcarConsulta_HealthProfessionals() {

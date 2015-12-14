@@ -417,6 +417,37 @@ public class DoctorAppointmentDAO {
     /**
      * Método que retorna as consultas em determinado período.
      */
+    public List<String> selectDoctorAppointmentInPeriodForHealthProfessioanal(Date inicio, Date fim, int idDoctor) throws Exception{
+        List<String> todasConsutlasMedicasPeriodo = new ArrayList<String>();
+        SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
+        String dtInicio = formatador.format(inicio), //definindo as datas de acordo com o padrão do banco
+               dtFinal = formatador.format(fim);    
+        formatador = new SimpleDateFormat("yyyy-MM-dd");
+        String commandToExecute="";        
+        //abaixo, select que verá quais as consultas de determinado médico em determinado período
+        commandToExecute = "select [availability].id_health_professionals as medico, "
+                + "[doctor_appointment].date as data, "
+                + "[doctor_appointment].iniciation as inicio, "
+                + "[doctor_appointment].finish as fim, "
+                + "[patient].name as nome "
+                + "from doctor_appointment "
+                + "join [availability]on [doctor_appointment].id_availability = [availability].id "
+                + "join [patient] on [doctor_appointment].id_patient = [patient].id "
+                + "where "
+                + "[availability].id_health_professionals = "+idDoctor+" and "
+                + "[doctor_appointment].date between '"+dtInicio+"' and '"+dtFinal+"' and doctor_appointment.status_appointment = 1;";
+        Statement st = this.connection.createStatement();
+        ResultSet resultSet = st.executeQuery(commandToExecute);
+        while (resultSet.next()) {
+           todasConsutlasMedicasPeriodo.add(String.format("Data: %s \t\t | Paciente: %s \t\t | Horário: %s - %s", resultSet.getString("data"), resultSet.getString("nome"),
+                   resultSet.getString("inicio").substring(0, 5),resultSet.getString("fim").substring(0, 5)));//atribuindo os ids das consultas que já existem            
+        }  
+        return todasConsutlasMedicasPeriodo; 
+    }
+    
+    /**
+     * Método que retorna as consultas em determinado período.
+     */
     public List<String> selectDoctorAppointmentInPeriod(Date dt, String nameDoctor) throws Exception{
         List<String> consultas = new ArrayList<String>();
         SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");

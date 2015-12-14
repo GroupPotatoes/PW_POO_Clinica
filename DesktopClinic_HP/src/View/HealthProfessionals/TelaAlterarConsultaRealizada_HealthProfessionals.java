@@ -86,6 +86,11 @@ public class TelaAlterarConsultaRealizada_HealthProfessionals extends javax.swin
         btnFechar.setMaximumSize(new java.awt.Dimension(200, 23));
         btnFechar.setMinimumSize(new java.awt.Dimension(200, 23));
         btnFechar.setPreferredSize(new java.awt.Dimension(200, 23));
+        btnFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFecharActionPerformed(evt);
+            }
+        });
 
         btnConfirmar.setText("Confirmar");
         btnConfirmar.setMaximumSize(new java.awt.Dimension(200, 23));
@@ -200,6 +205,14 @@ public class TelaAlterarConsultaRealizada_HealthProfessionals extends javax.swin
             Logger.getLogger(TelaAlterarConsultaRealizada_HealthProfessionals.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formComponentAdded
+
+    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
+       this.txtObservacao.setText("");
+       this.txtPrescricao.setText("");
+       this.txtRecomendacao.setText("");
+       this.txtRequisicaoDeExame.setText("");
+        this.setVisible(false);
+    }//GEN-LAST:event_btnFecharActionPerformed
 
     private void carregarConsultasValidas() throws Exception {
         this.lblError.setText("");

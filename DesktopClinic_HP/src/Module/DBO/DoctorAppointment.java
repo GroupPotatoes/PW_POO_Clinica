@@ -56,14 +56,14 @@ public class DoctorAppointment {
         
     // <editor-fold defaultstate="collapsed" desc="Setter">
         public void setId(int id) throws Exception {
-            if(id <= 0)
+            if(id < 0)
                 throw new Exception("ID inválido");
         
             this.id = id;
         }
 
         public void setIdPatient(int idPatient) throws Exception {
-            if(idPatient <= 0)
+            if(idPatient < 0)
                 throw new Exception("ID inválido");
         
             this.idPatient = idPatient;

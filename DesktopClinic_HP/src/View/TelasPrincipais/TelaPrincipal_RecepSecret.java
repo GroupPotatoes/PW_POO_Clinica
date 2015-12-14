@@ -52,6 +52,7 @@ public class TelaPrincipal_RecepSecret extends javax.swing.JFrame {
         try {
             this.connection = new ConnectionSetup();
             this.setResizable(false); //bloqueando o tamanho do frame
+            this.setLocationRelativeTo(null); //abrindo no meio da tela
         } catch (SQLException ex) {
             Logger.getLogger(TelaPrincipal_RecepSecret.class.getName()).log(Level.SEVERE, null, ex);
         }

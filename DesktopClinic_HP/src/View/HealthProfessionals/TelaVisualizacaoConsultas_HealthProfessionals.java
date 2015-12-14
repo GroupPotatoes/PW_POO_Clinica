@@ -7,6 +7,8 @@ package View.HealthProfessionals;
 
 import Module.DBO.ConnectionSetup;
 import Module.DAO.DoctorAppointmentDAO;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -235,10 +237,15 @@ public class TelaVisualizacaoConsultas_HealthProfessionals extends javax.swing.J
      * @throws Exception
      */
     private void carregarDisponibilidades() throws Exception {
+        Date    inicio = this.dtcINicio.getCurrent().getTime(),
+                fim = this.dtcFinal.getCurrent().getTime();
+        DateFormat formatadorData = new SimpleDateFormat("dd/MM/yyyy");
+        String descricao = "De "+formatadorData.format(inicio)+" a "+formatadorData.format(fim);
+        this.lblData.setText(descricao);
         List<String> todasConsultasMedicasPeriodo = new ArrayList<>(); //array com as disponibilidades
         Date dtInicio = this.dtcINicio.getCurrent().getTime(), //datas para seleção
                 dtFinal = this.dtcFinal.getCurrent().getTime();
-        todasConsultasMedicasPeriodo = this.daDAO.selectDoctorAppointmentInPeriod(dtInicio, dtFinal, this.idDoctor); //retornando as datas
+        todasConsultasMedicasPeriodo = this.daDAO.selectDoctorAppointmentInPeriodForHealthProfessioanal(dtInicio, dtFinal, this.idDoctor); //retornando as datas
         if (todasConsultasMedicasPeriodo.isEmpty()) {
             todasConsultasMedicasPeriodo.add("Nenhuma consulta marcada no período!");
         }

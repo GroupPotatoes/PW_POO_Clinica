@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 public class TelaRemoverAlterarConsulta_HealthProfessionals extends javax.swing.JPanel {
 
     private DoctorAppointmentDAO doctorAppointmentDAO = new DoctorAppointmentDAO(ConnectionSetup.connection);
+    
 
     /**
      * Creates new form TelaRemoverAlterarConsulta_HealthProfessionals
@@ -148,7 +149,7 @@ public class TelaRemoverAlterarConsulta_HealthProfessionals extends javax.swing.
                 lblError.setText("Selecione uma consulta para alterar!");
             }
         } catch (Exception ex) {
-            Logger.getLogger(TelaRemoverAlterarConsulta_HealthProfessionalsF.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaRemoverAlterarConsulta_HealthProfessionals.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
@@ -167,7 +168,7 @@ public class TelaRemoverAlterarConsulta_HealthProfessionals extends javax.swing.
                     try {
                         recarregarForm();
                     } catch (Exception ex) {
-                        Logger.getLogger(TelaRemoverAlterarConsulta_HealthProfessionalsF.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(TelaRemoverAlterarConsulta_HealthProfessionals.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } else {
                     this.lblError.setText("Não foi possível remover essa consulta.");
