@@ -48,6 +48,7 @@ public class TelaPrincipal_Admin extends javax.swing.JFrame {
     public TelaPrincipal_Admin() {
         try {
             this.connection = new ConnectionSetup();
+            this.setResizable(false); //bloqueando o tamanho do frame
         } catch (SQLException ex) {
             Logger.getLogger(TelaPrincipal_Admin.class.getName()).log(Level.SEVERE, null, ex);
         }
