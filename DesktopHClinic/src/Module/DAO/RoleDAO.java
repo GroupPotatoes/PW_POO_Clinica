@@ -37,4 +37,22 @@ public class RoleDAO {
 
         return roles;
     }
+    
+    public Role selectRole(int idRegisteredEmployee) throws SQLException, Exception {
+
+        String commandToExecute = String.format("SELECT * FROM [bdci17].[bdci17].[role]"
+                + " JOIN [employee]"
+                + " ON [employee].[role_id] = [role].[id]"
+                + " WHERE [employee].[id_registered_employee]=%d;", idRegisteredEmployee);
+
+        Statement st = this.connection.createStatement();
+        ResultSet resultSet = st.executeQuery(commandToExecute);
+        if (resultSet.next()) {
+            Role role;
+            //id, name
+            return role = new Role(resultSet.getInt("id"), resultSet.getString("name"));
+        }
+
+        return null;
+    }
 }
