@@ -1,0 +1,112 @@
+package Module.DBO;
+
+public class RegisteredEmployee {
+    /*
+        [id] [int] NOT NULL,
+	[name] [varchar](50) NOT NULL,
+	[password] [varchar](50) NOT NULL,
+	[id_login] [int] NULL,
+    */
+    
+    // <editor-fold defaultstate="collapsed" desc="Attributes">
+    
+    private int id;
+    private String name;
+    private String password;
+    private String login;
+    
+    // </editor-fold>
+   
+    // <editor-fold defaultstate="collapsed" desc="Construction">
+    
+    public RegisteredEmployee(int id, String name, String password, String login) throws Exception{
+        
+        //Construtor para alterar employee registrer
+        
+        this.setId(id);
+        this.setLogin(login);
+        this.setName(name);
+        this.setPassword(password);
+    }
+    
+    public RegisteredEmployee(String name, String password, String login) throws Exception{
+        
+        //Construtor para inserir employee registrer
+        
+        this.setLogin(login);
+        this.setName(name);
+        this.setPassword(password);
+    }
+    
+    public RegisteredEmployee(int id, String name) throws Exception{
+           this.setId(id);
+           this.setName(name);
+    }
+    
+     // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="Getter">
+    
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+          return name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    
+    public String getLogin() {
+        return login;
+    }
+    
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="Setter">
+    
+    public void setId(int id) throws Exception {
+        if(id <= 0)
+            throw new Exception("ID inválido");
+        
+        this.id = id;
+    }
+
+    public void setName(String name) throws Exception {     
+        if(name == null)
+            throw new Exception("Name inválido");
+        
+        this.name = name;
+    }
+
+    public void setPassword(String password) throws Exception {
+        if(password == null)
+            throw new Exception("Password inválido");
+        
+                
+        this.password = password;
+    }
+    
+    public void setLogin(String login) throws Exception {
+        if(login == null)
+            throw new Exception("Login inválido");
+        
+        this.login = login;
+    }
+    
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="Methods">
+    
+    public String toString()
+    {
+        if(this.getLogin() != null)
+            return String.format("NOME: %s LOGIN: %s", this.getName(), this.getLogin());
+        else 
+            return this.getName();
+    }
+    
+    // </editor-fold>
+}
