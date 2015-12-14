@@ -78,6 +78,7 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
         lstHorarios = new javax.swing.JList();
         lblDisponibilidadeTitulo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -94,10 +95,10 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
                 btnEncaixeActionPerformed(evt);
             }
         });
-        add(btnEncaixe, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 98, -1));
+        add(btnEncaixe, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 98, -1));
 
         lblPaciente1.setText("Médico:");
-        add(lblPaciente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 72, 20));
+        add(lblPaciente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 72, 20));
 
         btnDisponibilidade.setText("Disponibilidade");
         btnDisponibilidade.addActionListener(new java.awt.event.ActionListener() {
@@ -105,21 +106,21 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
                 btnDisponibilidadeActionPerformed(evt);
             }
         });
-        add(btnDisponibilidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, -1, -1));
+        add(btnDisponibilidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, -1, -1));
 
         cboMedico.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cboMedicoMouseClicked(evt);
             }
         });
-        add(cboMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, 250, -1));
+        add(cboMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 250, -1));
 
         cboEspecialidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboEspecialidadeActionPerformed(evt);
             }
         });
-        add(cboEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 250, -1));
+        add(cboEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 250, -1));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -127,10 +128,10 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
                 btnCancelarActionPerformed(evt);
             }
         });
-        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 530, 134, -1));
+        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 530, 134, -1));
 
         lblData.setText("Data:");
-        add(lblData, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 72, 20));
+        add(lblData, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 72, 20));
 
         btnConfimar.setText("Confirmar");
         btnConfimar.addActionListener(new java.awt.event.ActionListener() {
@@ -138,13 +139,13 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
                 btnConfimarActionPerformed(evt);
             }
         });
-        add(btnConfimar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 530, 134, -1));
+        add(btnConfimar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 530, 134, -1));
 
         lblEspecialidade.setText("Especialização:");
         lblEspecialidade.setToolTipText("");
-        add(lblEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, -1, 22));
-        add(txtNomePesquisado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 126, -1));
-        add(dateSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 250, -1));
+        add(lblEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, -1, 22));
+        add(txtNomePesquisado, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 126, -1));
+        add(dateSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 250, -1));
 
         btnPesquisar.setText("...");
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -152,38 +153,46 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
                 btnPesquisarActionPerformed(evt);
             }
         });
-        add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 33, -1));
+        add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 33, -1));
 
         lblError.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblError.setForeground(new java.awt.Color(255, 51, 51));
         lblError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, 480, 60));
+        add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, 480, 60));
 
+        lstPacientes.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstPacientesValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(lstPacientes);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 160, 400));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 160, 400));
 
         cboProfissao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboProfissaoActionPerformed(evt);
             }
         });
-        add(cboProfissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 250, -1));
+        add(cboProfissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 250, -1));
 
         lblprofissao.setText("Profissao:");
         lblprofissao.setToolTipText("");
-        add(lblprofissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, 22));
+        add(lblprofissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, -1, 22));
 
         jScrollPane2.setViewportView(lstHorarios);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 510, 174));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 510, 174));
 
         lblDisponibilidadeTitulo.setText("Horários disponíveis:");
-        add(lblDisponibilidadeTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 155, 26));
+        add(lblDisponibilidadeTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 155, 26));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText(":: Marcar consulta ::");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, -1, -1));
+
+        jLabel1.setText("Selecione um paciente e depois selecione o profissional de saúde para agendar uma consulta:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEncaixeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncaixeActionPerformed
@@ -213,7 +222,23 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
 
     private void cboEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboEspecialidadeActionPerformed
         try {
-            carregarMedicos();
+            this.cboMedico.setEnabled(false);
+            this.cboMedico.removeAllItems();
+            this.cboMedico.addItem("Nenhum");
+            if (this.cboEspecialidade.getSelectedIndex() > 0) {
+                int specializationID = ((Specialization) this.cboEspecialidade.getSelectedItem()).getId();
+                List<RegisteredEmployee> registeredEmployees = this.healthProfessionalsDAO.SelectHealthProfessionalBySpecialization(specializationID);
+                if (registeredEmployees.isEmpty()) {
+                    String nulo = "<SEM MÉDICO DISPONIVEL>";
+                    this.cboMedico.addItem(nulo);
+                    this.cboMedico.setSelectedItem(nulo);
+                } else {
+                    this.cboMedico.setEnabled(true);
+                    for (RegisteredEmployee registeredEmployee : registeredEmployees) {
+                        this.cboMedico.addItem(registeredEmployee);
+                    }
+                }
+            }
         } catch (Exception ex) {
             Logger.getLogger(TelaMarcarConsulta_Employee.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -271,7 +296,14 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
 
     private void cboProfissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboProfissaoActionPerformed
         try {
-            carregarEspecialidade();
+            this.cboEspecialidade.removeAllItems();
+            if (this.cboProfissao.getSelectedIndex() > 0) {
+                int professionsID = ((Professions) this.cboProfissao.getSelectedItem()).getId();
+                for (Specialization specialization : this.specializationDAO.SelectSpecializations(professionsID)) {
+                    this.cboEspecialidade.addItem(specialization);
+                }
+            }
+
         } catch (Exception ex) {
             Logger.getLogger(TelaMarcarConsulta_Employee.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -280,44 +312,25 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
     private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
         // TODO add your handling code here:
         try {
-            carregarProfissao();
             carregarPacientes();
         } catch (Exception ex) {
             Logger.getLogger(TelaMarcarConsulta_Employee.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formComponentAdded
 
+    private void lstPacientesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstPacientesValueChanged
+        // TODO add your handling code here:
+        try {
+            carregarProfissao();
+        } catch (Exception ex) {
+            Logger.getLogger(TelaMarcarConsulta_Employee.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_lstPacientesValueChanged
+
     private void carregarProfissao() throws Exception {
         this.cboProfissao.removeAllItems();
         for (Professions profession : professionsDAO.SelectAllProfessions()) {
             this.cboProfissao.addItem(profession);
-        }
-    }
-
-    private void carregarEspecialidade() throws Exception {
-        try {
-            this.cboEspecialidade.removeAllItems();
-            int professionsID = ((Professions) this.cboProfissao.getSelectedItem()).getId();
-
-            for (Specialization specialization : this.specializationDAO.SelectSpecializations(professionsID)) {
-                this.cboEspecialidade.addItem(specialization);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(TelaMarcarConsulta_Employee.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void carregarMedicos() throws Exception {
-        this.cboMedico.removeAllItems();
-        this.cboMedico.addItem("Nenhum");
-        int specializationID = ((Specialization) this.cboEspecialidade.getSelectedItem()).getId();
-        List<RegisteredEmployee> registeredEmployees = this.healthProfessionalsDAO.SelectHealthProfessionalBySpecialization(specializationID);
-        if (registeredEmployees.isEmpty()) {
-            this.cboMedico.addItem("<SEM MÉDICO DISPONIVEL>");
-        } else {
-            for (RegisteredEmployee registeredEmployee : registeredEmployees) {
-                this.cboMedico.addItem(registeredEmployee);
-            }
         }
     }
 
@@ -456,6 +469,7 @@ public class TelaMarcarConsulta_Employee extends javax.swing.JPanel {
     private javax.swing.JComboBox cboMedico;
     private javax.swing.JComboBox cboProfissao;
     private datechooser.beans.DateChooserCombo dateSelected;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

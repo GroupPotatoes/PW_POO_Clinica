@@ -68,9 +68,9 @@ public class TelaCadastro_HealthProfessionals extends javax.swing.JPanel {
 
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                formComponentShown(evt);
+        addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                formComponentAdded(evt);
             }
         });
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -111,7 +111,7 @@ public class TelaCadastro_HealthProfessionals extends javax.swing.JPanel {
                 btnCancelarActionPerformed(evt);
             }
         });
-        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, -1, -1));
+        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 330, -1, -1));
 
         add(especialProfSaude, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 250, -1));
 
@@ -258,17 +258,6 @@ public class TelaCadastro_HealthProfessionals extends javax.swing.JPanel {
         while (!this.employeeDAO.IsUniqueLogin(this.login, this.senha));
     }
 
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        try {
-            for (Professions profession : p.SelectAllProfessions()) {
-                this.profissaoProfSaude.addItem(profession);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(TelaCadastro_HealthProfessionals.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_formComponentShown
-
     private void profissaoProfSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profissaoProfSaudeActionPerformed
         try {
             this.especialProfSaude.removeAllItems();
@@ -279,9 +268,20 @@ public class TelaCadastro_HealthProfessionals extends javax.swing.JPanel {
             }
             this.especialProfSaude.setEnabled(true);
         } catch (Exception ex) {
-            Logger.getLogger(TelaAlterar_HealthProfessional.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaCadastro_HealthProfessionals.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_profissaoProfSaudeActionPerformed
+
+    private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
+        // TODO add your handling code here
+        try {
+            for (Professions profession : p.SelectAllProfessions()) {
+                this.profissaoProfSaude.addItem(profession);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastro_HealthProfessionals.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formComponentAdded
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
